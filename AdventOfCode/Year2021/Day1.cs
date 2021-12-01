@@ -1,10 +1,12 @@
 ﻿namespace AdventOfCode.Year2021
 {
-    public class Day1
+    public class Day1 : PuzzleSolution
     {
-        private static int[] Input => Program.ReadInputFromFile(@"Year2021\Inputs\Day1.txt");
+        private int[] Input => GetInput(@"Year2021\Inputs\Day1.txt");
 
-        public static int PartOne()
+        public override int Day => 1;
+
+        public override int ResultPartOne()
         {
             int largerCount = 0;
             for (int i = 1; i < Input.Length; i++)
@@ -17,7 +19,7 @@
             return largerCount;
         }
 
-        public static int PartTwo()
+        public override int ResultPartTwo()
         {
             int largerCount = 0;
             for (int i = 3; i < Input.Length; i++)

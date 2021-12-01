@@ -1,26 +1,43 @@
 ﻿using System;
-using System.IO;
+using System.Collections.Generic;
 
 namespace AdventOfCode
 {
     public class Program
     {
+        private static List<PuzzleSolution> Solutions2021 => new List<PuzzleSolution>()
+        {
+            new Year2021.Day2(),
+            new Year2021.Day1()
+        };
+
         private static void Main(string[] args)
         {
-            Console.WriteLine("Year 2021");
-            Console.WriteLine("Day  1: " + Year2021.Day1.PartOne() + ", " + Year2021.Day1.PartTwo());
+            PrintSolutions(2021, Solutions2021);
             Console.WriteLine();
             Console.WriteLine("Year 2020");
             Console.WriteLine("Day  1: " + Year2020.Day1.Solve());
             Console.ReadKey();
         }
 
-        public static int[] ReadInputFromFile(string file)
+        private static void PrintSolutions(int year, List<PuzzleSolution> solutions)
         {
-            var streamReader = new StreamReader(file);
-            string input = streamReader.ReadToEnd();
-            var inputStringArray = input.Split(Environment.NewLine);
-            return Array.ConvertAll(inputStringArray, int.Parse);
+            Console.WriteLine("Year " + year);
+            foreach (var solution in solutions)
+            {
+                PrintSolution(solution);
+            }
+        }
+
+        private static void PrintSolution(PuzzleSolution solution)
+        {
+            Console.Write("Day ");
+            Console.WriteLine(solution.Day);
+            Console.Write("Part 1: ");
+            Console.WriteLine(solution.ResultPartOne());
+            Console.Write("Part 2: ");
+            Console.WriteLine(solution.ResultPartTwo());
+            Console.WriteLine();
         }
     }
 }
