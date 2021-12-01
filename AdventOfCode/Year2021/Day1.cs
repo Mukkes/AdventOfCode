@@ -2,20 +2,34 @@
 {
     public class Day1
     {
-        public static int Solve()
+        private static int[] Input => Program.ReadInputFromFile(@"Year2021\Inputs\Day1.txt");
+
+        public static int PartOne()
         {
-            var input = Program.ReadInputFromFile(@"Year2021\Inputs\Day1.txt");
-            //for (int i = 0; i < input.Length; i++)
-            //{
-            //    for (int j = i + 1; j < input.Length; j++)
-            //    {
-            //        if (input[i] + input[j] == 2020)
-            //        {
-            //            return input[i] * input[j];
-            //        }
-            //    }
-            //}
-            return 0;
+            int largerCount = 0;
+            for (int i = 1; i < Input.Length; i++)
+            {
+                if (Input[i] > Input[i - 1])
+                {
+                    largerCount++;
+                }
+            }
+            return largerCount;
+        }
+
+        public static int PartTwo()
+        {
+            int largerCount = 0;
+            for (int i = 3; i < Input.Length; i++)
+            {
+                var previousDepth = Input[i - 3] + Input[i - 2] + Input[i - 1];
+                var depth = Input[i - 2] + Input[i - 1] + Input[i];
+                if (depth > previousDepth)
+                {
+                    largerCount++;
+                }
+            }
+            return largerCount;
         }
     }
 }

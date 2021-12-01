@@ -8,7 +8,7 @@ namespace AdventOfCode
         private static void Main(string[] args)
         {
             Console.WriteLine("Year 2021");
-            Console.WriteLine("Day  1: " + Year2021.Day1.Solve());
+            Console.WriteLine("Day  1: " + Year2021.Day1.PartOne() + ", " + Year2021.Day1.PartTwo());
             Console.WriteLine();
             Console.WriteLine("Year 2020");
             Console.WriteLine("Day  1: " + Year2020.Day1.Solve());
