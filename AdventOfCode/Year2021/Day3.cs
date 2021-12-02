@@ -8,14 +8,14 @@
 
         //private string[] Input => GetInputAsStringArray();
 
-        public override int ResultPartOne()
-        {
-            return 0;
-        }
+        //public override int ResultPartOne()
+        //{
+        //    return 0;
+        //}
 
-        public override int ResultPartTwo()
-        {
-            return 0;
-        }
+        //public override int ResultPartTwo()
+        //{
+        //    return 0;
+        //}
     }
 }

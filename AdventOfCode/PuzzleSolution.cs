@@ -7,10 +7,18 @@ namespace AdventOfCode
     {
         public abstract int Year { get; }
         public abstract int Day { get; }
-        public abstract int ResultPartOne();
-        public abstract int ResultPartTwo();
 
         private string InputFile => "Year" + Year + @"\Inputs\Day" + Day + ".txt";
+
+        public virtual int ResultPartOne()
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual int ResultPartTwo()
+        {
+            throw new NotImplementedException();
+        }
 
         public string GetInputAsString()
         {

@@ -35,9 +35,23 @@ namespace AdventOfCode
             Console.Write("Day ");
             Console.WriteLine(solution.Day);
             Console.Write("Part 1: ");
-            Console.WriteLine(solution.ResultPartOne());
+            try
+            {
+                Console.WriteLine(solution.ResultPartOne());
+            }
+            catch (NotImplementedException)
+            {
+                Console.WriteLine("Not solved yet.");
+            }
             Console.Write("Part 2: ");
-            Console.WriteLine(solution.ResultPartTwo());
+            try
+            {
+                Console.WriteLine(solution.ResultPartTwo());
+            }
+            catch (NotImplementedException)
+            {
+                Console.WriteLine("Not solved yet.");
+            }
             Console.WriteLine();
         }
     }
