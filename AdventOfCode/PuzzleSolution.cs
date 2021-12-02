@@ -5,19 +5,27 @@ namespace AdventOfCode
 {
     public abstract class PuzzleSolution
     {
-        public abstract int Day { get;  }
+        public abstract int Year { get; }
+        public abstract int Day { get; }
         public abstract int ResultPartOne();
         public abstract int ResultPartTwo();
 
-        public string[] GetInputAsStringArray(string file)
+        private string InputFile => "Year" + Year + @"\Inputs\Day" + Day + ".txt";
+
+        public string GetInputAsString()
         {
-            string input = File.ReadAllText(file);
+            return File.ReadAllText(InputFile);
+        }
+
+        public string[] GetInputAsStringArray()
+        {
+            string input = GetInputAsString();
             return input.Split(Environment.NewLine);
         }
 
-        public int[] GetInputAsIntArray(string file)
+        public int[] GetInputAsIntArray()
         {
-            var input = GetInputAsStringArray(file);
+            var input = GetInputAsStringArray();
             return Array.ConvertAll(input, int.Parse);
         }
     }

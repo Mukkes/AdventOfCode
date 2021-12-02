@@ -2,9 +2,11 @@
 {
     public class Day1 : PuzzleSolution
     {
-        private int[] Input => GetInputAsIntArray(@"Year2021\Inputs\Day1.txt");
+        public override int Year => 2021;
 
         public override int Day => 1;
+
+        private int[] Input => GetInputAsIntArray();
 
         public override int ResultPartOne()
         {
