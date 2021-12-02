@@ -26,15 +26,9 @@ namespace AdventOfCode
             throw new NotImplementedException();
         }
 
-        protected string GetInputAsString()
-        {
-            return File.ReadAllText(InputFile);
-        }
-
         protected string[] GetInputAsStringArray()
         {
-            string input = GetInputAsString();
-            return input.Split(Environment.NewLine);
+            return File.ReadAllLines(InputFile);
         }
 
         protected int[] GetInputAsIntArray()

@@ -12,12 +12,15 @@ namespace AdventOfCode
             new Year2021.Day1()
         };
 
+        private static List<PuzzleSolution> Solutions2020 => new List<PuzzleSolution>()
+        {
+            new Year2020.Day1()
+        };
+
         private static void Main(string[] args)
         {
             PrintSolutions(2021, Solutions2021);
-            Console.WriteLine();
-            Console.WriteLine("Year 2020");
-            Console.WriteLine("Day  1: " + Year2020.Day1.Solve());
+            PrintSolutions(2020, Solutions2020);
             Console.ReadKey();
         }
 

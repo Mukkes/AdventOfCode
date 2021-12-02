@@ -1,31 +1,26 @@
 ﻿using System;
-using System.IO;
 
 namespace AdventOfCode.Year2020
 {
-    public class Day1
+    public class Day1 : PuzzleSolution
     {
-        public static int Solve()
+        public Day1() : base(year: 2020, day: 1) { }
+
+        private int[] Input => GetInputAsIntArray();
+
+        public override int ResultPartOne()
         {
-            var input = GetInput(@"Year2020\Inputs\Day1.txt");
-            for (int i = 0;i < input.Length; i++)
+            for (int i = 0; i < Input.Length; i++)
             {
-                for (int j = i + 1; j < input.Length; j++)
+                for (int j = i + 1; j < Input.Length; j++)
                 {
-                    if (input[i] + input[j] == 2020)
+                    if (Input[i] + Input[j] == 2020)
                     {
-                        return input[i] * input[j];
+                        return Input[i] * Input[j];
                     }
                 }
             }
             throw new Exception();
-        }
-
-        private static int[] GetInput(string file)
-        {
-            string input = File.ReadAllText(file);
-            var inputStringArray = input.Split(Environment.NewLine);
-            return Array.ConvertAll(inputStringArray, int.Parse);
         }
     }
 }
