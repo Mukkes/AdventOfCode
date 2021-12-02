@@ -5,8 +5,14 @@ namespace AdventOfCode
 {
     public abstract class PuzzleSolution
     {
-        public abstract int Year { get; }
-        public abstract int Day { get; }
+        public readonly int Year;
+        public readonly int Day;
+
+        protected PuzzleSolution(int year, int day)
+        {
+            Year = year;
+            Day = day;
+        }
 
         private string InputFile => "Year" + Year + @"\Inputs\Day" + Day + ".txt";
 
@@ -20,18 +26,18 @@ namespace AdventOfCode
             throw new NotImplementedException();
         }
 
-        public string GetInputAsString()
+        protected string GetInputAsString()
         {
             return File.ReadAllText(InputFile);
         }
 
-        public string[] GetInputAsStringArray()
+        protected string[] GetInputAsStringArray()
         {
             string input = GetInputAsString();
             return input.Split(Environment.NewLine);
         }
 
-        public int[] GetInputAsIntArray()
+        protected int[] GetInputAsIntArray()
         {
             var input = GetInputAsStringArray();
             return Array.ConvertAll(input, int.Parse);

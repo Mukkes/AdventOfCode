@@ -2,9 +2,7 @@
 {
     public class Day1 : PuzzleSolution
     {
-        public override int Year => 2021;
-
-        public override int Day => 1;
+        public Day1() : base(year: 2021, day: 1) { }
 
         private int[] Input => GetInputAsIntArray();
 
