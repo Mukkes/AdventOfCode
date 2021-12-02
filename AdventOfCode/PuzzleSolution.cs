@@ -9,11 +9,16 @@ namespace AdventOfCode
         public abstract int ResultPartOne();
         public abstract int ResultPartTwo();
 
-        public int[] GetInput(string file)
+        public string[] GetInputAsStringArray(string file)
         {
             string input = File.ReadAllText(file);
-            var inputStringArray = input.Split(Environment.NewLine);
-            return Array.ConvertAll(inputStringArray, int.Parse);
+            return input.Split(Environment.NewLine);
+        }
+
+        public int[] GetInputAsIntArray(string file)
+        {
+            var input = GetInputAsStringArray(file);
+            return Array.ConvertAll(input, int.Parse);
         }
     }
 }
