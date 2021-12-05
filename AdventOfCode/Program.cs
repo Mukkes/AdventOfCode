@@ -7,6 +7,7 @@ namespace AdventOfCode
     {
         private static List<PuzzleSolution> Solutions2021 => new List<PuzzleSolution>()
         {
+            new Year2021.Day5(),
             new Year2021.Day4(),
             new Year2021.Day3(),
             new Year2021.Day2(),
