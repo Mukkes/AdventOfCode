@@ -103,49 +103,15 @@ namespace AdventOfCode.Year2021
 
         private void IncrementDiagonalLine(int x1, int y1, int x2, int y2)
         {
-            if (x1 > x2 && y1 > y2)
+            var incrementX = x1 > x2 ? -1 : 1;
+            var incrementY = y1 > y2 ? -1 : 1;
+            var x = x1;
+            var y = y1;
+            while (x != (x2 + incrementX))
             {
-                var x = x1;
-                var y = y1;
-                while (x >= x2)
-                {
-                    IncrementPointInDiagram(new Point(x, y));
-                    x--;
-                    y--;
-                }
-            }
-            else if (x1 > x2)
-            {
-                var x = x1;
-                var y = y1;
-                while (y <= y2)
-                {
-                    IncrementPointInDiagram(new Point(x, y));
-                    x--;
-                    y++;
-                }
-            }
-            else if (y1 > y2)
-            {
-                var x = x1;
-                var y = y1;
-                while (x <= x2)
-                {
-                    IncrementPointInDiagram(new Point(x, y));
-                    x++;
-                    y--;
-                }
-            }
-            else
-            {
-                var x = x1;
-                var y = y1;
-                while (x <= x2)
-                {
-                    IncrementPointInDiagram(new Point(x, y));
-                    x++;
-                    y++;
-                }
+                IncrementPointInDiagram(new Point(x, y));
+                x += incrementX;
+                y += incrementY;
             }
         }
 
