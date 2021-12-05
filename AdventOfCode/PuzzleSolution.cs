@@ -5,6 +5,9 @@ namespace AdventOfCode
 {
     public abstract class PuzzleSolution
     {
+        //private const string InputFolder = "ExampleInputs";
+        private const string InputFolder = "Inputs";
+
         public readonly int Year;
         public readonly int Day;
 
@@ -14,7 +17,7 @@ namespace AdventOfCode
             Day = day;
         }
 
-        private string InputFile => "Year" + Year + @"\Inputs\Day" + Day + ".txt";
+        private string InputFile => "Year" + Year + @"\" + InputFolder + @"\Day" + Day + ".txt";
 
         public virtual int ResultPartOne()
         {

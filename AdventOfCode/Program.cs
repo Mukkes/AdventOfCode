@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace AdventOfCode
 {
@@ -48,6 +49,10 @@ namespace AdventOfCode
             {
                 Console.WriteLine("Not solved yet.");
             }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("Input file not found!");
+            }
             Console.Write("Part 2: ");
             try
             {
@@ -56,6 +61,10 @@ namespace AdventOfCode
             catch (NotImplementedException)
             {
                 Console.WriteLine("Not solved yet.");
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("Input file not found!");
             }
             Console.WriteLine();
         }
