@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace AdventOfCode
 {
     public class Program
     {
-        private static List<PuzzleSolution> Solutions2021 => new List<PuzzleSolution>()
+        private static List<IPuzzleSolution> Solutions2021 => new List<IPuzzleSolution>()
         {
+            new Year2021.Day6(),
             new Year2021.Day5(),
             new Year2021.Day4(),
             new Year2021.Day3(),
@@ -15,7 +15,7 @@ namespace AdventOfCode
             new Year2021.Day1()
         };
 
-        private static List<PuzzleSolution> Solutions2020 => new List<PuzzleSolution>()
+        private static List<IPuzzleSolution> Solutions2020 => new List<IPuzzleSolution>()
         {
             new Year2020.Day1()
         };
@@ -27,7 +27,7 @@ namespace AdventOfCode
             Console.ReadKey();
         }
 
-        private static void PrintSolutions(int year, List<PuzzleSolution> solutions)
+        private static void PrintSolutions(int year, List<IPuzzleSolution> solutions)
         {
             Console.WriteLine("Year " + year);
             foreach (var solution in solutions)
@@ -36,36 +36,14 @@ namespace AdventOfCode
             }
         }
 
-        private static void PrintSolution(PuzzleSolution solution)
+        private static void PrintSolution(IPuzzleSolution solution)
         {
             Console.Write("Day ");
             Console.WriteLine(solution.Day);
             Console.Write("Part 1: ");
-            try
-            {
-                Console.WriteLine(solution.ResultPartOne());
-            }
-            catch (NotImplementedException)
-            {
-                Console.WriteLine("Not solved yet.");
-            }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine("Input file not found!");
-            }
+            solution.PrintResultPartOne();
             Console.Write("Part 2: ");
-            try
-            {
-                Console.WriteLine(solution.ResultPartTwo());
-            }
-            catch (NotImplementedException)
-            {
-                Console.WriteLine("Not solved yet.");
-            }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine("Input file not found!");
-            }
+            solution.PrintResultPartTwo();
             Console.WriteLine();
         }
     }

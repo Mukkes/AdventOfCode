@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCode.Year2021
 {
-    public class Day2 : PuzzleSolution
+    public class Day2 : PuzzleSolution<int>
     {
         public Day2() : base(year: 2021, day: 2) { }
 

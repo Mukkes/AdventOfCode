@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace AdventOfCode.Year2021
 {
-    public class Day5 : PuzzleSolution
+    public class Day5 : PuzzleSolution<int>
     {
         public Day5() : base(year: 2021, day: 5) { }
 

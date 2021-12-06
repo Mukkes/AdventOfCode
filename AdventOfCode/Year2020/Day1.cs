@@ -2,7 +2,7 @@
 
 namespace AdventOfCode.Year2020
 {
-    public class Day1 : PuzzleSolution
+    public class Day1 : PuzzleSolution<int>
     {
         public Day1() : base(year: 2020, day: 1) { }
 
