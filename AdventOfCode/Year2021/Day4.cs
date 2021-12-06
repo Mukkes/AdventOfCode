@@ -1,13 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using AdventOfCode.InputParser;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AdventOfCode.Year2021
 {
-    public class Day4 : PuzzleSolution<int>
+    class Day4 : PuzzleSolution<int>
     {
-        public Day4() : base(year: 2021, day: 4) { }
+        private readonly MultiLineToStringArrayParser _inputParser;
 
-        private string[] Input => GetInputAsStringArray();
+        public Day4() : base(year: 2021, day: 4)
+        {
+            _inputParser = new MultiLineToStringArrayParser(InputFile);
+        }
+
+        private string[] Input => _inputParser.Input;
 
         public override int ResultPartOne()
         {

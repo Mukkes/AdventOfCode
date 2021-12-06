@@ -1,12 +1,18 @@
-﻿using System;
+﻿using AdventOfCode.InputParser;
+using System;
 
 namespace AdventOfCode.Year2020
 {
-    public class Day1 : PuzzleSolution<int>
+    class Day1 : PuzzleSolution<int>
     {
-        public Day1() : base(year: 2020, day: 1) { }
+        private readonly MultiLineToIntArrayParser _inputParser;
 
-        private int[] Input => GetInputAsIntArray();
+        public Day1() : base(year: 2020, day: 1)
+        {
+            _inputParser = new MultiLineToIntArrayParser(InputFile);
+        }
+
+        private int[] Input => _inputParser.Input;
 
         public override int ResultPartOne()
         {

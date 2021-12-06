@@ -6,6 +6,7 @@ namespace AdventOfCode
     {
         public static List<IPuzzleSolution> Year2021 => new List<IPuzzleSolution>()
         {
+            new Year2021.Day7(),
             new Year2021.Day6(),
             new Year2021.Day5(),
             new Year2021.Day4(),

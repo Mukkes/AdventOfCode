@@ -1,14 +1,20 @@
-﻿using System;
+﻿using AdventOfCode.InputParser;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace AdventOfCode.Year2021
 {
-    public class Day3 : PuzzleSolution<int>
+    class Day3 : PuzzleSolution<int>
     {
-        public Day3() : base(year: 2021, day: 3) { }
+        private readonly MultiLineToStringArrayParser _inputParser;
 
-        private string[] Input => GetInputAsStringArray();
+        public Day3() : base(year: 2021, day: 3)
+        {
+            _inputParser = new MultiLineToStringArrayParser(InputFile);
+        }
+
+        private string[] Input => _inputParser.Input;
 
         public override int ResultPartOne()
         {
@@ -45,6 +51,7 @@ namespace AdventOfCode.Year2021
 
         public override int ResultPartTwo()
         {
+            _inputParser.ReParse();
             return GetOxygenGeneratorRating() * GetCO2ScrubberRating();
         }
 

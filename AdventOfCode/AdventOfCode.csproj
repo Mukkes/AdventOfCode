@@ -10,12 +10,14 @@
     <None Remove="Year2020\Inputs\Day1.txt" />
     <None Remove="Year2021\ExampleInputs\Day5.txt" />
     <None Remove="Year2021\ExampleInputs\Day6.txt" />
+    <None Remove="Year2021\ExampleInputs\Day7.txt" />
     <None Remove="Year2021\Inputs\Day1.txt" />
     <None Remove="Year2021\Inputs\Day2.txt" />
     <None Remove="Year2021\Inputs\Day3.txt" />
     <None Remove="Year2021\Inputs\Day4.txt" />
     <None Remove="Year2021\Inputs\Day5.txt" />
     <None Remove="Year2021\Inputs\Day6.txt" />
+    <None Remove="Year2021\Inputs\Day7.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,7 +30,13 @@
     <Content Include="Year2021\ExampleInputs\Day5.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Year2021\ExampleInputs\Day7.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Year2021\ExampleInputs\Day6.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Year2021\Inputs\Day7.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Year2021\Inputs\Day6.txt">

@@ -3,21 +3,23 @@ using System.IO;
 
 namespace AdventOfCode
 {
-    public abstract class PuzzleSolution<ResultType> : IPuzzleSolution
+    abstract class PuzzleSolution<ResultType> : IPuzzleSolution
     {
-        //private const string InputFolder = "ExampleInputs";
-        private const string InputFolder = "Inputs";
-
+        private readonly bool _useExampleInput;
+        private string _inputFolder => _useExampleInput ? "ExampleInputs" : "Inputs";
         public int Year { get; }
         public int Day { get; }
 
-        protected PuzzleSolution(int year, int day)
+        protected PuzzleSolution(int year, int day) : this(year, day, false) { }
+
+        protected PuzzleSolution(int year, int day, bool useExampleInput)
         {
             Year = year;
             Day = day;
+            _useExampleInput = useExampleInput;
         }
 
-        private string InputFile => "Year" + Year + @"\" + InputFolder + @"\Day" + Day + ".txt";
+        protected string InputFile => "Year" + Year + @"\" + _inputFolder + @"\Day" + Day + ".txt";
 
         public virtual ResultType ResultPartOne()
         {
@@ -27,22 +29,6 @@ namespace AdventOfCode
         public virtual ResultType ResultPartTwo()
         {
             throw new NotImplementedException();
-        }
-
-        protected string[] GetInputAsStringArray()
-        {
-            return File.ReadAllLines(InputFile);
-        }
-
-        protected int[] GetInputAsIntArray()
-        {
-            var input = GetInputAsStringArray();
-            return Array.ConvertAll(input, int.Parse);
-        }
-
-        protected string GetSingleLineInputAsString()
-        {
-            return GetInputAsStringArray()[0];
         }
 
         public void PrintResultPartOne()

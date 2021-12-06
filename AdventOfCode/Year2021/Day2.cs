@@ -1,10 +1,17 @@
-﻿namespace AdventOfCode.Year2021
-{
-    public class Day2 : PuzzleSolution<int>
-    {
-        public Day2() : base(year: 2021, day: 2) { }
+﻿using AdventOfCode.InputParser;
 
-        private string[] Input => GetInputAsStringArray();
+namespace AdventOfCode.Year2021
+{
+    class Day2 : PuzzleSolution<int>
+    {
+        private readonly MultiLineToStringArrayParser _inputParser;
+
+        public Day2() : base(year: 2021, day: 2)
+        {
+            _inputParser = new MultiLineToStringArrayParser(InputFile);
+        }
+
+        private string[] Input => _inputParser.Input;
 
         public override int ResultPartOne()
         {
