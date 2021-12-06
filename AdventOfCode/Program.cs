@@ -5,25 +5,10 @@ namespace AdventOfCode
 {
     public class Program
     {
-        private static List<IPuzzleSolution> Solutions2021 => new List<IPuzzleSolution>()
-        {
-            new Year2021.Day6(),
-            new Year2021.Day5(),
-            new Year2021.Day4(),
-            new Year2021.Day3(),
-            new Year2021.Day2(),
-            new Year2021.Day1()
-        };
-
-        private static List<IPuzzleSolution> Solutions2020 => new List<IPuzzleSolution>()
-        {
-            new Year2020.Day1()
-        };
-
         private static void Main(string[] args)
         {
-            PrintSolutions(2021, Solutions2021);
-            PrintSolutions(2020, Solutions2020);
+            PrintSolutions(2021, PuzzleSolutionRegister.Year2021);
+            PrintSolutions(2020, PuzzleSolutionRegister.Year2020);
             Console.ReadKey();
         }
 
