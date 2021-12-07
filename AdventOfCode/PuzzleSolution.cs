@@ -4,21 +4,9 @@ using System.IO;
 
 namespace AdventOfCode
 {
-    abstract class PuzzleSolution<InputType, ResultType> : PuzzleSolution<ResultType>
-    {
-        protected PuzzleSolution(int year, int day) : base(year, day) { }
-        protected PuzzleSolution(int year, int day, bool useExampleInput) : base(year, day, useExampleInput) { }
-
-        protected IInputParser<InputType> InputParser;
-        protected InputType Input => InputParser.Input;
-    }
-
-    abstract class PuzzleSolution<ResultType> : IPuzzleSolution
+    abstract class PuzzleSolution<InputType, ResultType> : IPuzzleSolution
     {
         private readonly bool _useExampleInput;
-        private string _inputFolder => _useExampleInput ? "ExampleInputs" : "Inputs";
-        public int Year { get; }
-        public int Day { get; }
 
         protected PuzzleSolution(int year, int day) : this(year, day, false) { }
 
@@ -29,7 +17,12 @@ namespace AdventOfCode
             _useExampleInput = useExampleInput;
         }
 
+        public int Year { get; }
+        public int Day { get; }
+        private string _inputFolder => _useExampleInput ? "ExampleInputs" : "Inputs";
         protected string InputFile => "Year" + Year + @"\" + _inputFolder + @"\Day" + Day + ".txt";
+        protected IInputParser<InputType> InputParser { get; set; }
+        protected InputType Input => InputParser.Input;
 
         public virtual ResultType ResultPartOne()
         {

@@ -4,16 +4,12 @@ using System.Linq;
 
 namespace AdventOfCode.Year2021
 {
-    class Day4 : PuzzleSolution<int>
+    class Day4 : PuzzleSolution<string[], int>
     {
-        private readonly MultiLineToStringArrayParser _inputParser;
-
         public Day4() : base(year: 2021, day: 4)
         {
-            _inputParser = new MultiLineToStringArrayParser(InputFile);
+            InputParser = new MultiLineToStringArrayParser(InputFile);
         }
-
-        private string[] Input => _inputParser.Input;
 
         public override int ResultPartOne()
         {

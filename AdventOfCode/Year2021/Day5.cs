@@ -6,16 +6,13 @@ using System.Linq;
 
 namespace AdventOfCode.Year2021
 {
-    class Day5 : PuzzleSolution<int>
+    class Day5 : PuzzleSolution<string[], int>
     {
-        private readonly MultiLineToStringArrayParser _inputParser;
-
         public Day5() : base(year: 2021, day: 5)
         {
-            _inputParser = new MultiLineToStringArrayParser(InputFile);
+            InputParser = new MultiLineToStringArrayParser(InputFile);
         }
 
-        private string[] Input => _inputParser.Input;
         private Dictionary<Point, int> diagram;
 
         public override int ResultPartOne()
