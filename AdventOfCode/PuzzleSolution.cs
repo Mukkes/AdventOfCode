@@ -1,8 +1,18 @@
-﻿using System;
+﻿using AdventOfCode.InputParser;
+using System;
 using System.IO;
 
 namespace AdventOfCode
 {
+    abstract class PuzzleSolution<InputType, ResultType> : PuzzleSolution<ResultType>
+    {
+        protected PuzzleSolution(int year, int day) : base(year, day) { }
+        protected PuzzleSolution(int year, int day, bool useExampleInput) : base(year, day, useExampleInput) { }
+
+        protected IInputParser<InputType> InputParser;
+        protected InputType Input => InputParser.Input;
+    }
+
     abstract class PuzzleSolution<ResultType> : IPuzzleSolution
     {
         private readonly bool _useExampleInput;

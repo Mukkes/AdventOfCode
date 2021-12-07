@@ -1,12 +1,22 @@
 ﻿namespace AdventOfCode.InputParser
 {
-    public class SingleLineToStringParser : InputParser<string>
+    public abstract class SingleLineToStringParser<ResultType> : MultiLineToStringArrayParser<ResultType>
+    {
+        public SingleLineToStringParser(string fileName) : base(fileName) { }
+
+        protected string ParseSingleLineToString()
+        {
+            return ParseMultiLineToStringArray()[0];
+        }
+    }
+
+    public class SingleLineToStringParser : SingleLineToStringParser<string>
     {
         public SingleLineToStringParser(string fileName) : base(fileName) { }
 
         protected override string Parse()
         {
-            return GetInputFileContent()[0];
+            return ParseSingleLineToString();
         }
     }
 }

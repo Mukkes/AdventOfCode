@@ -18,9 +18,11 @@ namespace AdventOfCode.Year2021
 
         public override int ResultPartOne()
         {
-            var stringLength = Input[0].Length;
+            var input = new string[Input.Length];
+            Array.Copy(Input, input, Input.Length);
+            var stringLength = input[0].Length;
             var x = Math.Pow(2, stringLength) - 1;
-            var gammaRating = GetGammaRating(Input);
+            var gammaRating = GetGammaRating(input);
             var epsilonRating = x - gammaRating;
             return gammaRating * (int)epsilonRating;
         }
@@ -51,7 +53,6 @@ namespace AdventOfCode.Year2021
 
         public override int ResultPartTwo()
         {
-            _inputParser.ReParse();
             return GetOxygenGeneratorRating() * GetCO2ScrubberRating();
         }
 

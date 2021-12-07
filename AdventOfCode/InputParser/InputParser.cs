@@ -1,8 +1,6 @@
-﻿using System.IO;
-
-namespace AdventOfCode.InputParser
+﻿namespace AdventOfCode.InputParser
 {
-    public abstract class InputParser<ResultType> : IInputParser
+    public abstract class InputParser<ResultType> : IInputParser<ResultType>
     {
         protected readonly string _inputFile;
 
@@ -12,18 +10,8 @@ namespace AdventOfCode.InputParser
             Input = Parse();
         }
 
-        public ResultType Input { get;  private set; }
+        public ResultType Input { get; private set; }
 
         protected abstract ResultType Parse();
-
-        protected string[] GetInputFileContent()
-        {
-            return File.ReadAllLines(_inputFile);
-        }
-
-        public void ReParse()
-        {
-            Input = Parse();
-        }
     }
 }

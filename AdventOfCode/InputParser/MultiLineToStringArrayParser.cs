@@ -2,13 +2,23 @@
 
 namespace AdventOfCode.InputParser
 {
-    public class MultiLineToStringArrayParser : InputParser<string[]>
+    public abstract class MultiLineToStringArrayParser<ResultType> : InputParser<ResultType>
+    {
+        public MultiLineToStringArrayParser(string fileName) : base(fileName) { }
+
+        protected string[] ParseMultiLineToStringArray()
+        {
+            return File.ReadAllLines(_inputFile);
+        }
+    }
+
+    public class MultiLineToStringArrayParser : MultiLineToStringArrayParser<string[]>
     {
         public MultiLineToStringArrayParser(string fileName) : base(fileName) { }
 
         protected override string[] Parse()
         {
-            return GetInputFileContent();
+            return ParseMultiLineToStringArray();
         }
     }
 }
