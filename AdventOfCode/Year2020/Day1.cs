@@ -24,5 +24,23 @@ namespace AdventOfCode.Year2020
             }
             throw new Exception();
         }
+
+        public override int ResultPartTwo()
+        {
+            for (int i = 0; i < Input.Length; i++)
+            {
+                for (int j = i + 1; j < Input.Length; j++)
+                {
+                    for (int k = j + 1; k < Input.Length; k++)
+                    {
+                        if (Input[i] + Input[j] + Input[k] == 2020)
+                        {
+                            return Input[i] * Input[j] * Input[k];
+                        }
+                    }
+                }
+            }
+            throw new Exception();
+        }
     }
 }
