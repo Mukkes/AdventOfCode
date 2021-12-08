@@ -13,7 +13,7 @@ namespace AdventOfCode.InputParser
         }
     }
 
-    public class MultiLineToIntArrayParser : MultiLineToIntArrayParser<int[]>
+    public sealed class MultiLineToIntArrayParser : MultiLineToIntArrayParser<int[]>
     {
         public MultiLineToIntArrayParser(string fileName) : base(fileName) { }
 

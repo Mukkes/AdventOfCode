@@ -13,7 +13,7 @@ namespace AdventOfCode.InputParser
         }
     }
 
-    public class SingleLineToIntListParser : SingleLineToIntListParser<List<int>>
+    public sealed class SingleLineToIntListParser : SingleLineToIntListParser<List<int>>
     {
         public SingleLineToIntListParser(string fileName) : base(fileName) { }
 

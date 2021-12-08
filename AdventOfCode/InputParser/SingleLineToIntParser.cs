@@ -10,7 +10,7 @@
         }
     }
 
-    public class SingleLineToIntParser : SingleLineToIntParser<int>
+    public sealed class SingleLineToIntParser : SingleLineToIntParser<int>
     {
         public SingleLineToIntParser(string fileName) : base(fileName) { }
 

@@ -10,7 +10,7 @@
         }
     }
 
-    public class SingleLineToStringParser : SingleLineToStringParser<string>
+    public sealed class SingleLineToStringParser : SingleLineToStringParser<string>
     {
         public SingleLineToStringParser(string fileName) : base(fileName) { }
 
