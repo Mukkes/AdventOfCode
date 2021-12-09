@@ -4,7 +4,7 @@ using System.IO;
 
 namespace AdventOfCode
 {
-    abstract class PuzzleSolution<InputType, ResultType> : IPuzzleSolution
+    public abstract class PuzzleSolution<InputType, ResultType> : IPuzzleSolution
     {
         private readonly bool _useExampleInput;
 

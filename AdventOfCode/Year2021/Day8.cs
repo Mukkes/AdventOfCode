@@ -5,9 +5,10 @@ using System.Linq;
 
 namespace AdventOfCode.Year2021
 {
-    class Day8 : PuzzleSolution<List<string>, int>
+    public class Day8 : PuzzleSolution<List<string>, int>
     {
-        public Day8() : base(year: 2021, day: 8)
+        public Day8() : this(false) { }
+        public Day8(bool useExampleInput) : base(year: 2021, day: 8, useExampleInput: useExampleInput)
         {
             InputParser = new MultiLineToStringListParser(InputFile);
         }

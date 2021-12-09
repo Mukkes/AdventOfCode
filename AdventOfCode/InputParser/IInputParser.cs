@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCode.InputParser
 {
-    interface IInputParser<ResultType>
+    public interface IInputParser<ResultType>
     {
         ResultType Input { get; }
     }
