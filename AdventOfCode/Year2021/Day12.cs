@@ -61,7 +61,7 @@ namespace AdventOfCode.Year2021
         private List<string> CreateDistinctPaths(Cave from, Func<Cave, string, bool> containsFunc)
         {
             var distinctPaths = new List<string>();
-            CreateDistinctPaths(from, string.Empty, distinctPaths, containsFunc);
+            CreateDistinctPaths(from, from.name + ",", distinctPaths, containsFunc);
             return distinctPaths;
         }
 
@@ -71,11 +71,11 @@ namespace AdventOfCode.Year2021
             {
                 if (cave.name == "end")
                 {
-                    distinctPaths.Add(path + from.name + "," + cave.name);
+                    distinctPaths.Add(path + cave.name);
                 }
                 else if (from != cave && containsFunc(cave, path))
                 {
-                    CreateDistinctPaths(cave, path + from.name + ",", distinctPaths, containsFunc);
+                    CreateDistinctPaths(cave, path + cave.name + ",", distinctPaths, containsFunc);
                 }
             }
         }
