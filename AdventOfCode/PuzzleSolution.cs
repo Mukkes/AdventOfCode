@@ -6,7 +6,7 @@ namespace AdventOfCode
 {
     public abstract class PuzzleSolution<InputType, ResultType> : IPuzzleSolution
     {
-        private readonly bool _useExampleInput;
+        protected readonly bool _useExampleInput;
 
         protected PuzzleSolution(int year, int day) : this(year, day, false) { }
 
