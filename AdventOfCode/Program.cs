@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AdventOfCode
 {
@@ -7,8 +8,9 @@ namespace AdventOfCode
     {
         private static void Main(string[] args)
         {
-            PrintSolutions(2021, PuzzleSolutionRegister.Year2021);
-            PrintSolutions(2020, PuzzleSolutionRegister.Year2020);
+            //PrintSolutions(2021, PuzzleSolutionRegister.Year2021);
+            //PrintSolutions(2020, PuzzleSolutionRegister.Year2020);
+            PrintSolution(PuzzleSolutionRegister.Year2021.First());
             Console.ReadKey();
         }
 
