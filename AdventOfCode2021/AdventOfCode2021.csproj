@@ -6,14 +6,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Year2020\ExampleInputs\Day1.txt" />
-    <None Remove="Year2020\Inputs\Day1.txt" />
+    <Compile Remove="Year2020\**" />
+    <EmbeddedResource Remove="Year2020\**" />
+    <None Remove="Year2020\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Year2021\ExampleInputs\Day10.txt" />
     <None Remove="Year2021\ExampleInputs\Day11.txt" />
     <None Remove="Year2021\ExampleInputs\Day12.txt" />
     <None Remove="Year2021\ExampleInputs\Day13.txt" />
     <None Remove="Year2021\ExampleInputs\Day14.txt" />
     <None Remove="Year2021\ExampleInputs\Day15.txt" />
+    <None Remove="Year2021\ExampleInputs\Day16.txt" />
     <None Remove="Year2021\ExampleInputs\Day5.txt" />
     <None Remove="Year2021\ExampleInputs\Day6.txt" />
     <None Remove="Year2021\ExampleInputs\Day7.txt" />
@@ -26,6 +31,7 @@
     <None Remove="Year2021\Inputs\Day13.txt" />
     <None Remove="Year2021\Inputs\Day14.txt" />
     <None Remove="Year2021\Inputs\Day15.txt" />
+    <None Remove="Year2021\Inputs\Day16.txt" />
     <None Remove="Year2021\Inputs\Day2.txt" />
     <None Remove="Year2021\Inputs\Day3.txt" />
     <None Remove="Year2021\Inputs\Day4.txt" />
@@ -37,10 +43,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Year2020\ExampleInputs\Day1.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2020\Inputs\Day1.txt">
+    <Content Include="Year2021\ExampleInputs\Day16.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Year2021\ExampleInputs\Day15.txt">
@@ -74,6 +77,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Year2021\ExampleInputs\Day6.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Year2021\Inputs\Day16.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Year2021\Inputs\Day15.txt">
