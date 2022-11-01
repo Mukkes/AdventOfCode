@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode2021.Day16
+﻿using AdventOfCode2021.Day16.Parsers;
+
+namespace AdventOfCode2021.Day16.Solvers
 {
     public abstract class BaseSolver<TInput>
     {
@@ -14,7 +16,7 @@
 
         protected IInputParser<TInput> InputParser { get; private set; }
 
-        private TInput _input = default(TInput)!;
+        private TInput _input = default!;
         protected TInput Input
         {
             get
