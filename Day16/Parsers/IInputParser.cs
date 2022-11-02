@@ -2,6 +2,6 @@
 {
     public interface IInputParser<TResult>
     {
-        TResult Parse(string inputFileName);
+        TResult Parse(string input);
     }
 }

@@ -4,42 +4,42 @@ namespace AdventOfCode2021.Day16.Solvers
 {
     public abstract class BaseSolver<TInput>
     {
-        private const string ExampleInputFileName = "ExampleInput.txt";
-        private const string InputFileName = "Input.txt";
+        private const string _inputFileName = "Input.txt";
+
+        private IInputParser<TInput> _inputParser;
+        private string _input;
 
         protected bool UseExampleInput = false;
 
-        public BaseSolver(IInputParser<TInput> inputParser)
+        public BaseSolver(IInputParser<TInput> inputParser) : this(inputParser, null) { }
+        public BaseSolver(IInputParser<TInput> inputParser, string? input)
         {
-            InputParser = inputParser;
+            _inputParser = inputParser;
+            if (input == null)
+            {
+                _input = File.ReadAllText(_inputFileName);
+            }
+            else
+            {
+                _input = input;
+            }
         }
 
-        protected IInputParser<TInput> InputParser { get; private set; }
-
-        private TInput _input = default!;
-        protected TInput Input
+        private TInput? _parsedInput;
+        public TInput Input
         {
             get
             {
-                if (_input == null)
+                if (_parsedInput == null)
                 {
-                    _input = InputParser.Parse(GetInputFileName());
+                    _parsedInput = _inputParser.Parse(_input);
                 }
-                return _input;
+                return _parsedInput;
             }
         }
 
-        protected abstract object SolvePartOne();
-        protected abstract object SolvePartTwo();
-
-        private string GetInputFileName()
-        {
-            if (UseExampleInput)
-            {
-                return ExampleInputFileName;
-            }
-            return InputFileName;
-        }
+        internal abstract object SolvePartOne();
+        internal abstract object SolvePartTwo();
 
         public void PrintResultPartOne()
         {

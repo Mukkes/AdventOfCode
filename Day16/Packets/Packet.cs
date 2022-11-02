@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCode2021.Day16.Packets
 {
-    internal abstract class Packet
+    public abstract class Packet
     {
         public Packet(int version, int type)
         {

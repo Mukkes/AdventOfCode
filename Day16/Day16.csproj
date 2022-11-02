@@ -10,17 +10,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="ExampleInput.txt" />
     <None Remove="Input.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="ExampleInput.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Day16Tests" />
   </ItemGroup>
 
 </Project>

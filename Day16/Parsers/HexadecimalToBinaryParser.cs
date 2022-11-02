@@ -1,10 +1,9 @@
 ﻿namespace AdventOfCode2021.Day16.Parsers
 {
-    internal class HexadecimalToBinaryParser : InputToStringParser, IInputParser<string>
+    public class HexadecimalToBinaryParser : IInputParser<string>
     {
-        public new string Parse(string inputFileName)
+        public string Parse(string input)
         {
-            var input = base.Parse(inputFileName);
             return HexadecimalToBinary(input);
         }
 

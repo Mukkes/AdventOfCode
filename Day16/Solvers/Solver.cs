@@ -5,20 +5,22 @@ namespace AdventOfCode2021.Day16.Solvers
 {
     internal class Solver : StringSolver<HexadecimalToBinaryParser>
     {
-        internal Solver()
+        internal Solver() : base() { }
+        internal Solver(string input) : base(input)
         {
             UseExampleInput = false;
         }
 
-        protected override object SolvePartOne()
+        internal override object SolvePartOne()
         {
-            var packet = ExtractPackets(Input).First();
+            var packet = ExtractPacket(Input, out _);
             return packet.SumVersions();
         }
 
-        protected override object SolvePartTwo()
+        internal override object SolvePartTwo()
         {
-            return 0;
+            var packet = ExtractPacket(Input, out _);
+            return packet.EvaluateExpression();
         }
 
         private int BinaryToInt(char bit)
@@ -31,26 +33,7 @@ namespace AdventOfCode2021.Day16.Solvers
             return (int)Convert.ToInt64(bits, 2);
         }
 
-        private List<Packet> ExtractPackets(string bits)
-        {
-            var packets = new List<Packet>();
-            while ((bits.Length > 0) && bits.Contains('1'))
-            {
-                var packet = ExtractPacket(bits, out bits);
-                if (packet is OperatorPacket15Bits operatorPacket15Bits)
-                {
-                    operatorPacket15Bits.SubPackets = ExtractSubPackets15Bits(operatorPacket15Bits.TotalLength, bits, out bits);
-                }
-                else if (packet is OperatorPacket11Bits operatorPacket11Bits)
-                {
-                    operatorPacket11Bits.SubPackets = ExtractSubPackets11Bits(operatorPacket11Bits.NumberOfSubPackets, bits, out bits);
-                }
-                packets.Add(packet);
-            }
-            return packets;
-        }
-
-        private Packet ExtractPacket(string bits, out string remainingBits)
+        internal Packet ExtractPacket(string bits, out string remainingBits)
         {
             var version = BinaryToInt(bits[0..3]);
             var type = BinaryToInt(bits[3..6]);
@@ -63,12 +46,14 @@ namespace AdventOfCode2021.Day16.Solvers
             if (lengthType == 0)
             {
                 var totalLength = BinaryToInt(bits[7..22]);
-                remainingBits = bits[22..];
-                return new OperatorPacket15Bits(version, type, totalLength);
+                var packet15Bits = new OperatorPacket(version, type);
+                packet15Bits.SubPackets = ExtractSubPackets15Bits(totalLength, bits[22..], out remainingBits);
+                return packet15Bits;
             }
             var numberOfSubPackets = BinaryToInt(bits[7..18]);
-            remainingBits = bits[18..];
-            return new OperatorPacket11Bits(version, type, numberOfSubPackets);
+            var packet11Bits = new OperatorPacket(version, type);
+            packet11Bits.SubPackets = ExtractSubPackets11Bits(numberOfSubPackets, bits[18..], out remainingBits);
+            return packet11Bits;
         }
 
         private int ExtractLiteralValue(string bits, out string remainingBits)
@@ -95,8 +80,14 @@ namespace AdventOfCode2021.Day16.Solvers
 
         private List<Packet> ExtractSubPackets15Bits(int totalLength, string bits, out string remainingBits)
         {
+            var packets = new List<Packet>();
             remainingBits = bits[totalLength..];
-            return ExtractPackets(bits[0..totalLength]);
+            bits = bits[0..totalLength];
+            while ((bits.Length > 0) && bits.Contains('1'))
+            {
+                packets.Add(ExtractPacket(bits, out bits));
+            }
+            return packets;
         }
 
         private List<Packet> ExtractSubPackets11Bits(int numberOfSubPackets, string bits, out string remainingBits)

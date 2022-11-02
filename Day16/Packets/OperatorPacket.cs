@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCode2021.Day16.Packets
 {
-    internal abstract class OperatorPacket : Packet
+    internal class OperatorPacket : Packet
     {
         internal OperatorPacket(int version, int type) : base(version, type)
         {
