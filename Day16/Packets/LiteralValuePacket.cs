@@ -2,14 +2,14 @@
 {
     internal class LiteralValuePacket : Packet
     {
-        internal LiteralValuePacket(int version, int type, int literalValue) : base(version, type)
+        internal LiteralValuePacket(int version, int type, long literalValue) : base(version, type)
         {
             LiteralValue = literalValue;
         }
 
-        internal int LiteralValue { get; private set; }
+        internal long LiteralValue { get; private set; }
 
-        internal override int EvaluateExpression()
+        internal override long EvaluateExpression()
         {
             return LiteralValue;
         }

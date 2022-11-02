@@ -19,9 +19,39 @@
             return sumVersions;
         }
 
-        internal override int EvaluateExpression()
+        internal override long EvaluateExpression()
         {
-            throw new NotImplementedException();
+
+            if (Type == 1)
+            {
+                long i = 1;
+                foreach (var packet in SubPackets)
+                {
+                    i *= packet.EvaluateExpression();
+                }
+                return i;
+            }
+            if (Type == 2)
+            {
+                return SubPackets.Min(packet => packet.EvaluateExpression());
+            }
+            if (Type == 3)
+            {
+                return SubPackets.Max(packet => packet.EvaluateExpression());
+            }
+            if (Type == 5)
+            {
+                return SubPackets[0].EvaluateExpression() > SubPackets[1].EvaluateExpression() ? 1 : 0;
+            }
+            if (Type == 6)
+            {
+                return SubPackets[0].EvaluateExpression() < SubPackets[1].EvaluateExpression() ? 1 : 0;
+            }
+            if (Type == 7)
+            {
+                return SubPackets[0].EvaluateExpression() == SubPackets[1].EvaluateExpression() ? 1 : 0;
+            }
+            return SubPackets.Sum(packet => packet.EvaluateExpression());
         }
     }
 }

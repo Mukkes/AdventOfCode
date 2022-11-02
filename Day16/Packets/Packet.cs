@@ -12,7 +12,7 @@
 
         internal int Type { get; private set; }
 
-        internal abstract int EvaluateExpression();
+        internal abstract long EvaluateExpression();
 
         internal virtual int SumVersions()
         {

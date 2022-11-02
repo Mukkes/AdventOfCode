@@ -105,7 +105,7 @@ namespace AdventOfCode2021.Day16Tests
         public void TestPartTwo1()
         {
             var input = "C200B40A82";
-            var expectedAnswer = 3;
+            var expectedAnswer = 3L;
 
             var solver = new Solver(input);
             var answer = solver.SolvePartTwo();
@@ -117,7 +117,7 @@ namespace AdventOfCode2021.Day16Tests
         public void TestPartTwo2()
         {
             var input = "04005AC33890";
-            var expectedAnswer = 54;
+            var expectedAnswer = 54L;
 
             var solver = new Solver(input);
             var answer = solver.SolvePartTwo();
@@ -129,7 +129,7 @@ namespace AdventOfCode2021.Day16Tests
         public void TestPartTwo3()
         {
             var input = "880086C3E88112";
-            var expectedAnswer = 7;
+            var expectedAnswer = 7L;
 
             var solver = new Solver(input);
             var answer = solver.SolvePartTwo();
@@ -141,7 +141,7 @@ namespace AdventOfCode2021.Day16Tests
         public void TestPartTwo4()
         {
             var input = "CE00C43D881120";
-            var expectedAnswer = 9;
+            var expectedAnswer = 9L;
 
             var solver = new Solver(input);
             var answer = solver.SolvePartTwo();
@@ -153,7 +153,7 @@ namespace AdventOfCode2021.Day16Tests
         public void TestPartTwo5()
         {
             var input = "D8005AC2A8F0";
-            var expectedAnswer = 1;
+            var expectedAnswer = 1L;
 
             var solver = new Solver(input);
             var answer = solver.SolvePartTwo();
@@ -165,7 +165,7 @@ namespace AdventOfCode2021.Day16Tests
         public void TestPartTwo6()
         {
             var input = "F600BC2D8F";
-            var expectedAnswer = 0;
+            var expectedAnswer = 0L;
 
             var solver = new Solver(input);
             var answer = solver.SolvePartTwo();
@@ -177,7 +177,7 @@ namespace AdventOfCode2021.Day16Tests
         public void TestPartTwo7()
         {
             var input = "9C005AC2F8F0";
-            var expectedAnswer = 0;
+            var expectedAnswer = 0L;
 
             var solver = new Solver(input);
             var answer = solver.SolvePartTwo();
@@ -189,7 +189,7 @@ namespace AdventOfCode2021.Day16Tests
         public void TestPartTwo8()
         {
             var input = "9C0141080250320F1802104A08";
-            var expectedAnswer = 1;
+            var expectedAnswer = 1L;
 
             var solver = new Solver(input);
             var answer = solver.SolvePartTwo();

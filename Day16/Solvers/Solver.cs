@@ -30,7 +30,17 @@ namespace AdventOfCode2021.Day16.Solvers
 
         private int BinaryToInt(string bits)
         {
-            return (int)Convert.ToInt64(bits, 2);
+            var i = Convert.ToInt64(bits, 2);
+            if (i > int.MaxValue)
+            {
+                throw new Exception();
+            }
+            return (int)i;
+        }
+
+        private long BinaryToLong(string bits)
+        {
+            return Convert.ToInt64(bits, 2);
         }
 
         internal Packet ExtractPacket(string bits, out string remainingBits)
@@ -56,10 +66,10 @@ namespace AdventOfCode2021.Day16.Solvers
             return packet11Bits;
         }
 
-        private int ExtractLiteralValue(string bits, out string remainingBits)
+        private long ExtractLiteralValue(string bits, out string remainingBits)
         {
             string binaryLiteralValue = ExtractBinaryLiteralValue(bits, out remainingBits);
-            return BinaryToInt(binaryLiteralValue);
+            return BinaryToLong(binaryLiteralValue);
         }
 
         private string ExtractBinaryLiteralValue(string bits, out string remainingBits)
