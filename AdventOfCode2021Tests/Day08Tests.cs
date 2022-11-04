@@ -1,10 +1,9 @@
 ﻿using AdventOfCode.Year2021;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace AdventOfCodeTests.Year2021
+namespace AdventOfCode2021Tests
 {
     [TestClass]
-    public class Day8Tests
+    public class Day08Tests
     {
         private const int _exampleAnswerPartOne = 26;
         private const int _exampleAnswerPartTwo = 61229;

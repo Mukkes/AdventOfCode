@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="Day16Tests" />
+    <InternalsVisibleTo Include="AdventOfCode2021Tests" />
   </ItemGroup>
 
 </Project>

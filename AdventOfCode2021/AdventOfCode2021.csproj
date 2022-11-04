@@ -1,124 +1,128 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<AssemblyName>AdventOfCode2021.$(MSBuildProjectName)</AssemblyName>
+		<RootNamespace>AdventOfCode2021.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Year2020\**" />
-    <EmbeddedResource Remove="Year2020\**" />
-    <None Remove="Year2020\**" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Year2020\**" />
+		<EmbeddedResource Remove="Year2020\**" />
+		<None Remove="Year2020\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Remove="Year2021\ExampleInputs\Day10.txt" />
-    <None Remove="Year2021\ExampleInputs\Day11.txt" />
-    <None Remove="Year2021\ExampleInputs\Day12.txt" />
-    <None Remove="Year2021\ExampleInputs\Day13.txt" />
-    <None Remove="Year2021\ExampleInputs\Day14.txt" />
-    <None Remove="Year2021\ExampleInputs\Day15.txt" />
-    <None Remove="Year2021\ExampleInputs\Day5.txt" />
-    <None Remove="Year2021\ExampleInputs\Day6.txt" />
-    <None Remove="Year2021\ExampleInputs\Day7.txt" />
-    <None Remove="Year2021\ExampleInputs\Day8.txt" />
-    <None Remove="Year2021\ExampleInputs\Day9.txt" />
-    <None Remove="Year2021\Inputs\Day1.txt" />
-    <None Remove="Year2021\Inputs\Day10.txt" />
-    <None Remove="Year2021\Inputs\Day11.txt" />
-    <None Remove="Year2021\Inputs\Day12.txt" />
-    <None Remove="Year2021\Inputs\Day13.txt" />
-    <None Remove="Year2021\Inputs\Day14.txt" />
-    <None Remove="Year2021\Inputs\Day15.txt" />
-    <None Remove="Year2021\Inputs\Day2.txt" />
-    <None Remove="Year2021\Inputs\Day3.txt" />
-    <None Remove="Year2021\Inputs\Day4.txt" />
-    <None Remove="Year2021\Inputs\Day5.txt" />
-    <None Remove="Year2021\Inputs\Day6.txt" />
-    <None Remove="Year2021\Inputs\Day7.txt" />
-    <None Remove="Year2021\Inputs\Day8.txt" />
-    <None Remove="Year2021\Inputs\Day9.txt" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="Year2021\ExampleInputs\Day10.txt" />
+		<None Remove="Year2021\ExampleInputs\Day11.txt" />
+		<None Remove="Year2021\ExampleInputs\Day12.txt" />
+		<None Remove="Year2021\ExampleInputs\Day13.txt" />
+		<None Remove="Year2021\ExampleInputs\Day14.txt" />
+		<None Remove="Year2021\ExampleInputs\Day15.txt" />
+		<None Remove="Year2021\ExampleInputs\Day5.txt" />
+		<None Remove="Year2021\ExampleInputs\Day6.txt" />
+		<None Remove="Year2021\ExampleInputs\Day7.txt" />
+		<None Remove="Year2021\ExampleInputs\Day8.txt" />
+		<None Remove="Year2021\ExampleInputs\Day9.txt" />
+		<None Remove="Year2021\Inputs\Day1.txt" />
+		<None Remove="Year2021\Inputs\Day10.txt" />
+		<None Remove="Year2021\Inputs\Day11.txt" />
+		<None Remove="Year2021\Inputs\Day12.txt" />
+		<None Remove="Year2021\Inputs\Day13.txt" />
+		<None Remove="Year2021\Inputs\Day14.txt" />
+		<None Remove="Year2021\Inputs\Day15.txt" />
+		<None Remove="Year2021\Inputs\Day2.txt" />
+		<None Remove="Year2021\Inputs\Day3.txt" />
+		<None Remove="Year2021\Inputs\Day4.txt" />
+		<None Remove="Year2021\Inputs\Day5.txt" />
+		<None Remove="Year2021\Inputs\Day6.txt" />
+		<None Remove="Year2021\Inputs\Day7.txt" />
+		<None Remove="Year2021\Inputs\Day8.txt" />
+		<None Remove="Year2021\Inputs\Day9.txt" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Include="Year2021\ExampleInputs\Day15.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\ExampleInputs\Day14.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\ExampleInputs\Day13.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\ExampleInputs\Day12.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\ExampleInputs\Day11.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\ExampleInputs\Day5.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\ExampleInputs\Day10.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\ExampleInputs\Day9.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\ExampleInputs\Day8.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\ExampleInputs\Day7.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\ExampleInputs\Day6.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\Inputs\Day15.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\Inputs\Day14.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\Inputs\Day13.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\Inputs\Day12.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\Inputs\Day11.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\Inputs\Day10.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\Inputs\Day9.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\Inputs\Day8.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\Inputs\Day7.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\Inputs\Day6.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\Inputs\Day5.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\Inputs\Day4.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\Inputs\Day3.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\Inputs\Day2.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Year2021\Inputs\Day1.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="Year2021\ExampleInputs\Day15.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\ExampleInputs\Day14.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\ExampleInputs\Day13.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\ExampleInputs\Day12.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\ExampleInputs\Day11.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\ExampleInputs\Day5.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\ExampleInputs\Day10.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\ExampleInputs\Day9.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\ExampleInputs\Day8.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\ExampleInputs\Day7.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\ExampleInputs\Day6.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\Inputs\Day15.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\Inputs\Day14.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\Inputs\Day13.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\Inputs\Day12.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\Inputs\Day11.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\Inputs\Day10.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\Inputs\Day9.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\Inputs\Day8.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\Inputs\Day7.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\Inputs\Day6.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\Inputs\Day5.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\Inputs\Day4.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\Inputs\Day3.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\Inputs\Day2.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Year2021\Inputs\Day1.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
 </Project>

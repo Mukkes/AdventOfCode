@@ -1,7 +1,7 @@
 using AdventOfCode2021.Day16.Packets;
 using AdventOfCode2021.Day16.Solvers;
 
-namespace AdventOfCode2021.Day16Tests
+namespace AdventOfCode2021Tests
 {
     [TestClass]
     public class Day16Tests

@@ -44,7 +44,6 @@ namespace AdventOfCode.Year2021
                 }
                 steps++;
             }
-            return 0;
         }
 
         private void IncrementOctopuses(int[,] octopuses)
