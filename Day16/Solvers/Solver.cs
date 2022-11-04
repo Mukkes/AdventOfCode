@@ -11,13 +11,13 @@ namespace AdventOfCode2021.Day16.Solvers
             UseExampleInput = false;
         }
 
-        internal override object SolvePartOne()
+        public override object SolvePartOne()
         {
             var packet = ExtractPacket(Input, out _);
             return packet.SumVersions();
         }
 
-        internal override object SolvePartTwo()
+        public override object SolvePartTwo()
         {
             var packet = ExtractPacket(Input, out _);
             return packet.EvaluateExpression();

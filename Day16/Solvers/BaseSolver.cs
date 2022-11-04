@@ -38,8 +38,8 @@ namespace AdventOfCode2021.Day16.Solvers
             }
         }
 
-        internal abstract object SolvePartOne();
-        internal abstract object SolvePartTwo();
+        public abstract object SolvePartOne();
+        public abstract object SolvePartTwo();
 
         public void PrintResultPartOne()
         {
