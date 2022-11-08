@@ -4,7 +4,7 @@ using AdventOfCode2021.Day16.Solvers;
 namespace AdventOfCode2021Tests
 {
     [TestClass]
-    internal class Day16Tests
+    public class Day16Tests
     {
         [TestMethod]
         public void TestPartOne1()
