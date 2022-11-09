@@ -9,8 +9,6 @@ namespace AdventOfCode2021.Day16.Solvers
         private IInputParser<TInput> _inputParser;
         private string _input;
 
-        protected bool UseExampleInput = false;
-
         public BaseSolver(IInputParser<TInput> inputParser) : this(inputParser, null) { }
         public BaseSolver(IInputParser<TInput> inputParser, string? input)
         {
@@ -25,18 +23,7 @@ namespace AdventOfCode2021.Day16.Solvers
             }
         }
 
-        private TInput? _parsedInput;
-        public TInput Input
-        {
-            get
-            {
-                if (_parsedInput == null)
-                {
-                    _parsedInput = _inputParser.Parse(_input);
-                }
-                return _parsedInput;
-            }
-        }
+        public TInput Input => _inputParser.Parse(_input);
 
         public abstract object SolvePartOne();
         public abstract object SolvePartTwo();

@@ -8,7 +8,6 @@ namespace AdventOfCode2021.Day16.Solvers
         internal Solver() : base() { }
         internal Solver(string input) : base(input)
         {
-            UseExampleInput = false;
         }
 
         public override object SolvePartOne()

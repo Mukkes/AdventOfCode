@@ -199,5 +199,15 @@
             result += ']';
             return result;
         }
+
+        public Pair Clone(Pair? parent = null)
+        {
+            var pair = new Pair(parent);
+            pair.LeftRegularNumber = LeftRegularNumber;
+            pair.RightRegularNumber = RightRegularNumber;
+            pair.LeftPair = LeftPair?.Clone(pair);
+            pair.RightPair = RightPair?.Clone(pair);
+            return pair;
+        }
     }
 }

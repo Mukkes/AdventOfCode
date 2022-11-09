@@ -21,15 +21,46 @@ namespace AdventOfCode2021.Day18.Solvers
 
         public override object SolvePartTwo()
         {
-            return 0;
+            var largestMagnitude = 0L;
+            foreach (var pair1 in Input)
+            {
+                foreach (var pair2 in Input)
+                {
+                    if (pair1 == pair2)
+                    {
+                        continue;
+                    }
+                    var pair = Addition(pair1.Clone(), pair2.Clone());
+                    Console.WriteLine("-------------");
+                    Console.WriteLine("after addition: " + pair.ToString());
+                    Explode(pair);
+                    var magnitude = pair.Magnitude();
+                    Console.WriteLine("magnitude: " + magnitude);
+                    if (magnitude > largestMagnitude)
+                    {
+                        largestMagnitude = magnitude;
+                    }
+                    pair = Addition(pair2.Clone(), pair1.Clone());
+                    Console.WriteLine("-------------");
+                    Console.WriteLine("after addition: " + pair.ToString());
+                    Explode(pair);
+                    magnitude = pair.Magnitude();
+                    Console.WriteLine("magnitude: " + magnitude);
+                    if (magnitude > largestMagnitude)
+                    {
+                        largestMagnitude = magnitude;
+                    }
+                }
+            }
+            return largestMagnitude;
         }
 
         public Pair AddPairs(List<Pair> pairs)
         {
-            var pair = pairs[0];
+            var pair = pairs[0].Clone();
             for (int i = 1; i < Input.Count; i++)
             {
-                pair = Addition(pair, Input[i]);
+                pair = Addition(pair, Input[i].Clone());
                 Console.WriteLine("-------------");
                 Console.WriteLine("after addition: " + pair.ToString());
                 Explode(pair);
