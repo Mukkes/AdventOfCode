@@ -5,6 +5,6 @@ namespace AdventOfCode2021.Day18.Solvers
 {
     public abstract class StringArraySolver : BaseSolver<string[]>
     {
-        public StringArraySolver() : base(new InputToStringArrayParser()) { }
+        public StringArraySolver(string? input) : base(new InputToStringArrayParser(), input) { }
     }
 }
