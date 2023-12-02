@@ -1,0 +1,10 @@
+﻿using AdventOfCode.Year2023.Day02.Models;
+using AdventOfCode.Year2023.Day02.Parsers;
+using AdventOfCodeLibrary.Solvers;
+
+namespace AdventOfCode.Year2023.Day02.Solvers;
+
+public abstract class CubeConundrumSolver : BaseSolver<List<Game>>
+{
+    public CubeConundrumSolver(string? input) : base(new CubeConundrumParser(), input) { }
+}
