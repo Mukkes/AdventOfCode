@@ -1,18 +1,12 @@
-﻿using AdventOfCodeLibrary.Parsers;
+﻿using AdventOfCodeLibrary.Attributes;
+using AdventOfCodeLibrary.Parsers;
 using AdventOfCodeLibrary.Solvers;
 
 namespace AdventOfCode.Year2023.Day01.Solvers;
 
+[Solver]
 public class Solver : StringSolver
 {
-    public Solver() : this(null)
-    {
-    }
-
-    public Solver(string? input) : base(input)
-    {
-    }
-
     private readonly InputToStringArrayParser _parser = new InputToStringArrayParser();
 
     public override int Year => 2023;

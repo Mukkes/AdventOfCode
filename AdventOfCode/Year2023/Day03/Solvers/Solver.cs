@@ -1,24 +1,14 @@
 ﻿using AdventOfCode.Year2023.Day03.Models;
+using AdventOfCodeLibrary.Attributes;
 using AdventOfCodeLibrary.ExtensionClasses;
 using AdventOfCodeLibrary.Solvers;
 
 namespace AdventOfCode.Year2023.Day03.Solvers;
 
+[Solver]
 public class Solver : StringArraySolver
 {
-    private string[] _input;
-
-    public Solver() : this(null)
-    {
-    }
-
-    public Solver(string? input) : base(input)
-    {
-        _input = Input;
-    }
-
     public override int Year => 2023;
-
     public override int Day => 3;
 
     public override object SolvePartOne()
@@ -27,13 +17,13 @@ public class Solver : StringArraySolver
         var lastCharWasDigit = false;
         var stringNumber = string.Empty;
         var hasAdjacentSymbol = false;
-        for (var lineIndex = 0; lineIndex < _input.Length; lineIndex++)
+        for (var lineIndex = 0; lineIndex < Input.Length; lineIndex++)
         {
-            for (var charIndex = 0; charIndex < _input[lineIndex].Length; charIndex++)
+            for (var charIndex = 0; charIndex < Input[lineIndex].Length; charIndex++)
             {
-                if (_input[lineIndex][charIndex].IsDigit())
+                if (Input[lineIndex][charIndex].IsDigit())
                 {
-                    stringNumber += _input[lineIndex][charIndex];
+                    stringNumber += Input[lineIndex][charIndex];
                     lastCharWasDigit = true;
                     if (!hasAdjacentSymbol)
                     {
@@ -74,7 +64,7 @@ public class Solver : StringArraySolver
         char c;
         try
         {
-            c = _input[lineIndex][charIndex];
+            c = Input[lineIndex][charIndex];
         }
         catch
         {
@@ -97,13 +87,13 @@ public class Solver : StringArraySolver
         var stringNumber = string.Empty;
         var adjacentStar = default(Star);
         var stars = new List<Star>();
-        for (var lineIndex = 0; lineIndex < _input.Length; lineIndex++)
+        for (var lineIndex = 0; lineIndex < Input.Length; lineIndex++)
         {
-            for (var charIndex = 0; charIndex < _input[lineIndex].Length; charIndex++)
+            for (var charIndex = 0; charIndex < Input[lineIndex].Length; charIndex++)
             {
-                if (_input[lineIndex][charIndex].IsDigit())
+                if (Input[lineIndex][charIndex].IsDigit())
                 {
-                    stringNumber += _input[lineIndex][charIndex];
+                    stringNumber += Input[lineIndex][charIndex];
                     lastCharWasDigit = true;
                     if (adjacentStar == null)
                     {
@@ -182,7 +172,7 @@ public class Solver : StringArraySolver
         char c;
         try
         {
-            c = _input[lineIndex][charIndex];
+            c = Input[lineIndex][charIndex];
         }
         catch
         {

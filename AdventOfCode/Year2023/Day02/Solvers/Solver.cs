@@ -1,15 +1,10 @@
-﻿namespace AdventOfCode.Year2023.Day02.Solvers;
+﻿using AdventOfCodeLibrary.Attributes;
 
+namespace AdventOfCode.Year2023.Day02.Solvers;
+
+[Solver]
 public class Solver : CubeConundrumSolver
 {
-    public Solver() : this(null)
-    {
-    }
-
-    public Solver(string? input) : base(input)
-    {
-    }
-
     public override int Year => 2023;
 
     public override int Day => 2;

@@ -6,5 +6,5 @@ namespace AdventOfCode.Year2023.Day02.Solvers;
 
 public abstract class CubeConundrumSolver : BaseSolver<List<Game>>
 {
-    public CubeConundrumSolver(string? input) : base(new CubeConundrumParser(), input) { }
+    public CubeConundrumSolver() : base(new CubeConundrumParser()) { }
 }
