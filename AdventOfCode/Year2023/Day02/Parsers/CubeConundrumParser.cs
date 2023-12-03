@@ -13,7 +13,7 @@ public class CubeConundrumParser : InputToStringArrayParser, IInputParser<List<G
         foreach (var line in inputArray)
         {
             var split = line.Split(':');
-            var game = new Game(StringExtensions.ExtractInteger(split[0]));
+            var game = new Game(split[0].ExtractInteger());
             var sets = split[1].Split(';');
             foreach (var set in sets)
             {
@@ -34,7 +34,7 @@ public class CubeConundrumParser : InputToStringArrayParser, IInputParser<List<G
         {
             if (color.Contains(name))
             {
-                return StringExtensions.ExtractInteger(color);
+                return color.ExtractInteger();
             }
         }
         return 0;
