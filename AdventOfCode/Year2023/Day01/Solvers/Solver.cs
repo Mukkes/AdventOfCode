@@ -1,7 +1,7 @@
 ﻿using AdventOfCodeLibrary.Parsers;
 using AdventOfCodeLibrary.Solvers;
 
-namespace AdventOfCode.Year2023.Day01;
+namespace AdventOfCode.Year2023.Day01.Solvers;
 
 public class Solver : StringSolver
 {

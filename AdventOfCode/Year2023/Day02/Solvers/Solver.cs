@@ -1,6 +1,4 @@
-﻿using AdventOfCode.Year2023.Day02.Solvers;
-
-namespace AdventOfCode.Year2023.Day02;
+﻿namespace AdventOfCode.Year2023.Day02.Solvers;
 
 public class Solver : CubeConundrumSolver
 {
