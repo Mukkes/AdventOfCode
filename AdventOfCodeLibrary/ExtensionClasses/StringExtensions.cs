@@ -1,15 +1,24 @@
-﻿namespace AdventOfCodeLibrary.ExtensionClasses
+﻿namespace AdventOfCodeLibrary.ExtensionClasses;
+
+public static class StringExtensions
 {
-    public static class StringExtensions
+    public static int ExtractInteger(this string str)
     {
-        public static int ExtractInteger(this string str)
+        var digits = string.Concat(str.Where(char.IsDigit));
+        if (!digits.Any())
         {
-            var digits = string.Concat(str.Where(char.IsDigit));
-            if (!digits.Any())
-            {
-                return 0;
-            }
-            return int.Parse(digits);
+            return 0;
         }
+        return int.Parse(digits);
+    }
+
+    public static long ExtractLong(this string str)
+    {
+        var digits = string.Concat(str.Where(char.IsDigit));
+        if (!digits.Any())
+        {
+            return 0;
+        }
+        return long.Parse(digits);
     }
 }
