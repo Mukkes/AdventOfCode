@@ -29,16 +29,15 @@ public class Solver : StringArraySolver
         for (var x = 0; x < cards.Count; x++)
         {
             var amount = cards[x].GetAmountWinningNumbers();
-            for (var i = 1; i <= amount; i++)
+            for (var y = 0; y < cards[x].Copys; y++)
             {
-                var copy = cards.FirstOrDefault(c => c.Id == cards[x].Id + i);
-                if (copy != null)
+                for (var i = 1; i <= amount; i++)
                 {
-                    cards.Add(copy);
+                    cards[x + i].Copys++;
                 }
             }
         }
-        return cards.Count;
+        return cards.Sum(c => c.Copys);
     }
 
     private List<Card> GetCards()

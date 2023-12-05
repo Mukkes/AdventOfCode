@@ -4,6 +4,7 @@ public class Card
     public int Id { get; }
     public List<int> WinningNumbers { get; } = new List<int>();
     public List<int> Numbers { get; } = new List<int>();
+    public int Copys { get; set; } = 1;
 
     public Card(int id)
     {
