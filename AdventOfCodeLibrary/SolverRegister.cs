@@ -1,37 +1,56 @@
 ﻿using AdventOfCodeLibrary.Attributes;
-using AdventOfCodeLibrary.Models;
 using AdventOfCodeLibrary.Solvers;
-using System.Collections.ObjectModel;
-using System.Reflection;
+using System.Collections;
 
 namespace AdventOfCodeLibrary;
 
-public class SolverRegister
+public class SolverRegister : IEnumerable<IBaseSolver>
 {
-    public readonly ReadOnlyDictionary<YearDay, IBaseSolver> Solvers;
+    private readonly IReadOnlyList<IBaseSolver> _solvers;
 
-    public SolverRegister(Assembly assembly)
+    public SolverRegister()
     {
-        var solvers = GetSolvers(assembly);
-        Solvers = new ReadOnlyDictionary<YearDay, IBaseSolver>(solvers);
+        _solvers = GetSolvers() ?? new List<IBaseSolver>();
     }
 
-    private Dictionary<YearDay, IBaseSolver> GetSolvers(Assembly assembly)
+    public IEnumerator<IBaseSolver> GetEnumerator()
     {
-        var solvers = new Dictionary<YearDay, IBaseSolver>();
-        foreach (Type type in assembly.GetTypes())
+        return _solvers.GetEnumerator();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    private List<IBaseSolver> GetSolvers()
+    {
+        var solvers = new List<IBaseSolver>();
+        foreach (Type type in GetTypesFromAssemblies())
         {
             if (type.GetCustomAttributes(typeof(SolverAttribute), true).Length > 0)
             {
                 var solver = Activator.CreateInstance(type) as IBaseSolver;
-                if (solver == null)
+                if (solver != null)
                 {
-                    continue;
+                    solvers.Add(solver);
                 }
-                var yearDay = new YearDay(solver.Year, solver.Day);
-                solvers.Add(yearDay, solver);
             }
         }
-        return solvers;
+        return solvers
+            .OrderBy(solver => solver.Year)
+            .ThenBy(solver => solver.Day)
+            .ToList();
+    }
+
+    private IEnumerable<Type> GetTypesFromAssemblies()
+    {
+        foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+        {
+            foreach (Type type in assembly.GetTypes())
+            {
+                yield return type;
+            }
+        }
     }
 }

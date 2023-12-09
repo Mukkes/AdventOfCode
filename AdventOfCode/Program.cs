@@ -1,9 +1,7 @@
 ﻿using AdventOfCodeLibrary;
-using AdventOfCodeLibrary.Models;
 
-var solverRegister = new SolverRegister(typeof(Program).Assembly);
-var yearDay = new YearDay(2023, 8);
-var solver = solverRegister.Solvers.GetValueOrDefault(yearDay);
+var solverRegister = new SolverRegister();
+var solver = solverRegister.Single(solver => solver.Year == 2023 && solver.Day == 9);
 
 var exampleInput = @"";
 
