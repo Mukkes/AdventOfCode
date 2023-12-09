@@ -15,12 +15,8 @@ public class Solver : StringArraySolver
         var sum = 0L;
         foreach (var line in Input)
         {
-            var history = new List<long>();
             var values = line.Split(' ');
-            foreach (var value in values)
-            {
-                history.Add(long.Parse(value));
-            }
+            var history = ParseStrings(values);
             sum += GetNextValue(history);
         }
         return sum;
@@ -28,7 +24,24 @@ public class Solver : StringArraySolver
 
     public override object SolvePartTwo()
     {
-        return 0;
+        var sum = 0L;
+        foreach (var line in Input)
+        {
+            var values = line.Split(' ');
+            var history = ParseStrings(values.Reverse());
+            sum += GetNextValue(history);
+        }
+        return sum;
+    }
+
+    private List<long> ParseStrings(IEnumerable<string> values)
+    {
+        var history = new List<long>();
+        foreach (var value in values)
+        {
+            history.Add(long.Parse(value));
+        }
+        return history;
     }
 
     private long GetNextValue(List<long> values)
@@ -42,11 +55,7 @@ public class Solver : StringArraySolver
         {
             return 0 + values.Last();
         }
-        else
-        {
-
-            return GetNextValue(differences) + values.Last();
-        }
+        return GetNextValue(differences) + values.Last();
     }
 
     private bool AllZero(List<long> values)
