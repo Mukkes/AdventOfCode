@@ -38,7 +38,31 @@ public class Solver : StringArraySolver
     {
         var nodes = GetNodes(Input[2..]);
         var startNodes = GetStartNodes(nodes);
-        return 0;
+        var steps = new List<long>();
+        for (var i = 0; i < startNodes.Count; i++)
+        {
+            steps.Add(StepsUntilEndWithZ(startNodes[i], Input[0]));
+        }
+        var highestSteps = steps.Max();
+        var totalSteps = 0L;
+        while (true)
+        {
+            totalSteps += highestSteps;
+            var b = true;
+            foreach (var step in steps)
+            {
+                if (totalSteps % step != 0)
+                {
+                    b = false;
+                    break;
+                }
+            }
+            if (b)
+            {
+                break;
+            }
+        }
+        return totalSteps;
     }
 
     private List<Node> GetNodes(string[] input)
@@ -61,8 +85,24 @@ public class Solver : StringArraySolver
         return nodes.Where(node => node.Name[2] == 'A').ToList();
     }
 
-    private void HandleSteps(Dictionary<string, Node> nodes, string steps)
+    private long StepsUntilEndWithZ(Node node, string navigation)
     {
-
+        var steps = 0L;
+        do
+        {
+            foreach (var c in navigation)
+            {
+                if (c == 'L')
+                {
+                    node = node.Left;
+                }
+                else
+                {
+                    node = node.Right;
+                }
+                steps++;
+            }
+        } while (node.Name[2] != 'Z');
+        return steps;
     }
 }
