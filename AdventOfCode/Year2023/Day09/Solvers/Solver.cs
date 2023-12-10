@@ -10,6 +10,10 @@ public class Solver : StringArraySolver
 
     public override int Day => 09;
 
+    public override object? AnswerPartOne => 1819125966L;
+
+    public override object? AnswerPartTwo => 1140L;
+
     public override object SolvePartOne()
     {
         var sum = 0L;

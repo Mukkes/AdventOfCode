@@ -10,6 +10,10 @@ public class Solver : StringArraySolver
 
     public override int Day => 06;
 
+    public override object? AnswerPartOne => 1084752;
+
+    public override object? AnswerPartTwo => 28228952L;
+
     public override object SolvePartOne()
     {
         var time = Array.ConvertAll(Input[0][11..].Split(' ', StringSplitOptions.RemoveEmptyEntries), int.Parse);

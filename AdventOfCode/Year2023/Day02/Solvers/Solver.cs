@@ -9,6 +9,10 @@ public class Solver : CubeConundrumSolver
 
     public override int Day => 2;
 
+    public override object? AnswerPartOne => 2006;
+
+    public override object? AnswerPartTwo => 84911;
+
     public override object SolvePartOne()
     {
         var maxBlue = 14;

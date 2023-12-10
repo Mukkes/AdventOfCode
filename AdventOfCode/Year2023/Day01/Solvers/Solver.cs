@@ -13,6 +13,10 @@ public class Solver : StringSolver
 
     public override int Day => 1;
 
+    public override object? AnswerPartOne => 54304;
+
+    public override object? AnswerPartTwo => 54418;
+
     public override object SolvePartOne()
     {
         return GetSumFromLines(Input);

@@ -12,6 +12,10 @@ public class Solver : StringArraySolver
 
     public override int Day => 04;
 
+    public override object? AnswerPartOne => 20117;
+
+    public override object? AnswerPartTwo => 13768818;
+
     public override object SolvePartOne()
     {
         var cards = GetCards();

@@ -10,6 +10,10 @@ public class Solver : IntArraySolver
 
     public override int Day => 01;
 
+    public override object? AnswerPartOne => 889779;
+
+    public override object? AnswerPartTwo => 76110336;
+
     public override object SolvePartOne()
     {
         for (int i = 0; i < Input.Length; i++)

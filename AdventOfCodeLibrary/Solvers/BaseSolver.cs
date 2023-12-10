@@ -10,6 +10,8 @@ public abstract class BaseSolver<TInput> : IBaseSolver
 
     public abstract int Year { get; }
     public abstract int Day { get; }
+    public virtual object? AnswerPartOne => null;
+    public virtual object? AnswerPartTwo => null;
     public TInput Input { get; private set; }
 
     public BaseSolver(IInputParser<TInput> inputParser)
@@ -26,5 +28,10 @@ public abstract class BaseSolver<TInput> : IBaseSolver
     public void SetInput(string input)
     {
         Input = _inputParser.Parse(input);
+    }
+
+    public override string ToString()
+    {
+        return "Year: " + Year + " Day: " + Day + ")";
     }
 }
