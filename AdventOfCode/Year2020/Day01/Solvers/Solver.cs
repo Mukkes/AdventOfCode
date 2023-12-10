@@ -8,7 +8,7 @@ public class Solver : IntArraySolver
 {
     public override int Year => 2020;
 
-    public override int Day => 01;
+    public override int Day => 1;
 
     public override object? AnswerPartOne => 889779;
 
