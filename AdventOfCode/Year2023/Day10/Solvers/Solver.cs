@@ -117,7 +117,7 @@ public class Solver : StringArraySolver
     {
         try
         {
-            return Input[point2D.X][point2D.Y];
+            return Input[(int)point2D.X][(int)point2D.Y];
         }
         catch { }
         return '.';

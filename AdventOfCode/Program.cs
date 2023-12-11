@@ -1,13 +1,18 @@
 ﻿using AdventOfCodeLibrary;
 
 var solverRegister = new SolverRegister();
-var solver = solverRegister.Single(solver => solver.Year == 2023 && solver.Day == 10);
+var solver = solverRegister.Single(solver => solver.Year == 2023 && solver.Day == 11);
 
-var exampleInput = @"7-F7-
-.FJ|7
-SJLL7
-|F--J
-LJ.LJ";
+var exampleInput = @"...#......
+.......#..
+#.........
+..........
+......#...
+.#........
+.........#
+..........
+.......#..
+#...#.....";
 
 //solver.SetInput(exampleInput);
 Console.WriteLine(solver.SolvePartOne());

@@ -1,17 +1,24 @@
 ﻿namespace AdventOfCodeLibrary.Models;
 public class Point2D
 {
-    public int X { get; }
-    public int Y { get; }
+    public long X { get; set; }
+    public long Y { get; set; }
 
     public Point2D(Point2D point2D) : this(point2D.X, point2D.Y)
     {
     }
 
-    public Point2D(int x, int y)
+    public Point2D(long x, long y)
     {
         X = x;
         Y = y;
+    }
+
+    public long GetDistance(Point2D point)
+    {
+        var distanceX = Math.Abs(X - point.X);
+        var distanceY = Math.Abs(Y - point.Y);
+        return distanceX + distanceY;
     }
 
     public override int GetHashCode()

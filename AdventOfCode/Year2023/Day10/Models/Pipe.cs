@@ -10,7 +10,7 @@ public class Pipe : Point2D
     {
     }
 
-    public Pipe(int x, int y, char symbol) : this(x, y, symbol, null)
+    public Pipe(long x, long y, char symbol) : this(x, y, symbol, null)
     {
     }
 
@@ -18,7 +18,7 @@ public class Pipe : Point2D
     {
     }
 
-    public Pipe(int x, int y, char symbol, Pipe? previous) : base(x, y)
+    public Pipe(long x, long y, char symbol, Pipe? previous) : base(x, y)
     {
         Symbol = symbol;
         Previous = previous;
