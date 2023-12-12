@@ -17,25 +17,61 @@ public class Solver : StringArraySolver
 
     public override object SolvePartOne()
     {
-        var sum = 0;
+        var sum = 0L;
         foreach (var line in Input)
         {
-            var record = line.Split(' ');
-            var conditions = record[0];
-            var criteria = record[1].ExtractIntArray();
-            sum += GetArrangements(criteria, conditions);
+            sum += GetArrangements(line);
         }
         return sum;
     }
 
     public override object SolvePartTwo()
     {
-        return 0;
+        var sum = 0L;
+        foreach (var line in Input)
+        {
+            var fi = GetArrangements(line);
+            var first = GetArrangements(Unfold(line, 2));
+            var second = GetArrangements(Unfold(line, 3));
+            var y = first / fi;
+            var x = second / first;
+            if (y != x)
+            {
+                var fdsaf = 9;
+            }
+            sum += second * x * x;
+        }
+        return sum;
     }
 
-    private int GetArrangements(int[] criteria, string conditions)
+    private string Unfold(string line, int times)
     {
-        var arrangements = 0;
+        var result = string.Empty;
+        var record = line.Split(' ');
+        for (var j = 1; j < times; j++)
+        {
+            result += record[0] + '?';
+        }
+        result += record[0] + ' ';
+        for (var j = 1; j < times; j++)
+        {
+            result += record[1] + ',';
+        }
+        result += record[1];
+        return result;
+    }
+
+    private long GetArrangements(string line)
+    {
+        var record = line.Split(' ');
+        var conditions = record[0];
+        var criteria = record[1].ExtractIntArray();
+        return GetArrangements(criteria, conditions);
+    }
+
+    private long GetArrangements(int[] criteria, string conditions)
+    {
+        var arrangements = 0L;
         while (conditions.Length >= criteria[0])
         {
             if (CanBeDamaged(conditions.Substring(0, criteria[0])))
@@ -44,7 +80,8 @@ public class Solver : StringArraySolver
                 if (criteria.Length > 1)
                 {
                     if (restConditions.Length > 0 &&
-                        CanBeOperational(restConditions[0..1]))
+                        CanBeOperational(restConditions[0..1]) &&
+                        conditions.Length >= criteria.Sum() + criteria.Length - 1)
                     {
                         arrangements += GetArrangements(criteria[1..], restConditions[1..]);
                     }
