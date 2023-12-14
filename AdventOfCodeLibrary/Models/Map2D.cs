@@ -45,9 +45,19 @@ public class Map2D<T>
         return GetCoord((int)point.X, (int)point.Y);
     }
 
+    public void SetCoord(Point2D point, T value)
+    {
+        SetCoord((int)point.X, (int)point.Y, value);
+    }
+
     public T GetCoord(int x, int y)
     {
         return _map[x][y];
+    }
+
+    public void SetCoord(int x, int y, T value)
+    {
+        _map[x][y] = value;
     }
 
     public int GetRowCount()
