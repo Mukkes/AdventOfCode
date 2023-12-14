@@ -2,9 +2,8 @@
 
 public class InputToIntArrayParser : InputToStringArrayParser, IInputParser<int[]>
 {
-    public new int[] Parse(string inputFileName)
+    public new int[] Parse(string input)
     {
-        var input = base.Parse(inputFileName);
-        return Array.ConvertAll(input, int.Parse);
+        return Array.ConvertAll(base.Parse(input), int.Parse);
     }
 }
