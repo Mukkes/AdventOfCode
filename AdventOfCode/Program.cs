@@ -1,7 +1,7 @@
 ﻿using AdventOfCodeLibrary;
 
 var solverRegister = new SolverRegister();
-var solver = solverRegister.Single(solver => solver.Year == 2023 && solver.Day == 14);
+var solver = solverRegister.Single(solver => solver.Year == 2021 && solver.Day == 1);
 
 var exampleInput = @"O....#....
 O.OO#....#
