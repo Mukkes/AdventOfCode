@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -33,7 +33,6 @@
 		<None Remove="Year2021\Inputs\Day13.txt" />
 		<None Remove="Year2021\Inputs\Day14.txt" />
 		<None Remove="Year2021\Inputs\Day15.txt" />
-		<None Remove="Year2021\Inputs\Day3.txt" />
 		<None Remove="Year2021\Inputs\Day4.txt" />
 		<None Remove="Year2021\Inputs\Day5.txt" />
 		<None Remove="Year2021\Inputs\Day6.txt" />
@@ -110,9 +109,6 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 		<Content Include="Year2021\Inputs\Day4.txt">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Year2021\Inputs\Day3.txt">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
