@@ -42,7 +42,7 @@ public class Solver : StringArraySolver
     private Map2D<char> CreateMap()
     {
         var map = new Map2D<char>();
-        foreach (var line in Input)
+        foreach (var line in ParsedInput)
         {
             map.AddRow(line.ToCharArray());
         }

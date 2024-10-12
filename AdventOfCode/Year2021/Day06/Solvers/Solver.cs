@@ -16,7 +16,7 @@ public class Solver : StringSolver
 
     public override object SolvePartOne()
     {
-        var lanternfish = Input.Split(',').Select(int.Parse).ToList();
+        var lanternfish = ParsedInput.Split(',').Select(int.Parse).ToList();
         var days = 80;
         for (var day = 0; day < days; day++)
         {
@@ -30,7 +30,7 @@ public class Solver : StringSolver
     public override object SolvePartTwo()
     {
         var lanternfish = new long[9];
-        Input.Split(',').Select(long.Parse).ToList().ForEach(x => ++lanternfish[x]);
+        ParsedInput.Split(',').Select(long.Parse).ToList().ForEach(x => ++lanternfish[x]);
         var days = 256;
         for (var day = 0; day < days; day++)
         {

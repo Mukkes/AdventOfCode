@@ -2,7 +2,12 @@
 
 namespace AdventOfCodeLibrary.Solvers;
 
-public abstract class IntArraySolver : BaseSolver<int[]>
+public abstract class IntArraySolver : IntArraySolver<InputToIntArrayParser>
 {
-    public IntArraySolver() : base(new InputToIntArrayParser()) { }
+}
+
+public abstract class IntArraySolver<TParser> : BaseSolver<int[]>
+    where TParser : IInputParser<int[]>, new()
+{
+    public IntArraySolver() : base(new TParser()) { }
 }

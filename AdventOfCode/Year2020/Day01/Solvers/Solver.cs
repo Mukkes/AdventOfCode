@@ -16,13 +16,13 @@ public class Solver : IntArraySolver
 
     public override object SolvePartOne()
     {
-        for (int i = 0; i < Input.Length; i++)
+        for (int i = 0; i < ParsedInput.Length; i++)
         {
-            for (int j = i + 1; j < Input.Length; j++)
+            for (int j = i + 1; j < ParsedInput.Length; j++)
             {
-                if (Input[i] + Input[j] == 2020)
+                if (ParsedInput[i] + ParsedInput[j] == 2020)
                 {
-                    return Input[i] * Input[j];
+                    return ParsedInput[i] * ParsedInput[j];
                 }
             }
         }
@@ -31,15 +31,15 @@ public class Solver : IntArraySolver
 
     public override object SolvePartTwo()
     {
-        for (int i = 0; i < Input.Length; i++)
+        for (int i = 0; i < ParsedInput.Length; i++)
         {
-            for (int j = i + 1; j < Input.Length; j++)
+            for (int j = i + 1; j < ParsedInput.Length; j++)
             {
-                for (int k = j + 1; k < Input.Length; k++)
+                for (int k = j + 1; k < ParsedInput.Length; k++)
                 {
-                    if (Input[i] + Input[j] + Input[k] == 2020)
+                    if (ParsedInput[i] + ParsedInput[j] + ParsedInput[k] == 2020)
                     {
-                        return Input[i] * Input[j] * Input[k];
+                        return ParsedInput[i] * ParsedInput[j] * ParsedInput[k];
                     }
                 }
             }

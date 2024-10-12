@@ -42,7 +42,7 @@ public class Solver : StringArraySolver
     private List<Hand> GetHands()
     {
         var hands = new List<Hand>();
-        foreach (var line in Input)
+        foreach (var line in ParsedInput)
         {
             var s = line.Split(' ');
             hands.Add(new Hand(s[0], long.Parse(s[1])));

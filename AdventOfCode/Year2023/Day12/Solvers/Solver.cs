@@ -18,7 +18,7 @@ public class Solver : StringArraySolver
     public override object SolvePartOne()
     {
         var sum = 0L;
-        foreach (var line in Input)
+        foreach (var line in ParsedInput)
         {
             sum += GetArrangements(line);
         }
@@ -28,7 +28,7 @@ public class Solver : StringArraySolver
     public override object SolvePartTwo()
     {
         var sum = 0L;
-        foreach (var line in Input)
+        foreach (var line in ParsedInput)
         {
             var fi = GetArrangements(line);
             var first = GetArrangements(Unfold(line, 2));

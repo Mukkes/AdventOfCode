@@ -16,8 +16,8 @@ public class Solver : StringArraySolver
 
     public override object SolvePartOne()
     {
-        var time = Array.ConvertAll(Input[0][11..].Split(' ', StringSplitOptions.RemoveEmptyEntries), int.Parse);
-        var distance = Array.ConvertAll(Input[1][11..].Split(' ', StringSplitOptions.RemoveEmptyEntries), int.Parse);
+        var time = Array.ConvertAll(ParsedInput[0][11..].Split(' ', StringSplitOptions.RemoveEmptyEntries), int.Parse);
+        var distance = Array.ConvertAll(ParsedInput[1][11..].Split(' ', StringSplitOptions.RemoveEmptyEntries), int.Parse);
         var beatAmount = new int[time.Length];
 
         for (var i = 0; i < time.Length; i++)
@@ -40,8 +40,8 @@ public class Solver : StringArraySolver
 
     public override object SolvePartTwo()
     {
-        var time = new long[] { long.Parse(Input[0][11..].Replace(" ", "")) };
-        var distance = new long[] { long.Parse(Input[1][11..].Replace(" ", "")) };
+        var time = new long[] { long.Parse(ParsedInput[0][11..].Replace(" ", "")) };
+        var distance = new long[] { long.Parse(ParsedInput[1][11..].Replace(" ", "")) };
         var beatAmount = new long[time.Length];
 
         for (var i = 0L; i < time.Length; i++)

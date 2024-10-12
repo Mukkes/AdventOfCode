@@ -16,8 +16,8 @@ public class Solver : StringArraySolver
 
     public override object SolvePartOne()
     {
-        var input = new string[Input.Length];
-        Array.Copy(Input, input, Input.Length);
+        var input = new string[ParsedInput.Length];
+        Array.Copy(ParsedInput, input, ParsedInput.Length);
         var stringLength = input[0].Length;
         var x = Math.Pow(2, stringLength) - 1;
         var gammaRating = GetGammaRating(input);
@@ -56,8 +56,8 @@ public class Solver : StringArraySolver
 
     private int GetOxygenGeneratorRating()
     {
-        var input = Input.ToList();
-        var byteLength = Input[0].Length;
+        var input = ParsedInput.ToList();
+        var byteLength = ParsedInput[0].Length;
         var oxygenGeneratorRating = 0;
         for (int i = 0; i < byteLength; i++)
         {
@@ -73,8 +73,8 @@ public class Solver : StringArraySolver
 
     private int GetCO2ScrubberRating()
     {
-        var input = Input.ToList();
-        var byteLength = Input[0].Length;
+        var input = ParsedInput.ToList();
+        var byteLength = ParsedInput[0].Length;
         var co2ScrubberRating = 0;
         for (int i = 0; i < byteLength; i++)
         {

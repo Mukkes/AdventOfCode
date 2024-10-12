@@ -18,7 +18,7 @@ public class Solver : StringArraySolver
     {
         var horizontal = 0;
         var depth = 0;
-        foreach (var line in Input)
+        foreach (var line in ParsedInput)
         {
             var command = GetCommand(line);
             if (command.Direction == "forward")
@@ -42,7 +42,7 @@ public class Solver : StringArraySolver
         var horizontal = 0;
         var depth = 0;
         var aim = 0;
-        foreach (var line in Input)
+        foreach (var line in ParsedInput)
         {
             var command = GetCommand(line);
             if (command.Direction == "forward")

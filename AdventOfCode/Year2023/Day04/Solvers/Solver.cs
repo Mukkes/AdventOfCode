@@ -47,7 +47,7 @@ public class Solver : StringArraySolver
     private List<Card> GetCards()
     {
         var cards = new List<Card>();
-        foreach (var line in Input)
+        foreach (var line in ParsedInput)
         {
             var cardString = line.Split(':');
             var card = new Card(cardString[0].ExtractInteger());
