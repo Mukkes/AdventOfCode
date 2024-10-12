@@ -1,11 +1,12 @@
 ﻿using AdventOfCodeLibrary.Attributes;
+using AdventOfCodeLibrary.Parsers;
 using AdventOfCodeLibrary.Solvers;
 using System.Drawing;
 
 namespace AdventOfCode.Year2021.Day05.Solvers;
 
 [Solver]
-public class Solver : StringArraySolver
+public class Solver : BaseSolver<string[]>
 {
     public override int Year => 2021;
 
@@ -14,6 +15,8 @@ public class Solver : StringArraySolver
     public override object? AnswerPartOne => 6856;
 
     public override object? AnswerPartTwo => 20666;
+
+    protected override IInputParser<string[]> InputParser => new StringArrayParser();
 
     private Dictionary<Point, int> diagram;
 

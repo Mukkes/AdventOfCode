@@ -4,7 +4,7 @@ using AdventOfCodeLibrary.Parsers;
 
 namespace AdventOfCode.Year2023.Day02.Parsers;
 
-public class CubeConundrumParser : InputToStringArrayParser, IInputParser<List<Game>>
+public class CubeConundrumParser : StringArrayParser, IInputParser<List<Game>>
 {
     public new List<Game> Parse(string input)
     {

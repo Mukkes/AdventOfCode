@@ -4,13 +4,13 @@ namespace AdventOfCodeLibrary.Solvers;
 
 public abstract class BaseSolver<TOutputType> : IBaseSolver
 {
-    private readonly IInputParser<TOutputType> _inputParser;
     private readonly string _inputFileName;
 
     public abstract int Year { get; }
     public abstract int Day { get; }
     public virtual object? AnswerPartOne => null;
     public virtual object? AnswerPartTwo => null;
+    protected abstract IInputParser<TOutputType> InputParser { get; }
 
     private string _input;
     public string Input
@@ -30,7 +30,7 @@ public abstract class BaseSolver<TOutputType> : IBaseSolver
         {
             if (Equals(_parsedInput, default(TOutputType)))
             {
-                _parsedInput = _inputParser.Parse(_input);
+                _parsedInput = InputParser.Parse(_input);
             }
             if (_parsedInput == null)
             {
@@ -40,9 +40,8 @@ public abstract class BaseSolver<TOutputType> : IBaseSolver
         }
     }
 
-    public BaseSolver(IInputParser<TOutputType> inputParser)
+    public BaseSolver()
     {
-        _inputParser = inputParser;
         _inputFileName = "Year" + Year + @"\Day" + string.Format("{0:00}", Day) + @"\Input.txt";
         _input = File.ReadAllText(_inputFileName);
     }

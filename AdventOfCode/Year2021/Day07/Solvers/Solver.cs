@@ -1,5 +1,6 @@
 ﻿using AdventOfCode.Year2021.Day07.Parsers;
 using AdventOfCodeLibrary.Attributes;
+using AdventOfCodeLibrary.Parsers;
 using AdventOfCodeLibrary.Solvers;
 
 namespace AdventOfCode.Year2021.Day07.Solvers;
@@ -15,9 +16,7 @@ public class Solver : BaseSolver<List<int>>
 
     public override object? AnswerPartTwo => 92676646;
 
-    public Solver() : base(new InputToIntListParser(","))
-    {
-    }
+    protected override IInputParser<List<int>> InputParser => new IntListParser(",");
 
     public override object SolvePartOne()
     {

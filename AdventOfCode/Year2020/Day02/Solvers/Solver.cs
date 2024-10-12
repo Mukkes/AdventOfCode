@@ -1,11 +1,12 @@
 ﻿using AdventOfCode.Year2020.Day02.Models;
 using AdventOfCodeLibrary.Attributes;
+using AdventOfCodeLibrary.Parsers;
 using AdventOfCodeLibrary.Solvers;
 
 namespace AdventOfCode.Year2020.Day02.Solvers;
 
 [Solver]
-public class Solver : StringArraySolver
+public class Solver : BaseSolver<string[]>
 {
     public override int Year => 2020;
 
@@ -14,6 +15,8 @@ public class Solver : StringArraySolver
     public override object? AnswerPartOne => 640;
 
     public override object? AnswerPartTwo => 472;
+
+    protected override IInputParser<string[]> InputParser => new StringArrayParser();
 
     public override object SolvePartOne()
     {

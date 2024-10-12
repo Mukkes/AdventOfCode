@@ -1,14 +1,14 @@
 ﻿namespace AdventOfCodeLibrary.Parsers;
 
-public class InputToStringArrayParser : IInputParser<string[]>
+public class StringArrayParser : IInputParser<string[]>
 {
     private readonly string _separator;
 
-    public InputToStringArrayParser() : this(Environment.NewLine)
+    public StringArrayParser() : this(Environment.NewLine)
     {
     }
 
-    public InputToStringArrayParser(string separator)
+    public StringArrayParser(string separator)
     {
         _separator = separator;
     }
