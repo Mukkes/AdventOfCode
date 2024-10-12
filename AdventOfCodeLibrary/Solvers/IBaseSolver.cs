@@ -6,7 +6,7 @@ public  interface IBaseSolver
     int Day { get; }
     object? AnswerPartOne { get; }
     object? AnswerPartTwo { get; }
+    string Input { set; }
     object SolvePartOne();
     object SolvePartTwo();
-    void SetInput(string input);
 }

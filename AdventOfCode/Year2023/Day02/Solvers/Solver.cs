@@ -19,7 +19,7 @@ public class Solver : CubeConundrumSolver
         var maxGreen = 13;
         var maxRed = 12;
         var sum = 0;
-        foreach (var game in Input)
+        foreach (var game in ParsedInput)
         {
             if (game.MaxBlue > maxBlue)
             {
@@ -41,7 +41,7 @@ public class Solver : CubeConundrumSolver
     public override object SolvePartTwo()
     {
         var sum = 0;
-        foreach (var game in Input)
+        foreach (var game in ParsedInput)
         {
             sum += game.MaxBlue * game.MaxGreen * game.MaxRed;
         }

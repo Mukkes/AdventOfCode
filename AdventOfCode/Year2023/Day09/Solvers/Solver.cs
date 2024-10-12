@@ -17,7 +17,7 @@ public class Solver : StringArraySolver
     public override object SolvePartOne()
     {
         var sum = 0L;
-        foreach (var line in Input)
+        foreach (var line in ParsedInput)
         {
             var values = line.Split(' ');
             var history = ParseStrings(values);
@@ -29,7 +29,7 @@ public class Solver : StringArraySolver
     public override object SolvePartTwo()
     {
         var sum = 0L;
-        foreach (var line in Input)
+        foreach (var line in ParsedInput)
         {
             var values = line.Split(' ');
             var history = ParseStrings(values.Reverse());

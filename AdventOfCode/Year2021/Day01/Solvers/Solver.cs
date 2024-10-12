@@ -17,9 +17,9 @@ public class Solver : IntArraySolver
     public override object SolvePartOne()
     {
         var largerCount = 0;
-        for (var i = 1; i < Input.Length; i++)
+        for (var i = 1; i < ParsedInput.Length; i++)
         {
-            if (Input[i] > Input[i - 1])
+            if (ParsedInput[i] > ParsedInput[i - 1])
             {
                 largerCount++;
             }
@@ -30,10 +30,10 @@ public class Solver : IntArraySolver
     public override object SolvePartTwo()
     {
         var largerCount = 0;
-        for (var i = 3; i < Input.Length; i++)
+        for (var i = 3; i < ParsedInput.Length; i++)
         {
-            var previousDepth = Input[i - 3] + Input[i - 2] + Input[i - 1];
-            var depth = Input[i - 2] + Input[i - 1] + Input[i];
+            var previousDepth = ParsedInput[i - 3] + ParsedInput[i - 2] + ParsedInput[i - 1];
+            var depth = ParsedInput[i - 2] + ParsedInput[i - 1] + ParsedInput[i];
             if (depth > previousDepth)
             {
                 largerCount++;

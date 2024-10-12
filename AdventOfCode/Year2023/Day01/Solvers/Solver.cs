@@ -19,12 +19,12 @@ public class Solver : StringSolver
 
     public override object SolvePartOne()
     {
-        return GetSumFromLines(Input);
+        return GetSumFromLines(ParsedInput);
     }
 
     public override object SolvePartTwo()
     {
-        var input = Input.Replace("one", "o1e");
+        var input = ParsedInput.Replace("one", "o1e");
         input = input.Replace("two", "t2o");
         input = input.Replace("three", "t3e");
         input = input.Replace("four", "f4r");

@@ -89,7 +89,7 @@ public class Solver : StringArraySolver
         var maps = new List<Map2D<char>>();
         var map = new Map2D<char>();
         maps.Add(map);
-        foreach (var line in Input)
+        foreach (var line in ParsedInput)
         {
             if (line.IsNullOrEmpty())
             {

@@ -21,13 +21,13 @@ public class Solver : StringArraySolver
         var lastCharWasDigit = false;
         var stringNumber = string.Empty;
         var hasAdjacentSymbol = false;
-        for (var lineIndex = 0; lineIndex < Input.Length; lineIndex++)
+        for (var lineIndex = 0; lineIndex < ParsedInput.Length; lineIndex++)
         {
-            for (var charIndex = 0; charIndex < Input[lineIndex].Length; charIndex++)
+            for (var charIndex = 0; charIndex < ParsedInput[lineIndex].Length; charIndex++)
             {
-                if (Input[lineIndex][charIndex].IsDigit())
+                if (ParsedInput[lineIndex][charIndex].IsDigit())
                 {
-                    stringNumber += Input[lineIndex][charIndex];
+                    stringNumber += ParsedInput[lineIndex][charIndex];
                     lastCharWasDigit = true;
                     if (!hasAdjacentSymbol)
                     {
@@ -68,7 +68,7 @@ public class Solver : StringArraySolver
         char c;
         try
         {
-            c = Input[lineIndex][charIndex];
+            c = ParsedInput[lineIndex][charIndex];
         }
         catch
         {
@@ -91,13 +91,13 @@ public class Solver : StringArraySolver
         var stringNumber = string.Empty;
         var adjacentStar = default(Star);
         var stars = new List<Star>();
-        for (var lineIndex = 0; lineIndex < Input.Length; lineIndex++)
+        for (var lineIndex = 0; lineIndex < ParsedInput.Length; lineIndex++)
         {
-            for (var charIndex = 0; charIndex < Input[lineIndex].Length; charIndex++)
+            for (var charIndex = 0; charIndex < ParsedInput[lineIndex].Length; charIndex++)
             {
-                if (Input[lineIndex][charIndex].IsDigit())
+                if (ParsedInput[lineIndex][charIndex].IsDigit())
                 {
-                    stringNumber += Input[lineIndex][charIndex];
+                    stringNumber += ParsedInput[lineIndex][charIndex];
                     lastCharWasDigit = true;
                     if (adjacentStar == null)
                     {
@@ -176,7 +176,7 @@ public class Solver : StringArraySolver
         char c;
         try
         {
-            c = Input[lineIndex][charIndex];
+            c = ParsedInput[lineIndex][charIndex];
         }
         catch
         {

@@ -53,11 +53,11 @@ public class Solver : StringArraySolver
     private List<Point2D> GetGalaxies()
     {
         var galaxies = new List<Point2D>();
-        for (var x = 0; x < Input.Length; x++)
+        for (var x = 0; x < ParsedInput.Length; x++)
         {
-            for (var y = 0; y < Input[x].Length; y++)
+            for (var y = 0; y < ParsedInput[x].Length; y++)
             {
-                if (Input[x][y] == '#')
+                if (ParsedInput[x][y] == '#')
                 {
                     galaxies.Add(new Point2D(x, y));
                 }
@@ -75,9 +75,9 @@ public class Solver : StringArraySolver
     private void ExpandX(List<Point2D> galaxies, long expandingDistance)
     {
         var totalExpandingDistance = 0L;
-        for (var x = 0; x < Input.Length; x++)
+        for (var x = 0; x < ParsedInput.Length; x++)
         {
-            if (!Input[x].Contains('#'))
+            if (!ParsedInput[x].Contains('#'))
             {
                 foreach (var galaxy in galaxies)
                 {
@@ -94,12 +94,12 @@ public class Solver : StringArraySolver
     private void ExpandY(List<Point2D> galaxies, long expandingDistance)
     {
         var totalExpandingDistance = 0L;
-        for (var y = 0; y < Input[0].Length; y++)
+        for (var y = 0; y < ParsedInput[0].Length; y++)
         {
             var noGalaxies = true;
-            for (var x = 0; x < Input.Length; x++)
+            for (var x = 0; x < ParsedInput.Length; x++)
             {
-                if (Input[x][y] == '#')
+                if (ParsedInput[x][y] == '#')
                 {
                     noGalaxies = false;
                 }

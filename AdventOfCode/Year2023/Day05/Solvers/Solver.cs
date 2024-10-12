@@ -18,8 +18,8 @@ public class Solver : StringArraySolver
 
     public override object SolvePartOne()
     {
-        var seeds = GetSeeds(Input[0]);
-        var maps = GetMaps(Input[2..]);
+        var seeds = GetSeeds(ParsedInput[0]);
+        var maps = GetMaps(ParsedInput[2..]);
         var min = long.MaxValue;
         foreach (var seed in seeds)
         {
@@ -38,8 +38,8 @@ public class Solver : StringArraySolver
 
     public override object SolvePartTwo()
     {
-        var seedRanges = GetSeedRanges(Input[0]);
-        var maps = GetMaps(Input[2..]);
+        var seedRanges = GetSeedRanges(ParsedInput[0]);
+        var maps = GetMaps(ParsedInput[2..]);
         maps.Reverse();
         for (var i = 0L; i < long.MaxValue; i++)
         {

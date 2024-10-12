@@ -26,15 +26,15 @@ public class Solver : StringArraySolver
     {
         var startPipe = GeneratePipeSystem();
         var points = GetAllPipePoints(startPipe);
-        var map = new char[Input.Length][];
-        for (var x = 0; x < Input.Length; x++)
+        var map = new char[ParsedInput.Length][];
+        for (var x = 0; x < ParsedInput.Length; x++)
         {
-            map[x] = new char[Input[x].Length];
-            for (var y = 0; y < Input[x].Length; y++)
+            map[x] = new char[ParsedInput[x].Length];
+            for (var y = 0; y < ParsedInput[x].Length; y++)
             {
                 if (points.Contains(new Point2D(x, y)))
                 {
-                    map[x][y] = Input[x][y];
+                    map[x][y] = ParsedInput[x][y];
                 }
                 else
                 {
@@ -67,11 +67,11 @@ public class Solver : StringArraySolver
 
     private Pipe? FindS()
     {
-        for (var x = 0; x < Input.Length; x++)
+        for (var x = 0; x < ParsedInput.Length; x++)
         {
-            for (var y = 0; y < Input[x].Length; y++)
+            for (var y = 0; y < ParsedInput[x].Length; y++)
             {
-                if (Input[x][y] == 'S')
+                if (ParsedInput[x][y] == 'S')
                 {
                     return new Pipe(x, y, 'S');
                 }
@@ -117,7 +117,7 @@ public class Solver : StringArraySolver
     {
         try
         {
-            return Input[(int)point2D.X][(int)point2D.Y];
+            return ParsedInput[(int)point2D.X][(int)point2D.Y];
         }
         catch { }
         return '.';
@@ -137,9 +137,9 @@ public class Solver : StringArraySolver
     private void PrintPath(Pipe startPipe)
     {
         var points = GetAllPipePoints(startPipe);
-        for (var x = 0; x < Input.Length; x++)
+        for (var x = 0; x < ParsedInput.Length; x++)
         {
-            for (var y = 0; y < Input[x].Length; y++)
+            for (var y = 0; y < ParsedInput[x].Length; y++)
             {
                 if (points.Contains(new Point2D(x, y)))
                 {
@@ -149,7 +149,7 @@ public class Solver : StringArraySolver
                 {
                     Console.ResetColor();
                 }
-                Console.Write(Input[x][y]);
+                Console.Write(ParsedInput[x][y]);
             }
             Console.WriteLine();
         }

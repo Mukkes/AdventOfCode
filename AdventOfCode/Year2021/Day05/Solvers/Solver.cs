@@ -20,7 +20,7 @@ public class Solver : StringArraySolver
     public override object SolvePartOne()
     {
         diagram = new Dictionary<Point, int>();
-        foreach (var line in Input)
+        foreach (var line in ParsedInput)
         {
             var coordinates = line.Split(new string[] { ",", " -> " }, StringSplitOptions.None).Select(int.Parse).ToArray();
             IncrementLine(coordinates);
@@ -39,7 +39,7 @@ public class Solver : StringArraySolver
     public override object SolvePartTwo()
     {
         diagram = new Dictionary<Point, int>();
-        foreach (var line in Input)
+        foreach (var line in ParsedInput)
         {
             var coordinates = line.Split(new string[] { ",", " -> " }, StringSplitOptions.None).Select(int.Parse).ToArray();
             IncrementLine(coordinates);

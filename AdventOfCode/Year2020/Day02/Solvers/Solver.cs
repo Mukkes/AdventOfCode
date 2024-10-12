@@ -18,7 +18,7 @@ public class Solver : StringArraySolver
     public override object SolvePartOne()
     {
         var count = 0;
-        foreach (var row in Input)
+        foreach (var row in ParsedInput)
         {
             var passwordPolicy = ExtractPasswordPolicy(row);
             if (passwordPolicy.IsValidPassword(ExtractPassword(row)))
@@ -32,7 +32,7 @@ public class Solver : StringArraySolver
     public override object SolvePartTwo()
     {
         var count = 0;
-        foreach (var row in Input)
+        foreach (var row in ParsedInput)
         {
             var passwordPolicy = ExtractPasswordPolicy(row);
             if (passwordPolicy.IsValidPasswordPartTwo(ExtractPassword(row)))

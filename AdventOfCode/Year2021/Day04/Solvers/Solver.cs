@@ -34,7 +34,7 @@ public class Solver : StringArraySolver
 
     private List<int> GetBingoNumbers()
     {
-        var line = Input[0];
+        var line = ParsedInput[0];
         var bingoNumbers = line.Split(',');
         return bingoNumbers.Select(int.Parse).ToList();
     }
@@ -43,16 +43,16 @@ public class Solver : StringArraySolver
     {
         var boards = new List<BingoBoard>();
         var board = default(BingoBoard);
-        for (var i = 1; i < Input.Length; i++)
+        for (var i = 1; i < ParsedInput.Length; i++)
         {
-            if (string.IsNullOrEmpty(Input[i]))
+            if (string.IsNullOrEmpty(ParsedInput[i]))
             {
                 board = new BingoBoard();
                 boards.Add(board);
             }
             else
             {
-                var numbersAsString = Input[i].Split(" ");
+                var numbersAsString = ParsedInput[i].Split(" ");
                 var numbers = RemoveEmptyItems(numbersAsString.ToList());
                 board.AddRow(numbers.Select(int.Parse).ToArray());
             }

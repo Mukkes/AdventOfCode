@@ -17,12 +17,12 @@ public class Solver : StringArraySolver
 
     public override object SolvePartOne()
     {
-        var nodes = GetNodes(Input[2..]);
+        var nodes = GetNodes(ParsedInput[2..]);
         var steps = 0;
         var node = nodes.Single(node => node.Name == "AAA");
         while (node.Name != "ZZZ")
         {
-            foreach (var c in Input[0])
+            foreach (var c in ParsedInput[0])
             {
                 if (c == 'L')
                 {
@@ -40,12 +40,12 @@ public class Solver : StringArraySolver
 
     public override object SolvePartTwo()
     {
-        var nodes = GetNodes(Input[2..]);
+        var nodes = GetNodes(ParsedInput[2..]);
         var startNodes = GetStartNodes(nodes);
         var steps = new List<long>();
         for (var i = 0; i < startNodes.Count; i++)
         {
-            steps.Add(StepsUntilEndWithZ(startNodes[i], Input[0]));
+            steps.Add(StepsUntilEndWithZ(startNodes[i], ParsedInput[0]));
         }
         var highestSteps = steps.Max();
         var totalSteps = 0L;
