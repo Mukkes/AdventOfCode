@@ -14,6 +14,7 @@
     <None Remove="Year2021\Day02\Input.txt" />
     <None Remove="Year2021\Day03\Input.txt" />
     <None Remove="Year2021\Day04\Input.txt" />
+    <None Remove="Year2021\Day09\Input.txt" />
     <None Remove="Year2021\Day08\Input.txt" />
     <None Remove="Year2021\Day07\Input.txt" />
     <None Remove="Year2021\Day06\Input.txt" />
@@ -51,6 +52,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Year2021\Day04\Input.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Year2021\Day09\Input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Year2021\Day08\Input.txt">
