@@ -27,7 +27,6 @@
 		<None Remove="Year2021\ExampleInputs\Day7.txt" />
 		<None Remove="Year2021\ExampleInputs\Day8.txt" />
 		<None Remove="Year2021\ExampleInputs\Day9.txt" />
-		<None Remove="Year2021\Inputs\Day10.txt" />
 		<None Remove="Year2021\Inputs\Day11.txt" />
 		<None Remove="Year2021\Inputs\Day12.txt" />
 		<None Remove="Year2021\Inputs\Day13.txt" />
@@ -82,9 +81,6 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 		<Content Include="Year2021\Inputs\Day11.txt">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Year2021\Inputs\Day10.txt">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
