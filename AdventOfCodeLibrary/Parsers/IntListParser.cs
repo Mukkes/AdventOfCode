@@ -1,6 +1,4 @@
-﻿using AdventOfCodeLibrary.Parsers;
-
-namespace AdventOfCode.Year2021.Day07.Parsers;
+﻿namespace AdventOfCodeLibrary.Parsers;
 
 public class IntListParser : IntArrayParser, IInputParser<List<int>>
 {

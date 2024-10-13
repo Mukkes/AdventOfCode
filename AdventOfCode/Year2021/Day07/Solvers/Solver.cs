@@ -1,5 +1,4 @@
-﻿using AdventOfCode.Year2021.Day07.Parsers;
-using AdventOfCodeLibrary.Attributes;
+﻿using AdventOfCodeLibrary.Attributes;
 using AdventOfCodeLibrary.Parsers;
 using AdventOfCodeLibrary.Solvers;
 
