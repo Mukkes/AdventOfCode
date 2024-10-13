@@ -16,18 +16,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Remove="Year2021\ExampleInputs\Day10.txt" />
-		<None Remove="Year2021\ExampleInputs\Day11.txt" />
 		<None Remove="Year2021\ExampleInputs\Day12.txt" />
 		<None Remove="Year2021\ExampleInputs\Day13.txt" />
 		<None Remove="Year2021\ExampleInputs\Day14.txt" />
 		<None Remove="Year2021\ExampleInputs\Day15.txt" />
-		<None Remove="Year2021\ExampleInputs\Day5.txt" />
-		<None Remove="Year2021\ExampleInputs\Day6.txt" />
-		<None Remove="Year2021\ExampleInputs\Day7.txt" />
-		<None Remove="Year2021\ExampleInputs\Day8.txt" />
-		<None Remove="Year2021\ExampleInputs\Day9.txt" />
-		<None Remove="Year2021\Inputs\Day11.txt" />
 		<None Remove="Year2021\Inputs\Day12.txt" />
 		<None Remove="Year2021\Inputs\Day13.txt" />
 		<None Remove="Year2021\Inputs\Day14.txt" />
@@ -47,27 +39,6 @@
 		<Content Include="Year2021\ExampleInputs\Day12.txt">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
-		<Content Include="Year2021\ExampleInputs\Day11.txt">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Year2021\ExampleInputs\Day5.txt">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Year2021\ExampleInputs\Day10.txt">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Year2021\ExampleInputs\Day9.txt">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Year2021\ExampleInputs\Day8.txt">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Year2021\ExampleInputs\Day7.txt">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Year2021\ExampleInputs\Day6.txt">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
 		<Content Include="Year2021\Inputs\Day15.txt">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
@@ -78,9 +49,6 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 		<Content Include="Year2021\Inputs\Day12.txt">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Year2021\Inputs\Day11.txt">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
