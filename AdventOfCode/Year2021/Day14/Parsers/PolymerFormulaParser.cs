@@ -2,7 +2,7 @@
 using AdventOfCodeLibrary.Parsers;
 
 namespace AdventOfCode.Year2021.Day14.Parsers;
-internal class Parser : StringArrayParser, IInputParser<PolymerFormula>
+internal class PolymerFormulaParser : StringArrayParser, IInputParser<PolymerFormula>
 {
     public new PolymerFormula Parse(string input)
     {

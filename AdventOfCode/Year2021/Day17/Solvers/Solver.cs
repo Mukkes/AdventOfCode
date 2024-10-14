@@ -1,4 +1,5 @@
 ﻿using AdventOfCode.Year2021.Day17.Models;
+using AdventOfCode.Year2021.Day17.Parsers;
 using AdventOfCodeLibrary.Attributes;
 using AdventOfCodeLibrary.Parsers;
 using AdventOfCodeLibrary.Solvers;
@@ -7,7 +8,7 @@ using System.Drawing;
 namespace AdventOfCode.Year2021.Day17.Solvers;
 
 [Solver]
-public class Solver : BaseSolver<int[]>
+public class Solver : BaseSolver<Target>
 {
     public override int Year => 2021;
 
@@ -17,10 +18,8 @@ public class Solver : BaseSolver<int[]>
 
     public override object? AnswerPartTwo => 3767;
 
-    protected override IInputParser<int[]> InputParser => new IntArrayParser();
+    protected override IInputParser<Target> InputParser => new TargetParser();
 
-    private Target _target = new Target(150, 193, -136, -86);
-    //private Target _target = new Target(20, 30, -10, -5);
     private int _height = int.MinValue;
     private int _count = 0;
 
@@ -46,9 +45,9 @@ public class Solver : BaseSolver<int[]>
     {
         var height = int.MinValue;
         var probe = new Point(0, 0);
-        while (probe.X <= _target.BottomRight.X && probe.Y >= _target.BottomRight.Y)
+        while (probe.X <= ParsedInput.BottomRight.X && probe.Y >= ParsedInput.BottomRight.Y)
         {
-            if (_target.IsInside(probe))
+            if (ParsedInput.IsInside(probe))
             {
                 if (height > _height)
                 {

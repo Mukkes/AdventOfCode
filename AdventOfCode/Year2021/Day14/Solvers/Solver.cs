@@ -17,7 +17,7 @@ public class Solver : BaseSolver<PolymerFormula>
 
     public override object? AnswerPartTwo => 3724343376942;
 
-    protected override IInputParser<PolymerFormula> InputParser => new Parser();
+    protected override IInputParser<PolymerFormula> InputParser => new PolymerFormulaParser();
 
     public override object SolvePartOne()
     {

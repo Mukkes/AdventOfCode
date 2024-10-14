@@ -4,7 +4,7 @@ var solverRegister = new SolverRegister();
 var solver = solverRegister.Single(solver => solver.Year == 2021 && solver.Day == 17);
 
 var exampleInput = @"";
-//solver.SetInput(exampleInput);
+//solver.Input = exampleInput;
 Console.WriteLine(solver.SolvePartOne());
 Console.WriteLine(solver.SolvePartTwo());
 Console.ReadKey();

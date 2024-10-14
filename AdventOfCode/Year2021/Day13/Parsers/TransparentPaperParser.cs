@@ -5,7 +5,7 @@ using AdventOfCodeLibrary.Parsers;
 
 namespace AdventOfCode.Year2021.Day13.Parsers;
 
-internal class Parser : StringArrayParser, IInputParser<TransparentPaper>
+internal class TransparentPaperParser : StringArrayParser, IInputParser<TransparentPaper>
 {
     public new TransparentPaper Parse(string input)
     {

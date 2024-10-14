@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 
 namespace AdventOfCode.Year2021.Day17.Models;
-internal class Target
+public class Target
 {
     internal readonly Point TopLeft;
     internal readonly Point BottomRight;

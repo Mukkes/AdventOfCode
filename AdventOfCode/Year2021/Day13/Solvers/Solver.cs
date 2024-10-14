@@ -18,7 +18,7 @@ public class Solver : BaseSolver<TransparentPaper>
 
     public override object? AnswerPartTwo => "JRZBLGKH";
 
-    protected override IInputParser<TransparentPaper> InputParser => new Parser();
+    protected override IInputParser<TransparentPaper> InputParser => new TransparentPaperParser();
 
     public override object SolvePartOne()
     {
