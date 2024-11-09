@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="Year2020\Day01\Input.txt" />
     <None Remove="Year2020\Day02\Input.txt" />
+    <None Remove="Year2021\Day21\Input.txt" />
     <None Remove="Year2021\Day20\Input.txt" />
     <None Remove="Year2021\Day19\Input.txt" />
     <None Remove="Year2021\Day18\Input.txt" />
@@ -51,6 +52,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Year2020\Day02\Input.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Year2021\Day21\Input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Year2021\Day20\Input.txt">

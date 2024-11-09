@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day21", "Day21\Day21.csproj", "{4ED1CC37-C8D4-4C26-85A1-8D813417DD87}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode", "AdventOfCode\AdventOfCode.csproj", "{E8200C00-FEA3-4275-9EF8-8A3E808AD1CF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCodeLibrary", "AdventOfCodeLibrary\AdventOfCodeLibrary.csproj", "{01B7898C-132D-486A-BDBD-4C7B9F96B1BB}"
@@ -17,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4ED1CC37-C8D4-4C26-85A1-8D813417DD87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4ED1CC37-C8D4-4C26-85A1-8D813417DD87}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4ED1CC37-C8D4-4C26-85A1-8D813417DD87}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4ED1CC37-C8D4-4C26-85A1-8D813417DD87}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E8200C00-FEA3-4275-9EF8-8A3E808AD1CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E8200C00-FEA3-4275-9EF8-8A3E808AD1CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8200C00-FEA3-4275-9EF8-8A3E808AD1CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
