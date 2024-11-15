@@ -30,6 +30,7 @@ public class Scanner : Position
     public bool DoesScannerOverlap(Scanner scanner)
     {
         var count = 0;
+        var otherCount = scanner.Beacons.Count;
         foreach (var beacon in scanner.GetRelativeBeacons())
         {
             if (ContainsBeacon(beacon))
@@ -40,10 +41,14 @@ public class Scanner : Position
                     return true;
                 }
             }
-        }
-        if (count > 3)
-        {
-            return false;
+            else
+            {
+                otherCount--;
+                if ((otherCount + count) < 12)
+                {
+                    return false;
+                }
+            }
         }
         return false;
     }

@@ -68,23 +68,23 @@ public class Position
             case 2:
                 X = clone.X;
                 Y = clone.Z;
-                Z = clone.Y;
+                Z = -clone.Y;
                 break;
             case 3:
                 X = clone.X;
                 Y = -clone.Z;
-                Z = -clone.Y;
+                Z = clone.Y;
                 break;
 
             case 4:
                 X = -clone.X;
-                Y = -clone.Y;
-                Z = clone.Z;
+                Y = clone.Z;
+                Z = clone.Y;
                 break;
             case 5:
                 X = -clone.X;
-                Y = clone.Z;
-                Z = clone.Y;
+                Y = -clone.Z;
+                Z = -clone.Y;
                 break;
             case 6:
                 X = -clone.X;
@@ -94,18 +94,18 @@ public class Position
             case 7:
                 X = -clone.X;
                 Y = -clone.Z;
-                Z = -clone.Y;
+                Z = clone.Y;
                 break;
 
             case 8:
                 X = clone.Y;
-                Y = -clone.X;
-                Z = clone.Z;
+                Y = clone.Z;
+                Z = clone.X;
                 break;
             case 9:
                 X = clone.Y;
-                Y = clone.Z;
-                Z = clone.X;
+                Y = -clone.Z;
+                Z = -clone.X;
                 break;
             case 10:
                 X = clone.Y;
@@ -114,24 +114,24 @@ public class Position
                 break;
             case 11:
                 X = clone.Y;
-                Y = -clone.Z;
-                Z = -clone.X;
+                Y = -clone.X;
+                Z = clone.Z;
                 break;
 
             case 12:
                 X = -clone.Y;
-                Y = -clone.X;
+                Y = clone.X;
                 Z = clone.Z;
                 break;
             case 13:
                 X = -clone.Y;
-                Y = clone.Z;
-                Z = -clone.X;
+                Y = -clone.X;
+                Z = -clone.Z;
                 break;
             case 14:
                 X = -clone.Y;
-                Y = clone.X;
-                Z = clone.Z;
+                Y = clone.Z;
+                Z = -clone.X;
                 break;
             case 15:
                 X = -clone.Y;
@@ -141,23 +141,23 @@ public class Position
 
             case 16:
                 X = clone.Z;
-                Y = clone.Y;
-                Z = -clone.X;
-                break;
-            case 17:
-                X = clone.Z;
                 Y = clone.X;
                 Z = clone.Y;
                 break;
-            case 18:
-                X = clone.Z;
-                Y = -clone.Y;
-                Z = clone.X;
-                break;
-            case 19:
+            case 17:
                 X = clone.Z;
                 Y = -clone.X;
                 Z = -clone.Y;
+                break;
+            case 18:
+                X = clone.Z;
+                Y = clone.Y;
+                Z = -clone.X;
+                break;
+            case 19:
+                X = clone.Z;
+                Y = -clone.Y;
+                Z = clone.X;
                 break;
 
             case 20:
@@ -167,18 +167,18 @@ public class Position
                 break;
             case 21:
                 X = -clone.Z;
-                Y = -clone.X;
-                Z = clone.Y;
-                break;
-            case 22:
-                X = -clone.Z;
                 Y = -clone.Y;
                 Z = -clone.X;
                 break;
-            case 23:
+            case 22:
                 X = -clone.Z;
                 Y = clone.X;
                 Z = -clone.Y;
+                break;
+            case 23:
+                X = -clone.Z;
+                Y = -clone.X;
+                Z = clone.Y;
                 break;
         }
     }
