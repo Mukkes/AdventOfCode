@@ -139,7 +139,7 @@ var exampleInput = @"--- scanner 0 ---
 891,-625,532
 -652,-548,-490
 30,-46,-14";
-solver.Input = exampleInput;
+//solver.Input = exampleInput;
 Console.WriteLine(solver.SolvePartOne());
 Console.WriteLine(solver.SolvePartTwo());
 Console.ReadKey();

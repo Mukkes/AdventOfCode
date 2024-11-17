@@ -11,6 +11,8 @@ public class Scanner : Position
 
     public List<Beacon> Beacons { get; }
 
+    public int Rotation { get; set; }
+
     public void AddBeacons(List<Beacon> beacons)
     {
         foreach (var beacon in beacons)
@@ -70,12 +72,73 @@ public class Scanner : Position
         var beacons = new List<Beacon>();
         foreach (var beacon in Beacons)
         {
-            var x = X + beacon.X;
-            var y = Y + beacon.Y;
-            var z = Z + beacon.Z;
+            var b = Rotate(beacon, Rotation);
+            var x = X + b.X;
+            var y = Y + b.Y;
+            var z = Z + b.Z;
             beacons.Add(new Beacon(x, y, z));
         }
         return beacons;
+    }
+    public Position Rotate(Position position, int rotation)
+    {
+        switch (rotation)
+        {
+            case 0:
+                return new Position(position.X, position.Y, position.Z);
+            case 1:
+                return new Position(position.X, -position.Y, -position.Z);
+            case 2:
+                return new Position(position.X, position.Z, -position.Y);
+            case 3:
+                return new Position(position.X, -position.Z, position.Y);
+
+            case 4:
+                return new Position(-position.X, position.Z, position.Y);
+            case 5:
+                return new Position(-position.X, -position.Z, -position.Y);
+            case 6:
+                return new Position(-position.X, position.Y, -position.Z);
+            case 7:
+                return new Position(-position.X, -position.Y, position.Z);
+
+            case 8:
+                return new Position(position.Y, position.Z, position.X);
+            case 9:
+                return new Position(position.Y, -position.Z, -position.X);
+            case 10:
+                return new Position(position.Y, position.X, -position.Z);
+            case 11:
+                return new Position(position.Y, -position.X, position.Z);
+
+            case 12:
+                return new Position(-position.Y, position.X, position.Z);
+            case 13:
+                return new Position(-position.Y, -position.X, -position.Z);
+            case 14:
+                return new Position(-position.Y, position.Z, -position.X);
+            case 15:
+                return new Position(-position.Y, -position.Z, position.X);
+
+            case 16:
+                return new Position(position.Z, position.X, position.Y);
+            case 17:
+                return new Position(position.Z, -position.X, -position.Y);
+            case 18:
+                return new Position(position.Z, position.Y, -position.X);
+            case 19:
+                return new Position(position.Z, -position.Y, position.X);
+
+            case 20:
+                return new Position(-position.Z, position.Y, position.X);
+            case 21:
+                return new Position(-position.Z, -position.Y, -position.X);
+            case 22:
+                return new Position(-position.Z, position.X, -position.Y);
+            case 23:
+                return new Position(-position.Z, -position.X, position.Y);
+        }
+        throw new NotImplementedException();
     }
 
     public new Scanner Clone()

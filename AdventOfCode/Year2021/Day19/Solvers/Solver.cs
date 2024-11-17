@@ -43,7 +43,7 @@ public class Solver : BaseSolver<List<Scanner>>
                     foreach (var beaconN in _scanners[n].Beacons)
                     {
                         count = 0;
-                        foreach (var beaconF in _foundScanners[f].Beacons)
+                        foreach (var beaconF in _foundScanners[f].GetRelativeBeacons())
                         {
                             count = 0;
                             var difference = GetDifference(beaconF, Rotate(beaconN, r));
@@ -51,7 +51,7 @@ public class Solver : BaseSolver<List<Scanner>>
                             {
                                 var rotatedBeaconND = Rotate(beaconND, r);
                                 var p = AddPosition(rotatedBeaconND, difference);
-                                foreach (var beaconFD in _foundScanners[f].Beacons)
+                                foreach (var beaconFD in _foundScanners[f].GetRelativeBeacons())
                                 {
                                     if (beaconFD.X == p.X && beaconFD.Y == p.Y && beaconFD.Z == p.Z)
                                     {
@@ -64,10 +64,16 @@ public class Solver : BaseSolver<List<Scanner>>
                             {
                                 var scanner = _scanners[n];
                                 scanner.SetPosition(difference);
+                                scanner.Rotation = r;
                                 _foundScanners.Add(scanner);
                                 _scanners.Remove(scanner);
                                 _fullMap.AddBeacons(scanner.GetRelativeBeacons());
+                                n--;
                                 Console.WriteLine(scanner);
+                                //foreach (var b in scanner.GetRelativeBeacons())
+                                //{
+                                //    Console.WriteLine(b);
+                                //}
                                 break;
                             }
                         }
@@ -83,7 +89,7 @@ public class Solver : BaseSolver<List<Scanner>>
                 }
             }
         }
-        return 0;
+        return _fullMap.Beacons.Count;
     }
 
     public Position Rotate(Position position, int rotation)
@@ -210,13 +216,6 @@ public class Solver : BaseSolver<List<Scanner>>
 
     public override object SolvePartTwo()
     {
-        for (var i = 0; i < _scanners.Count; i++)
-        {
-            if (DoScannersOverlap(_fullMap, _scanners[i]))
-            {
-                i = -1;
-            }
-        }
         var maxDistance = int.MinValue;
         foreach (var scanner1 in _foundScanners)
         {
