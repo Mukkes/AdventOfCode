@@ -153,67 +153,6 @@ public class Solver : BaseSolver<List<Scanner>>
         throw new NotImplementedException();
     }
 
-    //public override object SolvePartOne()
-    //{
-    //    var startingScanner = 0;
-    //    _scanners = ParsedInput;
-    //    _fullMap = _scanners[startingScanner].Clone();
-    //    _foundScanners = new List<Scanner>
-    //    {
-    //        _scanners[startingScanner]
-    //    };
-    //    _scanners.Remove(_scanners[startingScanner]);
-    //    for (var i = 0; i < _foundScanners.Count; i++)
-    //    {
-    //        for (var j = 0; j < _scanners.Count; j++)
-    //        {
-    //            //Console.WriteLine("Does " + _foundScanners[i] + " overlap with " + _scanners[j]);
-    //            //if (DoScannersOverlap(_foundScanners[i], _scanners[j]))
-    //            if (DoScannersOverlap(_fullMap, _scanners[j]))
-    //            {
-    //                j = -1;
-    //            }
-    //        }
-    //    }
-    //    foreach (var beacon in _fullMap.Beacons)
-    //    {
-    //        Console.WriteLine(beacon);
-    //    }
-    //    return _fullMap.Beacons.Count;
-    //}
-
-    private bool DoScannersOverlap(Scanner scanner1, Scanner scanner2)
-    {
-        foreach (var beacon1 in scanner1.Beacons)
-        {
-            for (int i = 0; i < 24; i++)
-            {
-                var clone = scanner2.Clone();
-                clone.Rotate(i);
-                for (var j = 0; j < 15; j++)
-                {
-                    var difference = GetDifference(beacon1, clone.Beacons[j]);
-                    clone.SetPosition(difference);
-                    if (_fullMap.DoesScannerOverlap(clone))
-                    {
-                        //var count = _fullMap.Beacons.Count;
-                        _fullMap.AddBeacons(clone.GetRelativeBeacons());
-                        Console.WriteLine(clone);
-                        //if (_fullMap.Beacons.Count > count)
-                        //{
-                            scanner2.SetPosition(difference);
-                            _foundScanners.Add(scanner2);
-                            _scanners.Remove(scanner2);
-                            return true;
-                        //}
-                        //return false;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
     public override object SolvePartTwo()
     {
         var maxDistance = int.MinValue;
