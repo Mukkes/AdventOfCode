@@ -12,7 +12,7 @@ public class Solver : BaseSolver<string[]>
 
     public override int Day => 12;
 
-    public override object? AnswerPartOne => 7407;
+    public override object? AnswerPartOne => 7407L;
 
     public override object? AnswerPartTwo => null;
 

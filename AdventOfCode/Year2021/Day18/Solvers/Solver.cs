@@ -13,9 +13,9 @@ public class Solver : BaseSolver<List<Pair>>
 
     public override int Day => 18;
 
-    public override object? AnswerPartOne => 4480;
+    public override object? AnswerPartOne => 4480L;
 
-    public override object? AnswerPartTwo => 4676;
+    public override object? AnswerPartTwo => 4676L;
 
     protected override IInputParser<List<Pair>> InputParser => new PairParser();
 

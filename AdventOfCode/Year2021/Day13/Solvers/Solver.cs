@@ -16,7 +16,14 @@ public class Solver : BaseSolver<TransparentPaper>
 
     public override object? AnswerPartOne => 684;
 
-    public override object? AnswerPartTwo => "JRZBLGKH";
+    //public override object? AnswerPartTwo => "JRZBLGKH";
+    public override object? AnswerPartTwo =>
+@"..##.###..####.###..#.....##..#..#.#..#
+...#.#..#....#.#..#.#....#..#.#.#..#..#
+...#.#..#...#..###..#....#....##...####
+...#.###...#...#..#.#....#.##.#.#..#..#
+#..#.#.#..#....#..#.#....#..#.#.#..#..#
+.##..#..#.####.###..####..###.#..#.#..#";
 
     protected override IInputParser<TransparentPaper> InputParser => new TransparentPaperParser();
 
@@ -39,23 +46,31 @@ public class Solver : BaseSolver<TransparentPaper>
             Fold(coordinates, fold.Direction, fold.Position);
         }
         var paper = coordinates.Distinct().OrderBy(c => c.Y).ThenBy(c => c.X);
-        Console.WriteLine();
+        var result = "";
+        //Console.WriteLine();
         for (int y = 0; y < 6; y++)
         {
             for (int x = 0; x < 39; x++)
             {
                 if (coordinates.Contains(new Point2D(x, y)))
                 {
-                    Console.Write('#');
+                    result += "#";
+                    //Console.Write('#');
                 }
                 else
                 {
-                    Console.Write('.');
+                    result += ".";
+                    //Console.Write('.');
                 }
             }
-            Console.WriteLine();
+            if (y < 5)
+            {
+                result += Environment.NewLine;
+            }
+            //Console.WriteLine();
         }
-        return 0;
+        return result;
+        //return "JRZBLGKH";
     }
 
     private void Fold(List<Point2D> coordinates, char direction, int position)
