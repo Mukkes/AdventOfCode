@@ -1,4 +1,5 @@
 ﻿using AdventOfCode.Year2021.Day19.Models;
+using AdventOfCodeLibrary.Models;
 using AdventOfCodeLibrary.Parsers;
 
 namespace AdventOfCode.Year2021.Day19.Parsers;
@@ -21,8 +22,8 @@ internal class BeaconScannerParser : StringArrayParser, IInputParser<List<Scanne
             else
             {
                 var beaconInfo = s.Split(',');
-                var beacon = new Beacon(int.Parse(beaconInfo[0]), int.Parse(beaconInfo[1]), int.Parse(beaconInfo[2]));
-                scanners.Last().Beacons.Add(beacon);
+                var beaconVector = new Vector3D(int.Parse(beaconInfo[0]), int.Parse(beaconInfo[1]), int.Parse(beaconInfo[2]));
+                scanners.Last().BeaconVectors.Add(beaconVector);
             }
         }
         return scanners;
