@@ -1,9 +1,16 @@
-﻿namespace AdventOfCode.Year2021.Day19.Models;
-public class Beacon : Position
-{
-    public Beacon(int x, int y, int z) : base(x, y, z) { }
+﻿using AdventOfCodeLibrary.Models;
 
-    public Beacon(Position position) : this(position.X, position.Y, position.Z) { }
+namespace AdventOfCode.Year2021.Day19.Models;
+public class Beacon
+{
+    public Beacon(int x, int y, int z) : this(new Point3D(x, y, z)) { }
+
+    public Beacon(Point3D point)
+    {
+        Position = point;
+    }
+
+    public Point3D Position { get; set; }
 
     public override string ToString()
     {

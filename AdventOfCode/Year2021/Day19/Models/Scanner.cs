@@ -1,7 +1,9 @@
-﻿namespace AdventOfCode.Year2021.Day19.Models;
-public class Scanner : Position
+﻿using AdventOfCodeLibrary.Models;
+
+namespace AdventOfCode.Year2021.Day19.Models;
+public class Scanner
 {
-    public Scanner(int id) : base(0, 0, 0)
+    public Scanner(int id)
     {
         Id = id;
         Beacons = new List<Beacon>();
@@ -9,9 +11,13 @@ public class Scanner : Position
 
     public int Id { get; }
 
-    public List<Beacon> Beacons { get; }
+    public Point3D Position { get; set; }
 
     public int Rotation { get; set; }
+
+    public List<Vector3D> BeaconVectors { get; set; }
+
+    public List<Beacon> Beacons { get; }
 
     public void AddBeacons(List<Beacon> beacons)
     {
@@ -29,37 +35,11 @@ public class Scanner : Position
         }
     }
 
-    public bool DoesScannerOverlap(Scanner scanner)
-    {
-        var count = 0;
-        var otherCount = scanner.Beacons.Count;
-        foreach (var beacon in scanner.GetRelativeBeacons())
-        {
-            if (ContainsBeacon(beacon))
-            {
-                count++;
-                if (count >= 12)
-                {
-                    return true;
-                }
-            }
-            else
-            {
-                otherCount--;
-                if ((otherCount + count) < 12)
-                {
-                    return false;
-                }
-            }
-        }
-        return false;
-    }
-
     public bool ContainsBeacon(Beacon beacon)
     {
         foreach (var scannerBeacon in Beacons)
         {
-            if (scannerBeacon.Equals(beacon))
+            if (scannerBeacon.Position.Equals(beacon.Position))
             {
                 return true;
             }
@@ -72,92 +52,87 @@ public class Scanner : Position
         var beacons = new List<Beacon>();
         foreach (var beacon in Beacons)
         {
-            var b = Rotate(beacon, Rotation);
-            var x = X + b.X;
-            var y = Y + b.Y;
-            var z = Z + b.Z;
-            beacons.Add(new Beacon(x, y, z));
+            var b = Rotate(beacon.Position, Rotation);
+            var x = Position.X + b.X;
+            var y = Position.Y + b.Y;
+            var z = Position.Z + b.Z;
+            beacons.Add(new Beacon((int)x, (int)y, (int)z));
         }
         return beacons;
     }
-    public Position Rotate(Position position, int rotation)
+
+    public Point3D Rotate(Point3D point, int rotation)
     {
         switch (rotation)
         {
             case 0:
-                return new Position(position.X, position.Y, position.Z);
+                return new Point3D(point.X, point.Y, point.Z);
             case 1:
-                return new Position(position.X, -position.Y, -position.Z);
+                return new Point3D(point.X, -point.Y, -point.Z);
             case 2:
-                return new Position(position.X, position.Z, -position.Y);
+                return new Point3D(point.X, point.Z, -point.Y);
             case 3:
-                return new Position(position.X, -position.Z, position.Y);
+                return new Point3D(point.X, -point.Z, point.Y);
 
             case 4:
-                return new Position(-position.X, position.Z, position.Y);
+                return new Point3D(-point.X, point.Z, point.Y);
             case 5:
-                return new Position(-position.X, -position.Z, -position.Y);
+                return new Point3D(-point.X, -point.Z, -point.Y);
             case 6:
-                return new Position(-position.X, position.Y, -position.Z);
+                return new Point3D(-point.X, point.Y, -point.Z);
             case 7:
-                return new Position(-position.X, -position.Y, position.Z);
+                return new Point3D(-point.X, -point.Y, point.Z);
 
             case 8:
-                return new Position(position.Y, position.Z, position.X);
+                return new Point3D(point.Y, point.Z, point.X);
             case 9:
-                return new Position(position.Y, -position.Z, -position.X);
+                return new Point3D(point.Y, -point.Z, -point.X);
             case 10:
-                return new Position(position.Y, position.X, -position.Z);
+                return new Point3D(point.Y, point.X, -point.Z);
             case 11:
-                return new Position(position.Y, -position.X, position.Z);
+                return new Point3D(point.Y, -point.X, point.Z);
 
             case 12:
-                return new Position(-position.Y, position.X, position.Z);
+                return new Point3D(-point.Y, point.X, point.Z);
             case 13:
-                return new Position(-position.Y, -position.X, -position.Z);
+                return new Point3D(-point.Y, -point.X, -point.Z);
             case 14:
-                return new Position(-position.Y, position.Z, -position.X);
+                return new Point3D(-point.Y, point.Z, -point.X);
             case 15:
-                return new Position(-position.Y, -position.Z, position.X);
+                return new Point3D(-point.Y, -point.Z, point.X);
 
             case 16:
-                return new Position(position.Z, position.X, position.Y);
+                return new Point3D(point.Z, point.X, point.Y);
             case 17:
-                return new Position(position.Z, -position.X, -position.Y);
+                return new Point3D(point.Z, -point.X, -point.Y);
             case 18:
-                return new Position(position.Z, position.Y, -position.X);
+                return new Point3D(point.Z, point.Y, -point.X);
             case 19:
-                return new Position(position.Z, -position.Y, position.X);
+                return new Point3D(point.Z, -point.Y, point.X);
 
             case 20:
-                return new Position(-position.Z, position.Y, position.X);
+                return new Point3D(-point.Z, point.Y, point.X);
             case 21:
-                return new Position(-position.Z, -position.Y, -position.X);
+                return new Point3D(-point.Z, -point.Y, -point.X);
             case 22:
-                return new Position(-position.Z, position.X, -position.Y);
+                return new Point3D(-point.Z, point.X, -point.Y);
             case 23:
-                return new Position(-position.Z, -position.X, position.Y);
+                return new Point3D(-point.Z, -point.X, point.Y);
         }
         throw new NotImplementedException();
     }
 
-    public new Scanner Clone()
+    // Kan weg?
+    public Scanner Clone()
     {
         var scanner = new Scanner(Id);
-        scanner.SetPosition(this);
+        scanner.Position = Position;
+        scanner.Rotation = Rotation;
         foreach (var beacon in Beacons)
         {
-            scanner.Beacons.Add(new Beacon(beacon));
+            scanner.Beacons.Add(new Beacon(beacon.Position));
         }
         return scanner;
-    }
-
-    public override void Rotate(int i)
-    {
-        foreach (var beacon in Beacons)
-        {
-            beacon.Rotate(i);
-        }
     }
 
     public override string ToString()

@@ -1,6 +1,7 @@
 ﻿using AdventOfCode.Year2021.Day19.Models;
 using AdventOfCode.Year2021.Day19.Parsers;
 using AdventOfCodeLibrary.Attributes;
+using AdventOfCodeLibrary.Models;
 using AdventOfCodeLibrary.Parsers;
 using AdventOfCodeLibrary.Solvers;
 
@@ -19,9 +20,17 @@ public class Solver : BaseSolver<List<Scanner>>
 
     protected override IInputParser<List<Scanner>> InputParser => new BeaconScannerParser();
 
+    private List<Point3D> Scanners;
+    private List<Point3D> Beacons;
     private List<Scanner> _scanners;
     private List<Scanner> _foundScanners;
     private Scanner _fullMap;
+
+    private void ScannerFound(Scanner scanner)
+    {
+        _foundScanners.Add(scanner);
+        _scanners.Remove(scanner);
+    }
 
     public override object SolvePartOne()
     {
@@ -46,14 +55,14 @@ public class Solver : BaseSolver<List<Scanner>>
                         foreach (var beaconF in _foundScanners[f].GetRelativeBeacons())
                         {
                             count = 0;
-                            var difference = GetDifference(beaconF, Rotate(beaconN, r));
+                            var difference = GetDifference(beaconF.Position, Rotate(beaconN.Position, r));
                             foreach (var beaconND in _scanners[n].Beacons)
                             {
-                                var rotatedBeaconND = Rotate(beaconND, r);
+                                var rotatedBeaconND = Rotate(beaconND.Position, r);
                                 var p = AddPosition(rotatedBeaconND, difference);
                                 foreach (var beaconFD in _foundScanners[f].GetRelativeBeacons())
                                 {
-                                    if (beaconFD.X == p.X && beaconFD.Y == p.Y && beaconFD.Z == p.Z)
+                                    if (beaconFD.Position.X == p.X && beaconFD.Position.Y == p.Y && beaconFD.Position.Z == p.Z)
                                     {
                                         count++;
                                         break;
@@ -63,17 +72,12 @@ public class Solver : BaseSolver<List<Scanner>>
                             if (count >= 12)
                             {
                                 var scanner = _scanners[n];
-                                scanner.SetPosition(difference);
+                                scanner.Position = difference;
                                 scanner.Rotation = r;
                                 _foundScanners.Add(scanner);
                                 _scanners.Remove(scanner);
                                 _fullMap.AddBeacons(scanner.GetRelativeBeacons());
                                 n--;
-                                Console.WriteLine(scanner);
-                                //foreach (var b in scanner.GetRelativeBeacons())
-                                //{
-                                //    Console.WriteLine(b);
-                                //}
                                 break;
                             }
                         }
@@ -92,63 +96,63 @@ public class Solver : BaseSolver<List<Scanner>>
         return _fullMap.Beacons.Count;
     }
 
-    public Position Rotate(Position position, int rotation)
+    public Point3D Rotate(Point3D point, int rotation)
     {
         switch (rotation)
         {
             case 0:
-                return new Position(position.X, position.Y, position.Z);
+                return new Point3D(point.X, point.Y, point.Z);
             case 1:
-                return new Position(position.X, -position.Y, -position.Z);
+                return new Point3D(point.X, -point.Y, -point.Z);
             case 2:
-                return new Position(position.X, position.Z, -position.Y);
+                return new Point3D(point.X, point.Z, -point.Y);
             case 3:
-                return new Position(position.X, -position.Z, position.Y);
+                return new Point3D(point.X, -point.Z, point.Y);
 
             case 4:
-                return new Position(-position.X, position.Z, position.Y);
+                return new Point3D(-point.X, point.Z, point.Y);
             case 5:
-                return new Position(-position.X, -position.Z, -position.Y);
+                return new Point3D(-point.X, -point.Z, -point.Y);
             case 6:
-                return new Position(-position.X, position.Y, -position.Z);
+                return new Point3D(-point.X, point.Y, -point.Z);
             case 7:
-                return new Position(-position.X, -position.Y, position.Z);
+                return new Point3D(-point.X, -point.Y, point.Z);
 
             case 8:
-                return new Position(position.Y, position.Z, position.X);
+                return new Point3D(point.Y, point.Z, point.X);
             case 9:
-                return new Position(position.Y, -position.Z, -position.X);
+                return new Point3D(point.Y, -point.Z, -point.X);
             case 10:
-                return new Position(position.Y, position.X, -position.Z);
+                return new Point3D(point.Y, point.X, -point.Z);
             case 11:
-                return new Position(position.Y, -position.X, position.Z);
+                return new Point3D(point.Y, -point.X, point.Z);
 
             case 12:
-                return new Position(-position.Y, position.X, position.Z);
+                return new Point3D(-point.Y, point.X, point.Z);
             case 13:
-                return new Position(-position.Y, -position.X, -position.Z);
+                return new Point3D(-point.Y, -point.X, -point.Z);
             case 14:
-                return new Position(-position.Y, position.Z, -position.X);
+                return new Point3D(-point.Y, point.Z, -point.X);
             case 15:
-                return new Position(-position.Y, -position.Z, position.X);
+                return new Point3D(-point.Y, -point.Z, point.X);
 
             case 16:
-                return new Position(position.Z, position.X, position.Y);
+                return new Point3D(point.Z, point.X, point.Y);
             case 17:
-                return new Position(position.Z, -position.X, -position.Y);
+                return new Point3D(point.Z, -point.X, -point.Y);
             case 18:
-                return new Position(position.Z, position.Y, -position.X);
+                return new Point3D(point.Z, point.Y, -point.X);
             case 19:
-                return new Position(position.Z, -position.Y, position.X);
+                return new Point3D(point.Z, -point.Y, point.X);
 
             case 20:
-                return new Position(-position.Z, position.Y, position.X);
+                return new Point3D(-point.Z, point.Y, point.X);
             case 21:
-                return new Position(-position.Z, -position.Y, -position.X);
+                return new Point3D(-point.Z, -point.Y, -point.X);
             case 22:
-                return new Position(-position.Z, position.X, -position.Y);
+                return new Point3D(-point.Z, point.X, -point.Y);
             case 23:
-                return new Position(-position.Z, -position.X, position.Y);
+                return new Point3D(-point.Z, -point.X, point.Y);
         }
         throw new NotImplementedException();
     }
@@ -173,27 +177,25 @@ public class Solver : BaseSolver<List<Scanner>>
         return maxDistance;
     }
 
-    private Position GetDifference(Position position1, Position position2)
+    private Point3D GetDifference(Point3D point1, Point3D point2)
     {
-        var position = new Position();
-        position.X = position1.X - position2.X;
-        position.Y = position1.Y - position2.Y;
-        position.Z = position1.Z - position2.Z;
-        return position;
+        var x = point1.X - point2.X;
+        var y = point1.Y - point2.Y;
+        var z = point1.Z - point2.Z;
+        return new Point3D(x, y, z);
     }
 
-    private Position AddPosition(Position position1, Position position2)
+    private Point3D AddPosition(Point3D point1, Point3D point2)
     {
-        var position = new Position();
-        position.X = position1.X + position2.X;
-        position.Y = position1.Y + position2.Y;
-        position.Z = position1.Z + position2.Z;
-        return position;
+        var x = point1.X + point2.X;
+        var y = point1.Y + point2.Y;
+        var z = point1.Z + point2.Z;
+        return new Point3D(x, y, z);
     }
 
     private int ScannerDistance(Scanner scanner1, Scanner scanner2)
     {
-        var difference = GetDifference(scanner1, scanner2);
+        var difference = GetDifference(scanner1.Position, scanner2.Position);
         return int.Abs(difference.X) + int.Abs(difference.Y) + int.Abs(difference.Z);
     }
 }
