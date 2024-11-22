@@ -16,12 +16,18 @@ public readonly struct Point3D
 
     public static bool operator ==(Point3D pointA, Point3D pointB)
     {
-        return pointA.Equals(pointB);
+        return
+            pointA.X == pointB.X &&
+            pointA.Y == pointB.Y &&
+            pointA.Z == pointB.Z;
     }
 
     public static bool operator !=(Point3D pointA, Point3D pointB)
     {
-        return !pointA.Equals(pointB);
+        return
+            pointA.X != pointB.X ||
+            pointA.Y != pointB.Y ||
+            pointA.Z != pointB.Z;
     }
 
     public static Point3D operator +(Point3D point, Vector3D vector)
@@ -42,6 +48,20 @@ public readonly struct Point3D
     public static Vector3D operator -(Point3D pointA, Point3D pointB)
     {
         return new Vector3D(pointA.X - pointB.X, pointA.Y - pointB.Y, pointA.Z - pointB.Z);
+    }
+
+    public override int GetHashCode()
+    {
+        return X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
+    }
+
+    public override bool Equals(object? obj)
+    {
+        return 
+            (obj is Point3D point) &&
+            X == point.X &&
+            Y == point.Y &&
+            Z == point.Z;
     }
 
     public override string ToString()
