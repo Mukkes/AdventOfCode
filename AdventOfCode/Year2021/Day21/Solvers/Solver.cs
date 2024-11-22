@@ -56,13 +56,10 @@ public class Solver : BaseSolver<string[]>
                 universesPlayer2 += universes;
                 return;
             }
-            Play1(position1, position2, score1, score2, 2, universes, 3);
-            Play1(position1, position2, score1, score2, 2, universes, 4);
-            Play1(position1, position2, score1, score2, 2, universes, 5);
-            Play1(position1, position2, score1, score2, 2, universes, 6);
-            Play1(position1, position2, score1, score2, 2, universes, 7);
-            Play1(position1, position2, score1, score2, 2, universes, 8);
-            Play1(position1, position2, score1, score2, 2, universes, 9);
+            for (var i = 3; i <= 9; i++)
+            {
+                Play1(position1, position2, score1, score2, 2, universes, i);
+            }
         }
         else
         {
@@ -71,13 +68,10 @@ public class Solver : BaseSolver<string[]>
                 universesPlayer1 += universes;
                 return;
             }
-            Play2(position1, position2, score1, score2, 1, universes, 3);
-            Play2(position1, position2, score1, score2, 1, universes, 4);
-            Play2(position1, position2, score1, score2, 1, universes, 5);
-            Play2(position1, position2, score1, score2, 1, universes, 6);
-            Play2(position1, position2, score1, score2, 1, universes, 7);
-            Play2(position1, position2, score1, score2, 1, universes, 8);
-            Play2(position1, position2, score1, score2, 1, universes, 9);
+            for (var i = 3; i <= 9; i++)
+            {
+                Play2(position1, position2, score1, score2, 1, universes, i);
+            }
         }
     }
 
