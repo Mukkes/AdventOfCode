@@ -14,7 +14,7 @@ public class Solver : BaseSolver<string[]>
 
     public override object? AnswerPartOne => 678468;
 
-    //public override object? AnswerPartTwo => ;
+    public override object? AnswerPartTwo => 131180774190079L;
 
     protected override IInputParser<string[]> InputParser => new StringArrayParser();
 
@@ -29,7 +29,76 @@ public class Solver : BaseSolver<string[]>
 
     public override object SolvePartTwo()
     {
-        return 0;
+        var players = GetPlayers();
+        PlayPartTwo(players[0].Position, players[1].Position, 0, 0, 1, 1);
+        return universesPlayer1 >= universesPlayer2 ? universesPlayer1 : universesPlayer2;
+    }
+
+    private long universesPlayer1 = 0L;
+    private long universesPlayer2 = 0L;
+    private Dictionary<int, int> Universes = new Dictionary<int, int>()
+    {
+        { 3, 1 },
+        { 4, 3 },
+        { 5, 6 },
+        { 6, 7 },
+        { 7, 6 },
+        { 8, 3 },
+        { 9, 1 },
+    };
+
+    private void PlayPartTwo(int position1, int position2, int score1, int score2, int turn, long universes)
+    {
+        if (turn == 1)
+        {
+            if (score2 >= 21)
+            {
+                universesPlayer2 += universes;
+                return;
+            }
+            Play1(position1, position2, score1, score2, 2, universes, 3);
+            Play1(position1, position2, score1, score2, 2, universes, 4);
+            Play1(position1, position2, score1, score2, 2, universes, 5);
+            Play1(position1, position2, score1, score2, 2, universes, 6);
+            Play1(position1, position2, score1, score2, 2, universes, 7);
+            Play1(position1, position2, score1, score2, 2, universes, 8);
+            Play1(position1, position2, score1, score2, 2, universes, 9);
+        }
+        else
+        {
+            if (score1 >= 21)
+            {
+                universesPlayer1 += universes;
+                return;
+            }
+            Play2(position1, position2, score1, score2, 1, universes, 3);
+            Play2(position1, position2, score1, score2, 1, universes, 4);
+            Play2(position1, position2, score1, score2, 1, universes, 5);
+            Play2(position1, position2, score1, score2, 1, universes, 6);
+            Play2(position1, position2, score1, score2, 1, universes, 7);
+            Play2(position1, position2, score1, score2, 1, universes, 8);
+            Play2(position1, position2, score1, score2, 1, universes, 9);
+        }
+    }
+
+    private void Play1(int position1, int position2, int score1, int score2, int turn, long universes, int dice)
+    {
+        var newPosition = position1 + dice;
+        if (newPosition > 10)
+        {
+            newPosition -= 10;
+        }
+        PlayPartTwo(newPosition, position2, score1 + newPosition, score2, turn, universes * Universes.GetValueOrDefault(dice));
+    }
+
+    private void Play2(int position1, int position2, int score1, int score2, int turn, long universes, int dice)
+    {
+        var newPosition = position2 + dice;
+        if (newPosition > 10)
+        {
+            newPosition -= 10;
+        }
+        PlayPartTwo(position1, newPosition, score1, score2 + newPosition, turn, universes * Universes.GetValueOrDefault(dice));
     }
 
     private void Play(List<Player> players, DeterministicDice dice)
