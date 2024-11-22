@@ -1,32 +1,49 @@
 ﻿using AdventOfCodeLibrary.Attributes;
 using AdventOfCodeLibrary.Solvers;
-using System.Collections;
+using System.Reflection;
 
 namespace AdventOfCodeLibrary;
 
-public class SolverRegister : IEnumerable<IBaseSolver>
+public class SolverRegister
 {
-    private readonly IReadOnlyList<IBaseSolver> _solvers;
+    private readonly IReadOnlyList<string> _assemblyFileNames;
 
-    public SolverRegister()
+    public SolverRegister(List<string> assemblyFileNames)
     {
-        _solvers = GetSolvers() ?? new List<IBaseSolver>();
+        _assemblyFileNames = assemblyFileNames.AsReadOnly();
+        Solvers = GetSolvers().AsReadOnly();
     }
 
-    public IEnumerator<IBaseSolver> GetEnumerator()
+    public IReadOnlyList<IBaseSolver> Solvers { get; }
+
+    private IEnumerable<Assembly> Assemblies
     {
-        return _solvers.GetEnumerator();
+        get
+        {
+            foreach (var assemblyFileName in _assemblyFileNames)
+            {
+                yield return Assembly.LoadFrom(assemblyFileName);
+            }
+        }
     }
 
-    IEnumerator IEnumerable.GetEnumerator()
+    private IEnumerable<Type> Types
     {
-        return GetEnumerator();
+        get
+        {
+            var types = new List<Type>();
+            foreach (var assembly in Assemblies)
+            {
+                types.AddRange(assembly.GetTypes());
+            }
+            return types;
+        }
     }
 
     private List<IBaseSolver> GetSolvers()
     {
         var solvers = new List<IBaseSolver>();
-        foreach (Type type in GetTypesFromAssemblies())
+        foreach (Type type in Types)
         {
             if (type.GetCustomAttributes(typeof(SolverAttribute), true).Length > 0)
             {
@@ -41,16 +58,5 @@ public class SolverRegister : IEnumerable<IBaseSolver>
             .OrderBy(solver => solver.Year)
             .ThenBy(solver => solver.Day)
             .ToList();
-    }
-
-    private IEnumerable<Type> GetTypesFromAssemblies()
-    {
-        foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
-        {
-            foreach (Type type in assembly.GetTypes())
-            {
-                yield return type;
-            }
-        }
     }
 }

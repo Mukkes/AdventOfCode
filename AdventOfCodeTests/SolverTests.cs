@@ -17,8 +17,8 @@ public class SolverTests
     {
         get
         {
-            var solvers = new SolverRegister();
-            foreach (var solver in solvers)
+            var solverRegister = new SolverRegister(["AdventOfCode.dll"]);
+            foreach (var solver in solverRegister.Solvers)
             {
                 yield return new object[] { solver };
             }

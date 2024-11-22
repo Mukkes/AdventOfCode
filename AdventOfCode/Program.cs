@@ -1,8 +1,8 @@
 ﻿using AdventOfCodeLibrary;
 using System.Diagnostics;
 
-var solverRegister = new SolverRegister();
-var solver = solverRegister.Single(solver => solver.Year == 2021 && solver.Day == 13);
+var solverRegister = new SolverRegister(["AdventOfCode.dll"]);
+var solver = solverRegister.Solvers.Single(solver => solver.Year == 2021 && solver.Day == 13);
 
 var exampleInput = @"";
 //solver.Input = exampleInput;
@@ -22,6 +22,7 @@ stopwatch.Stop();
 var timeSpanPartTwo = stopwatch.Elapsed - timeSpanPartOne;
 var timeSpanTotal = stopwatch.Elapsed;
 
+Console.WriteLine();
 Console.WriteLine("Part one: " + timeSpanPartOne);
 Console.WriteLine("Part two: " + timeSpanPartTwo);
 Console.WriteLine("Total: " + timeSpanTotal);
