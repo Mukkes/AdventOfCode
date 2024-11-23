@@ -53,29 +53,29 @@ public class Solver : BaseSolver<string[]>
         return sum;
     }
 
-    private List<Point2D> GetGalaxies()
+    private List<Point2DOld> GetGalaxies()
     {
-        var galaxies = new List<Point2D>();
+        var galaxies = new List<Point2DOld>();
         for (var x = 0; x < ParsedInput.Length; x++)
         {
             for (var y = 0; y < ParsedInput[x].Length; y++)
             {
                 if (ParsedInput[x][y] == '#')
                 {
-                    galaxies.Add(new Point2D(x, y));
+                    galaxies.Add(new Point2DOld(x, y));
                 }
             }
         }
         return galaxies;
     }
 
-    private void Expand(List<Point2D> galaxies, long expandingDistance)
+    private void Expand(List<Point2DOld> galaxies, long expandingDistance)
     {
         ExpandX(galaxies, expandingDistance);
         ExpandY(galaxies, expandingDistance);
     }
 
-    private void ExpandX(List<Point2D> galaxies, long expandingDistance)
+    private void ExpandX(List<Point2DOld> galaxies, long expandingDistance)
     {
         var totalExpandingDistance = 0L;
         for (var x = 0; x < ParsedInput.Length; x++)
@@ -94,7 +94,7 @@ public class Solver : BaseSolver<string[]>
         }
     }
 
-    private void ExpandY(List<Point2D> galaxies, long expandingDistance)
+    private void ExpandY(List<Point2DOld> galaxies, long expandingDistance)
     {
         var totalExpandingDistance = 0L;
         for (var y = 0; y < ParsedInput[0].Length; y++)

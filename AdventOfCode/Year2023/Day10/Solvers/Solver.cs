@@ -19,6 +19,8 @@ public class Solver : BaseSolver<string[]>
 
     protected override IInputParser<string[]> InputParser => new StringArrayParser();
 
+    private LinkedList<Pipe> _pipes = new LinkedList<Pipe>();
+
     public override object SolvePartOne()
     {
         var startPipe = GeneratePipeSystem();
@@ -35,9 +37,10 @@ public class Solver : BaseSolver<string[]>
             map[x] = new char[ParsedInput[x].Length];
             for (var y = 0; y < ParsedInput[x].Length; y++)
             {
-                if (points.Contains(new Point2D(x, y)))
+                if (points.Contains(new Point2DOld(x, y)))
                 {
-                    map[x][y] = ParsedInput[x][y];
+                    //map[x][y] = ParsedInput[x][y];
+                    map[x][y] = ' ';
                 }
                 else
                 {
@@ -85,28 +88,28 @@ public class Solver : BaseSolver<string[]>
 
     private Pipe? FirstStep(Pipe currentPipe)
     {
-        var northPoint = new Point2D(currentPipe.X - 1, currentPipe.Y);
+        var northPoint = new Point2DOld(currentPipe.X - 1, currentPipe.Y);
         var northChar = GetCharFromInput(northPoint);
         if (northChar == '|' || northChar == '7' || northChar == 'F')
         {
             return new Pipe(northPoint, northChar, currentPipe);
         }
 
-        var southPoint = new Point2D(currentPipe.X + 1, currentPipe.Y);
+        var southPoint = new Point2DOld(currentPipe.X + 1, currentPipe.Y);
         var southChar = GetCharFromInput(southPoint);
         if (southChar == '|' || southChar == 'L' || southChar == 'J')
         {
             return new Pipe(southPoint, southChar, currentPipe);
         }
 
-        var westPoint = new Point2D(currentPipe.X, currentPipe.Y - 1);
+        var westPoint = new Point2DOld(currentPipe.X, currentPipe.Y - 1);
         var westChar = GetCharFromInput(westPoint);
         if (westChar == '-' || westChar == 'L' || westChar == 'F')
         {
             return new Pipe(westPoint, westChar, currentPipe);
         }
 
-        var eastPoint = new Point2D(currentPipe.X, currentPipe.Y + 1);
+        var eastPoint = new Point2DOld(currentPipe.X, currentPipe.Y + 1);
         var eastChar = GetCharFromInput(eastPoint);
         if (eastChar == '-' || eastChar == 'J' || eastChar == '7')
         {
@@ -116,7 +119,7 @@ public class Solver : BaseSolver<string[]>
         return null;
     }
 
-    private char GetCharFromInput(Point2D point2D)
+    private char GetCharFromInput(Point2DOld point2D)
     {
         try
         {
@@ -126,9 +129,9 @@ public class Solver : BaseSolver<string[]>
         return '.';
     }
 
-    private List<Point2D> GetAllPipePoints(Pipe startPipe)
+    private List<Point2DOld> GetAllPipePoints(Pipe startPipe)
     {
-        var points = new List<Point2D>();
+        var points = new List<Point2DOld>();
         do
         {
             points.Add(startPipe);
@@ -144,7 +147,7 @@ public class Solver : BaseSolver<string[]>
         {
             for (var y = 0; y < ParsedInput[x].Length; y++)
             {
-                if (points.Contains(new Point2D(x, y)))
+                if (points.Contains(new Point2DOld(x, y)))
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                 }

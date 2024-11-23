@@ -2,7 +2,7 @@
 using System.Diagnostics;
 
 var solverRegister = new SolverRegister(["AdventOfCode.dll"]);
-var solver = solverRegister.Solvers.Single(solver => solver.Year == 2021 && solver.Day == 19);
+var solver = solverRegister.Solvers.Single(solver => solver.Year == 2023 && solver.Day == 10);
 
 //var exampleInput = @"";
 //solver.Input = exampleInput;

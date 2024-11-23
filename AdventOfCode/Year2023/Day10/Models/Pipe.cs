@@ -1,12 +1,12 @@
 ﻿using AdventOfCodeLibrary.Models;
 
 namespace AdventOfCode.Year2023.Day10.Models;
-public class Pipe : Point2D
+public class Pipe : Point2DOld
 {
     public char Symbol { get; }
     public Pipe? Previous { get; set; }
 
-    public Pipe(Point2D point2D, char symbol) : this(point2D.X, point2D.Y, symbol)
+    public Pipe(Point2DOld point2D, char symbol) : this(point2D.X, point2D.Y, symbol)
     {
     }
 
@@ -14,7 +14,7 @@ public class Pipe : Point2D
     {
     }
 
-    public Pipe(Point2D point2D, char symbol, Pipe? previous) : this(point2D.X, point2D.Y, symbol, previous)
+    public Pipe(Point2DOld point2D, char symbol, Pipe? previous) : this(point2D.X, point2D.Y, symbol, previous)
     {
     }
 
@@ -24,43 +24,43 @@ public class Pipe : Point2D
         Previous = previous;
     }
 
-    private Point2D[] GetNeighbors()
+    private Point2DOld[] GetNeighbors()
     {
-        var neighbors = new Point2D[2];
+        var neighbors = new Point2DOld[2];
         if (Symbol == '|')
         {
-            neighbors[0] = new Point2D(X - 1, Y);
-            neighbors[1] = new Point2D(X + 1, Y);
+            neighbors[0] = new Point2DOld(X - 1, Y);
+            neighbors[1] = new Point2DOld(X + 1, Y);
         }
         else if (Symbol == '-')
         {
-            neighbors[0] = new Point2D(X, Y - 1);
-            neighbors[1] = new Point2D(X, Y + 1);
+            neighbors[0] = new Point2DOld(X, Y - 1);
+            neighbors[1] = new Point2DOld(X, Y + 1);
         }
         else if (Symbol == 'L')
         {
-            neighbors[0] = new Point2D(X - 1, Y);
-            neighbors[1] = new Point2D(X, Y + 1);
+            neighbors[0] = new Point2DOld(X - 1, Y);
+            neighbors[1] = new Point2DOld(X, Y + 1);
         }
         else if (Symbol == 'J')
         {
-            neighbors[0] = new Point2D(X - 1, Y);
-            neighbors[1] = new Point2D(X, Y - 1);
+            neighbors[0] = new Point2DOld(X - 1, Y);
+            neighbors[1] = new Point2DOld(X, Y - 1);
         }
         else if (Symbol == '7')
         {
-            neighbors[0] = new Point2D(X + 1, Y);
-            neighbors[1] = new Point2D(X, Y - 1);
+            neighbors[0] = new Point2DOld(X + 1, Y);
+            neighbors[1] = new Point2DOld(X, Y - 1);
         }
         else if (Symbol == 'F')
         {
-            neighbors[0] = new Point2D(X + 1, Y);
-            neighbors[1] = new Point2D(X, Y + 1);
+            neighbors[0] = new Point2DOld(X + 1, Y);
+            neighbors[1] = new Point2DOld(X, Y + 1);
         }
         return neighbors;
     }
 
-    public Point2D GetNext()
+    public Point2DOld GetNext()
     {
         var neighbors = GetNeighbors();
         if (!neighbors[0].Equals(Previous))

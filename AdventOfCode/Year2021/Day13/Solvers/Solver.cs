@@ -52,7 +52,7 @@ public class Solver : BaseSolver<TransparentPaper>
         {
             for (int x = 0; x < 39; x++)
             {
-                if (coordinates.Contains(new Point2D(x, y)))
+                if (coordinates.Contains(new Point2DOld(x, y)))
                 {
                     result += "#";
                     //Console.Write('#');
@@ -73,7 +73,7 @@ public class Solver : BaseSolver<TransparentPaper>
         //return "JRZBLGKH";
     }
 
-    private void Fold(List<Point2D> coordinates, char direction, int position)
+    private void Fold(List<Point2DOld> coordinates, char direction, int position)
     {
         if (direction == 'x')
         {
@@ -85,14 +85,14 @@ public class Solver : BaseSolver<TransparentPaper>
         }
     }
 
-    private void FoldX(List<Point2D> coordinates, int position)
+    private void FoldX(List<Point2DOld> coordinates, int position)
     {
         for (int i = 0; i < coordinates.Count; i++)
         {
             if (coordinates[i].X > position)
             {
                 var j = coordinates[i].X - position;
-                coordinates[i] = new Point2D(position - j, coordinates[i].Y);
+                coordinates[i] = new Point2DOld(position - j, coordinates[i].Y);
             }
             if (coordinates[i].X == position)
             {
@@ -101,14 +101,14 @@ public class Solver : BaseSolver<TransparentPaper>
         }
     }
 
-    private void FoldY(List<Point2D> coordinates, int position)
+    private void FoldY(List<Point2DOld> coordinates, int position)
     {
         for (int i = 0; i < coordinates.Count; i++)
         {
             if (coordinates[i].Y > position)
             {
                 var j = coordinates[i].Y - position;
-                coordinates[i] = new Point2D(coordinates[i].X, position - j);
+                coordinates[i] = new Point2DOld(coordinates[i].X, position - j);
             }
             if (coordinates[i].Y == position)
             {

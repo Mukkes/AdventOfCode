@@ -40,12 +40,12 @@ public class Map2D<T>
         return columns;
     }
 
-    public T GetCoord(Point2D point)
+    public T GetCoord(Point2DOld point)
     {
         return GetCoord((int)point.X, (int)point.Y);
     }
 
-    public void SetCoord(Point2D point, T value)
+    public void SetCoord(Point2DOld point, T value)
     {
         SetCoord((int)point.X, (int)point.Y, value);
     }

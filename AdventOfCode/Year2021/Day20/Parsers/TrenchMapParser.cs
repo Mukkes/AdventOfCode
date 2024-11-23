@@ -13,7 +13,7 @@ internal class TrenchMapParser : StringArrayParser, IInputParser<TrenchMap>
         {
             for (var j = 0; j < inputArray[i].Length; j++)
             {
-                var point = new Point2D(i, j);
+                var point = new Point2DOld(i, j);
                 var pixel = inputArray[i][j];
                 trenchMap.AddPixel(point, pixel);
             }

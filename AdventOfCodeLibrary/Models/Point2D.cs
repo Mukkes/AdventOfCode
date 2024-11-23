@@ -1,24 +1,29 @@
 ﻿namespace AdventOfCodeLibrary.Models;
-public class Point2D
+public readonly struct Point2D
 {
-    public long X { get; set; }
-    public long Y { get; set; }
+    public int X { get; init; }
+    public int Y { get; init; }
 
-    public Point2D(Point2D point2D) : this(point2D.X, point2D.Y)
-    {
-    }
+    public Point2D() : this(0, 0) { }
 
-    public Point2D(long x, long y)
+    public Point2D(int x, int y)
     {
         X = x;
         Y = y;
     }
 
-    public long GetDistance(Point2D point)
+    public static bool operator ==(Point2D pointA, Point2D pointB)
     {
-        var distanceX = Math.Abs(X - point.X);
-        var distanceY = Math.Abs(Y - point.Y);
-        return distanceX + distanceY;
+        return
+            pointA.X == pointB.X &&
+            pointA.Y == pointB.Y;
+    }
+
+    public static bool operator !=(Point2D pointA, Point2D pointB)
+    {
+        return
+            pointA.X != pointB.X ||
+            pointA.Y != pointB.Y;
     }
 
     public override int GetHashCode()
@@ -28,18 +33,14 @@ public class Point2D
 
     public override bool Equals(object? obj)
     {
-        if (obj is Point2D point)
-        {
-            if (X == point.X && Y == point.Y)
-            {
-                return true;
-            }
-        }
-        return false;
+        return 
+            (obj is Point2D point) &&
+            X == point.X &&
+            Y == point.Y;
     }
 
     public override string ToString()
     {
-        return X.ToString() + ',' + Y.ToString();
+        return X + "," + Y;
     }
 }

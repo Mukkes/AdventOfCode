@@ -15,7 +15,7 @@ internal class TransparentPaperParser : StringArrayParser, IInputParser<Transpar
             if (line.Contains(','))
             {
                 var lineArray = line.Split(',');
-                transparentPaper.Points.Add(new Point2D(int.Parse(lineArray[0]), int.Parse(lineArray[1])));
+                transparentPaper.Points.Add(new Point2DOld(int.Parse(lineArray[0]), int.Parse(lineArray[1])));
             }
             else if (line.Contains('x'))
             {
