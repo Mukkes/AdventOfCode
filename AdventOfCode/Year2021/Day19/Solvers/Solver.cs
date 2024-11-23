@@ -56,6 +56,7 @@ public class Solver : BaseSolver<List<Scanner>>
                         {
                             count = 0;
                             var difference = beaconF - Rotate(beaconN, r);
+                            var checkedBeacons = 0;
                             foreach (var beaconND in scanners[n].BeaconVectors)
                             {
                                 var rotatedBeaconND = Rotate(beaconND, r);
@@ -63,6 +64,11 @@ public class Solver : BaseSolver<List<Scanner>>
                                 if (foundScanners[f].BeaconPositions.Contains(p))
                                 {
                                     count++;
+                                }
+                                checkedBeacons++;
+                                if (scanners[n].BeaconVectors.Count - (checkedBeacons - count) < 12)
+                                {
+                                    break;
                                 }
                             }
                             if (count >= 12)
