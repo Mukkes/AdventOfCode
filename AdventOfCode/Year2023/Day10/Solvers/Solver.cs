@@ -19,135 +19,181 @@ public class Solver : BaseSolver<string[]>
 
     protected override IInputParser<string[]> InputParser => new StringArrayParser();
 
-    private LinkedList<Pipe> _pipes = new LinkedList<Pipe>();
+    private LinkedList<Pipe> _pipes = new();
 
     public override object SolvePartOne()
     {
-        var startPipe = GeneratePipeSystem();
-        return startPipe.Length() / 2;
+        if (_pipes.Count <= 0)
+        {
+            GeneratePipeSystem();
+        }
+        //PrintPath();
+        return _pipes.Count / 2;
     }
 
     public override object SolvePartTwo()
     {
-        var startPipe = GeneratePipeSystem();
-        var points = GetAllPipePoints(startPipe);
-        var map = new char[ParsedInput.Length][];
-        for (var x = 0; x < ParsedInput.Length; x++)
+        if (_pipes.Count <= 0)
         {
-            map[x] = new char[ParsedInput[x].Length];
-            for (var y = 0; y < ParsedInput[x].Length; y++)
-            {
-                if (points.Contains(new Point2DOld(x, y)))
-                {
-                    //map[x][y] = ParsedInput[x][y];
-                    map[x][y] = ' ';
-                }
-                else
-                {
-                    map[x][y] = '.';
-                }
-                Console.Write(map[x][y]);
-            }
-            Console.WriteLine();
+            GeneratePipeSystem();
         }
+        //var points = new HashSet<Point2D>(_pipes.Select(pipe => pipe.Point));
+        //var map = new char[ParsedInput.Length][];
+        //for (var y = 0; y < ParsedInput.Length; y++)
+        //{
+        //    map[y] = new char[ParsedInput[y].Length];
+        //    for (var x = 0; x < ParsedInput[y].Length; x++)
+        //    {
+        //        if (points.Contains(new Point2D(x, y)))
+        //        {
+        //            //map[y][x] = ParsedInput[y][x];
+        //            map[y][x] = ' ';
+        //        }
+        //        else
+        //        {
+        //            map[y][x] = '.';
+        //        }
+        //        Console.Write(map[y][x]);
+        //    }
+        //    Console.WriteLine();
+        //}
         return 0;
     }
 
-    private Pipe GeneratePipeSystem()
+    private void GeneratePipeSystem()
     {
-        var startPipe = FindS();
-        var pipe = FirstStep(startPipe);
+        var sPoint = FindS();
+        var pipe = CreateFirstPipe(sPoint);
+        _pipes.AddLast(pipe);
         while (true)
         {
-            var point = pipe.GetNext();
+            var point = GetNextPoint(pipe);
             var nextChar = GetCharFromInput(point);
             if (nextChar == 'S')
             {
-                startPipe.Previous = pipe;
                 break;
             }
-            pipe = new Pipe(point, nextChar, pipe);
+            pipe = PipeFactory.GetPipe(nextChar, point, pipe.CardinalDirection);
+            _pipes.AddLast(pipe);
         }
-        return startPipe;
     }
 
-    private Pipe? FindS()
+    private Point2D FindS()
     {
-        for (var x = 0; x < ParsedInput.Length; x++)
+        for (var y = 0; y < ParsedInput.Length; y++)
         {
-            for (var y = 0; y < ParsedInput[x].Length; y++)
+            for (var x = 0; x < ParsedInput[y].Length; x++)
             {
-                if (ParsedInput[x][y] == 'S')
+                if (ParsedInput[y][x] == 'S')
                 {
-                    return new Pipe(x, y, 'S');
+                    return new Point2D(x, y);
                 }
             }
         }
-        return null;
+        throw new Exception();
     }
 
-    private Pipe? FirstStep(Pipe currentPipe)
+    private Pipe CreateFirstPipe(Point2D sPoint)
     {
-        var northPoint = new Point2DOld(currentPipe.X - 1, currentPipe.Y);
+        var northPoint = GetNextPoint(sPoint, CardinalDirection.North);
         var northChar = GetCharFromInput(northPoint);
         if (northChar == '|' || northChar == '7' || northChar == 'F')
         {
-            return new Pipe(northPoint, northChar, currentPipe);
+            return new SPipe(sPoint, CardinalDirection.North);
         }
 
-        var southPoint = new Point2DOld(currentPipe.X + 1, currentPipe.Y);
+        var southPoint = GetNextPoint(sPoint, CardinalDirection.South);
         var southChar = GetCharFromInput(southPoint);
         if (southChar == '|' || southChar == 'L' || southChar == 'J')
         {
-            return new Pipe(southPoint, southChar, currentPipe);
+            return new SPipe(sPoint, CardinalDirection.South);
         }
 
-        var westPoint = new Point2DOld(currentPipe.X, currentPipe.Y - 1);
+        var westPoint = GetNextPoint(sPoint, CardinalDirection.West);
         var westChar = GetCharFromInput(westPoint);
         if (westChar == '-' || westChar == 'L' || westChar == 'F')
         {
-            return new Pipe(westPoint, westChar, currentPipe);
+            return new SPipe(sPoint, CardinalDirection.West);
         }
 
-        var eastPoint = new Point2DOld(currentPipe.X, currentPipe.Y + 1);
+        var eastPoint = GetNextPoint(sPoint, CardinalDirection.East);
         var eastChar = GetCharFromInput(eastPoint);
         if (eastChar == '-' || eastChar == 'J' || eastChar == '7')
         {
-            return new Pipe(eastPoint, eastChar, currentPipe);
+            return new SPipe(sPoint, CardinalDirection.East);
         }
 
-        return null;
+        throw new Exception();
     }
 
-    private char GetCharFromInput(Point2DOld point2D)
+    private Point2D GetNextPoint(Pipe pipe)
+    {
+        return GetNextPoint(pipe.Point, pipe.CardinalDirection);
+    }
+
+    private Point2D GetNextPoint(Point2D point, CardinalDirection cardinalDirection)
+    {
+        switch (cardinalDirection)
+        {
+            case CardinalDirection.North:
+                return new Point2D(point.X, point.Y - 1);
+            case CardinalDirection.South:
+                return new Point2D(point.X, point.Y + 1);
+            case CardinalDirection.West:
+                return new Point2D(point.X - 1, point.Y);
+            case CardinalDirection.East:
+                return new Point2D(point.X + 1, point.Y);
+        }
+        throw new Exception();
+    }
+
+    //private Pipe GeneratePipeSystem()
+    //{
+    //    var startPipe = FindS();
+    //    var pipe = FirstStep(startPipe);
+    //    while (true)
+    //    {
+    //        var point = pipe.GetNext();
+    //        var nextChar = GetCharFromInput(point);
+    //        if (nextChar == 'S')
+    //        {
+    //            startPipe.Previous = pipe;
+    //            break;
+    //        }
+    //        pipe = new Pipe(point, nextChar, pipe);
+    //    }
+    //    return startPipe;
+    //}
+
+    private char GetCharFromInput(Point2D point)
     {
         try
         {
-            return ParsedInput[(int)point2D.X][(int)point2D.Y];
+            return ParsedInput[point.Y][point.X];
         }
         catch { }
         return '.';
     }
 
-    private List<Point2DOld> GetAllPipePoints(Pipe startPipe)
-    {
-        var points = new List<Point2DOld>();
-        do
-        {
-            points.Add(startPipe);
-            startPipe = startPipe.Previous;
-        } while (startPipe.Symbol != 'S');
-        return points;
-    }
+    //private List<Point2DOld> GetAllPipePoints(Pipe startPipe)
+    //{
+    //    var points = new List<Point2DOld>();
+    //    do
+    //    {
+    //        points.Add(startPipe);
+    //        startPipe = startPipe.Previous;
+    //    } while (startPipe.Symbol != 'S');
+    //    return points;
+    //}
 
-    private void PrintPath(Pipe startPipe)
+    private void PrintPath()
     {
-        var points = GetAllPipePoints(startPipe);
-        for (var x = 0; x < ParsedInput.Length; x++)
+        var points = new HashSet<Point2D>(_pipes.Select(pipe => pipe.Point));
+        for (var y = 0; y < ParsedInput.Length; y++)
         {
-            for (var y = 0; y < ParsedInput[x].Length; y++)
+            for (var x = 0; x < ParsedInput[y].Length; x++)
             {
-                if (points.Contains(new Point2DOld(x, y)))
+                if (points.Contains(new Point2D(x, y)))
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
@@ -155,7 +201,7 @@ public class Solver : BaseSolver<string[]>
                 {
                     Console.ResetColor();
                 }
-                Console.Write(ParsedInput[x][y]);
+                Console.Write(ParsedInput[y][x]);
             }
             Console.WriteLine();
         }
