@@ -2,9 +2,14 @@
 using System.Diagnostics;
 
 var solverRegister = new SolverRegister(["AdventOfCode.dll"]);
-var solver = solverRegister.Solvers.Single(solver => solver.Year == 2023 && solver.Day == 10);
+var solver = solverRegister.Solvers.Single(solver => solver.Year == 2024 && solver.Day == 1);
 
-//var exampleInput = @"";
+var exampleInput = @"3   4
+4   3
+2   5
+1   3
+3   9
+3   3";
 //solver.Input = exampleInput;
 
 var stopwatch = new Stopwatch();
