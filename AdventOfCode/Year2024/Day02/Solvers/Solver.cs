@@ -11,9 +11,9 @@ public class Solver : BaseSolver<string[]>
 
     public override int Day => 2;
 
-    //public override object? AnswerPartOne => ;
+    public override object? AnswerPartOne => 390;
 
-    //public override object? AnswerPartTwo => ;
+    public override object? AnswerPartTwo => 439;
 
     protected override IInputParser<string[]> InputParser => new StringArrayParser();
 
