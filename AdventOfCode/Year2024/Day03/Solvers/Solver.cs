@@ -20,36 +20,25 @@ public class Solver : BaseSolver<string>
 
     public override object SolvePartOne()
     {
-        var sum = 0L;
-        var mulInstructions = 
-            Regex.Matches(ParsedInput, @"(mul\(\d{1,3},\d{1,3}\))")
-            .Cast<Match>()
-            .Select(match => match.Value);
-        foreach (var mulInstruction in mulInstructions)
-        {
-            var numbers = 
-                Regex.Matches(mulInstruction, @"(\d{1,3})")
-                .Cast<Match>()
-                .Select(match => int.Parse(match.Value))
-                .ToList();
-            sum += numbers[0] * numbers[1];
-        }
-        return sum;
+        return GetSumMulInstructions(ParsedInput);
     }
 
     public override object SolvePartTwo()
     {
+        var strippedInput = Regex.Replace(ParsedInput, @"don't\(\)[\s\S]*?do\(\)" , "");
+        return GetSumMulInstructions(strippedInput);
+    }
+
+    private long GetSumMulInstructions(string input)
+    {
         var sum = 0L;
-        var stripedInput = Regex.Replace(ParsedInput, @"don't\(\)[\s\S]*?do\(\)" , "");
         var mulInstructions =
-            Regex.Matches(stripedInput, @"(mul\(\d{1,3},\d{1,3}\))")
-            .Cast<Match>()
+            Regex.Matches(input, @"(mul\(\d{1,3},\d{1,3}\))")
             .Select(match => match.Value);
         foreach (var mulInstruction in mulInstructions)
         {
             var numbers =
                 Regex.Matches(mulInstruction, @"(\d{1,3})")
-                .Cast<Match>()
                 .Select(match => int.Parse(match.Value))
                 .ToList();
             sum += numbers[0] * numbers[1];
