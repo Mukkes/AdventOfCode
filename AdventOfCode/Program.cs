@@ -2,9 +2,9 @@
 using System.Diagnostics;
 
 var solverRegister = new SolverRegister(["AdventOfCode.dll"]);
-var solver = solverRegister.Solvers.Single(solver => solver.Year == 2024 && solver.Day == 3);
+var solver = solverRegister.Solvers.Single(solver => solver.Year == 2024 && solver.Day == 4);
 
-var exampleInput = @"xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))";
+var exampleInput = @"";
 //solver.Input = exampleInput;
 
 var stopwatch = new Stopwatch();
