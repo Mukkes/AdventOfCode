@@ -3,19 +3,19 @@
 namespace AdventOfCode.Year2023.Day10.Models;
 public class JPipe : Pipe
 {
-    public JPipe(Point2D point, CardinalDirection cardinalDirection) : base(point)
+    public JPipe(Point2D point, Direction cardinalDirection) : base(point)
     {
-        if (cardinalDirection == CardinalDirection.East)
+        if (cardinalDirection == Direction.East)
         {
-            CardinalDirection = CardinalDirection.North;
+            CardinalDirection = Direction.North;
         }
         else
         {
-            CardinalDirection = CardinalDirection.West;
+            CardinalDirection = Direction.West;
         }
     }
 
     public override char Symbol => 'J';
 
-    public override CardinalDirection CardinalDirection { get; }
+    public override Direction CardinalDirection { get; }
 }

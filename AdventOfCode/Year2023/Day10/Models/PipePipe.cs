@@ -3,19 +3,19 @@
 namespace AdventOfCode.Year2023.Day10.Models;
 public class PipePipe : Pipe
 {
-    public PipePipe(Point2D point, CardinalDirection cardinalDirection) : base(point)
+    public PipePipe(Point2D point, Direction cardinalDirection) : base(point)
     {
-        if (cardinalDirection == CardinalDirection.North)
+        if (cardinalDirection == Direction.North)
         {
-            CardinalDirection = CardinalDirection.North;
+            CardinalDirection = Direction.North;
         }
         else
         {
-            CardinalDirection = CardinalDirection.South;
+            CardinalDirection = Direction.South;
         }
     }
 
     public override char Symbol => '|';
 
-    public override CardinalDirection CardinalDirection { get; }
+    public override Direction CardinalDirection { get; }
 }

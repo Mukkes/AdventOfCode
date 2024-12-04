@@ -95,32 +95,32 @@ public class Solver : BaseSolver<string[]>
 
     private Pipe CreateFirstPipe(Point2D sPoint)
     {
-        var northPoint = GetNextPoint(sPoint, CardinalDirection.North);
+        var northPoint = GetNextPoint(sPoint, Direction.North);
         var northChar = GetCharFromInput(northPoint);
         if (northChar == '|' || northChar == '7' || northChar == 'F')
         {
-            return new SPipe(sPoint, CardinalDirection.North);
+            return new SPipe(sPoint, Direction.North);
         }
 
-        var southPoint = GetNextPoint(sPoint, CardinalDirection.South);
+        var southPoint = GetNextPoint(sPoint, Direction.South);
         var southChar = GetCharFromInput(southPoint);
         if (southChar == '|' || southChar == 'L' || southChar == 'J')
         {
-            return new SPipe(sPoint, CardinalDirection.South);
+            return new SPipe(sPoint, Direction.South);
         }
 
-        var westPoint = GetNextPoint(sPoint, CardinalDirection.West);
+        var westPoint = GetNextPoint(sPoint, Direction.West);
         var westChar = GetCharFromInput(westPoint);
         if (westChar == '-' || westChar == 'L' || westChar == 'F')
         {
-            return new SPipe(sPoint, CardinalDirection.West);
+            return new SPipe(sPoint, Direction.West);
         }
 
-        var eastPoint = GetNextPoint(sPoint, CardinalDirection.East);
+        var eastPoint = GetNextPoint(sPoint, Direction.East);
         var eastChar = GetCharFromInput(eastPoint);
         if (eastChar == '-' || eastChar == 'J' || eastChar == '7')
         {
-            return new SPipe(sPoint, CardinalDirection.East);
+            return new SPipe(sPoint, Direction.East);
         }
 
         throw new Exception();
@@ -131,17 +131,17 @@ public class Solver : BaseSolver<string[]>
         return GetNextPoint(pipe.Point, pipe.CardinalDirection);
     }
 
-    private Point2D GetNextPoint(Point2D point, CardinalDirection cardinalDirection)
+    private Point2D GetNextPoint(Point2D point, Direction cardinalDirection)
     {
         switch (cardinalDirection)
         {
-            case CardinalDirection.North:
+            case Direction.North:
                 return new Point2D(point.X, point.Y - 1);
-            case CardinalDirection.South:
+            case Direction.South:
                 return new Point2D(point.X, point.Y + 1);
-            case CardinalDirection.West:
+            case Direction.West:
                 return new Point2D(point.X - 1, point.Y);
-            case CardinalDirection.East:
+            case Direction.East:
                 return new Point2D(point.X + 1, point.Y);
         }
         throw new Exception();

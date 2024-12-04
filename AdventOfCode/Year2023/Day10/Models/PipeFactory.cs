@@ -3,7 +3,7 @@
 namespace AdventOfCode.Year2023.Day10.Models;
 public static class PipeFactory
 {
-    public static Pipe GetPipe(char c, Point2D point, CardinalDirection cardinalDirection)
+    public static Pipe GetPipe(char c, Point2D point, Direction cardinalDirection)
     {
         switch (c)
         {

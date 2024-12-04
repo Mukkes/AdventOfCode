@@ -3,19 +3,19 @@
 namespace AdventOfCode.Year2023.Day10.Models;
 public class LPipe : Pipe
 {
-    public LPipe(Point2D point, CardinalDirection cardinalDirection) : base(point)
+    public LPipe(Point2D point, Direction cardinalDirection) : base(point)
     {
-        if (cardinalDirection == CardinalDirection.West)
+        if (cardinalDirection == Direction.West)
         {
-            CardinalDirection = CardinalDirection.North;
+            CardinalDirection = Direction.North;
         }
         else
         {
-            CardinalDirection = CardinalDirection.East;
+            CardinalDirection = Direction.East;
         }
     }
 
     public override char Symbol => 'L';
 
-    public override CardinalDirection CardinalDirection { get; }
+    public override Direction CardinalDirection { get; }
 }
