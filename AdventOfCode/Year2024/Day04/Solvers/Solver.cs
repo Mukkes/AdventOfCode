@@ -64,9 +64,9 @@ public class Solver : BaseSolver<string[]>
 
     private bool IsX_MAS(Point2D point)
     {
-        var s1 = GetCharFromInput(point.GetNextPoint(Direction.Northwest)) + "A" + GetCharFromInput(point.GetNextPoint(Direction.Southeast));
-        var s2 = GetCharFromInput(point.GetNextPoint(Direction.Northeast)) + "A" + GetCharFromInput(point.GetNextPoint(Direction.Southwest));
-        return (s1 == "MAS" || s1 == "SAM") && (s2 == "MAS" || s2 == "SAM");
+        var s1 = string.Empty + GetCharFromInput(point.GetNextPoint(Direction.Northwest)) + GetCharFromInput(point.GetNextPoint(Direction.Southeast));
+        var s2 = string.Empty + GetCharFromInput(point.GetNextPoint(Direction.Northeast)) + GetCharFromInput(point.GetNextPoint(Direction.Southwest));
+        return (s1 == "MS" || s1 == "SM") && (s2 == "MS" || s2 == "SM");
     }
 
     private string GetNextThreeCharacter(Point2D point, Direction direction)
