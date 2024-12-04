@@ -3,19 +3,19 @@
 namespace AdventOfCode.Year2023.Day10.Models;
 public class FPipe : Pipe
 {
-    public FPipe(Point2D point, CardinalDirection cardinalDirection) : base(point)
+    public FPipe(Point2D point, Direction cardinalDirection) : base(point)
     {
-        if (cardinalDirection == CardinalDirection.North)
+        if (cardinalDirection == Direction.North)
         {
-            CardinalDirection = CardinalDirection.East;
+            CardinalDirection = Direction.East;
         }
         else
         {
-            CardinalDirection = CardinalDirection.South;
+            CardinalDirection = Direction.South;
         }
     }
 
     public override char Symbol => 'F';
 
-    public override CardinalDirection CardinalDirection { get; }
+    public override Direction CardinalDirection { get; }
 }

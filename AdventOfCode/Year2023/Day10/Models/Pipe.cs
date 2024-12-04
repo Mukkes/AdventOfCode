@@ -10,5 +10,5 @@ public abstract class Pipe
 
     public Point2D Point { get; }
     public abstract char Symbol { get; }
-    public abstract CardinalDirection CardinalDirection { get; }
+    public abstract Direction CardinalDirection { get; }
 }
