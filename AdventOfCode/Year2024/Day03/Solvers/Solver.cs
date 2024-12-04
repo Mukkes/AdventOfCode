@@ -31,18 +31,9 @@ public class Solver : BaseSolver<string>
 
     private long GetSumMulInstructions(string input)
     {
-        var sum = 0L;
-        var mulInstructions =
-            Regex.Matches(input, @"(mul\(\d{1,3},\d{1,3}\))")
-            .Select(match => match.Value);
-        foreach (var mulInstruction in mulInstructions)
-        {
-            var numbers =
-                Regex.Matches(mulInstruction, @"(\d{1,3})")
-                .Select(match => int.Parse(match.Value))
-                .ToList();
-            sum += numbers[0] * numbers[1];
-        }
-        return sum;
+        return
+            Regex.Matches(input, @"(mul\((?<num1>\d{1,3}),(?<num2>\d{1,3})\))")
+            .Select(match => int.Parse(match.Groups["num1"].Value) * int.Parse(match.Groups["num2"].Value))
+            .Sum();
     }
 }
