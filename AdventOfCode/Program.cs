@@ -32,7 +32,7 @@ var exampleInput = @"47|53
 75,97,47,61,53
 61,13,29
 97,13,75,29,47";
-solver.Input = exampleInput;
+//solver.Input = exampleInput;
 
 var stopwatch = new Stopwatch();
 stopwatch.Start();
