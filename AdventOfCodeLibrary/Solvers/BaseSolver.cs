@@ -32,11 +32,7 @@ public abstract class BaseSolver<TOutputType> : IBaseSolver
             {
                 _parsedInput = InputParser.Parse(_input);
             }
-            if (_parsedInput == null)
-            {
-                throw new Exception("_parsedInput can't be null.");
-            }
-            return _parsedInput;
+            return _parsedInput!;
         }
     }
 

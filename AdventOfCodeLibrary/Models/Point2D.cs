@@ -12,6 +12,7 @@ public readonly struct Point2D
         Y = y;
     }
 
+    [Obsolete("Maby move to Map2D?")]
     public Point2D GetNextPoint(Direction direction)
     {
         switch (direction)

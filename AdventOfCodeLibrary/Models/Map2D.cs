@@ -1,6 +1,7 @@
 ﻿using System.Data.Common;
 
 namespace AdventOfCodeLibrary.Models;
+[Obsolete("This should be a dictionary")]
 public class Map2D<T>
 {
     private List<List<T>> _map = new List<List<T>>();
