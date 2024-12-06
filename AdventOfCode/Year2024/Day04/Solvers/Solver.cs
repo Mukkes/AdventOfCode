@@ -64,8 +64,8 @@ public class Solver : BaseSolver<string[]>
 
     private bool IsX_MAS(Point2D point)
     {
-        var s1 = string.Empty + GetCharFromInput(point.GetNextPoint(Direction.Northwest)) + GetCharFromInput(point.GetNextPoint(Direction.Southeast));
-        var s2 = string.Empty + GetCharFromInput(point.GetNextPoint(Direction.Northeast)) + GetCharFromInput(point.GetNextPoint(Direction.Southwest));
+        var s1 = string.Empty + GetCharFromInput(point.GetAdjacentPoint(Direction.Northwest)) + GetCharFromInput(point.GetAdjacentPoint(Direction.Southeast));
+        var s2 = string.Empty + GetCharFromInput(point.GetAdjacentPoint(Direction.Northeast)) + GetCharFromInput(point.GetAdjacentPoint(Direction.Southwest));
         return (s1 == "MS" || s1 == "SM") && (s2 == "MS" || s2 == "SM");
     }
 
@@ -75,7 +75,7 @@ public class Solver : BaseSolver<string[]>
         var nextPoint = point;
         for (var i = 0; i < 3; i++)
         {
-            nextPoint = nextPoint.GetNextPoint(direction);
+            nextPoint = nextPoint.GetAdjacentPoint(direction);
             result += GetCharFromInput(nextPoint);
         }
         return result;
