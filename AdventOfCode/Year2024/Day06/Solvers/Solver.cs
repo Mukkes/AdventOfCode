@@ -2,6 +2,7 @@
 using AdventOfCodeLibrary.Models;
 using AdventOfCodeLibrary.Parsers;
 using AdventOfCodeLibrary.Solvers;
+using AdventOfCodeLibrary.Util;
 
 namespace AdventOfCode.Year2024.Day06.Solvers;
 
@@ -18,23 +19,15 @@ public class Solver : BaseSolver<Grid<char>>
 
     protected override IInputParser<Grid<char>> InputParser => new GridParser();
 
-    private List<Direction> _directions = new List<Direction>()
-    {
-        Direction.North,
-        Direction.East,
-        Direction.South,
-        Direction.West
-    };
-
     public override object SolvePartOne()
     {
         var passedPositions = new HashSet<Point2D>();
-        var startPoint = ParsedInput.FindValue('^');
+        var startPoint = ParsedInput.First(x => x.Value.Equals('^')).Key;
         var direction = Direction.North;
         var currentPosition = new KeyValuePair<Point2D, char>(startPoint, '.');
         while (true)
         {
-            var nextPosition = ParsedInput.GetAdjacent(currentPosition.Key, direction);
+            var nextPosition = ParsedInput.GetAdjacentOrDefault(currentPosition.Key, direction);
             if (nextPosition.Value == '#')
             {
                 direction = GetNextDirection(direction);
@@ -57,11 +50,12 @@ public class Solver : BaseSolver<Grid<char>>
 
     private Direction GetNextDirection(Direction direction)
     {
-        var index = _directions.IndexOf(direction);
-        if (index + 1 < _directions.Count)
+        var directions = DirectionUtil.GetBasicDirectionsClockWise();
+        var index = directions.IndexOf(direction);
+        if (index + 1 < directions.Count)
         {
-            return _directions[index + 1];
+            return directions[index + 1];
         }
-        return _directions.First();
+        return directions.First();
     }
 }

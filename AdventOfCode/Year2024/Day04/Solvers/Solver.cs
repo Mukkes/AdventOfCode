@@ -3,6 +3,7 @@ using AdventOfCodeLibrary.ExtensionClasses;
 using AdventOfCodeLibrary.Models;
 using AdventOfCodeLibrary.Parsers;
 using AdventOfCodeLibrary.Solvers;
+using AdventOfCodeLibrary.Util;
 
 namespace AdventOfCode.Year2024.Day04.Solvers;
 
@@ -29,7 +30,7 @@ public class Solver : BaseSolver<string[]>
                 if (ParsedInput[y][x] == 'X')
                 {
                     var point = new Point2D(x, y);
-                    foreach (var direction in EnumExtensions.GetValues<Direction>())
+                    foreach (var direction in DirectionUtil.GetAllDirections())
                     {
                         if (GetNextThreeCharacter(point, direction) == "MAS")
                         {
