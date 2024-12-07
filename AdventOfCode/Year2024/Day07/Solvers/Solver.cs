@@ -15,7 +15,7 @@ public class Solver : BaseSolver<List<Equation>>
 
     public override object? AnswerPartOne => 6392012777720L;
 
-    //public override object? AnswerPartTwo => ;
+    public override object? AnswerPartTwo => 61561126043536L;
 
     protected override IInputParser<List<Equation>> InputParser => new EquationParser();
 
@@ -24,7 +24,7 @@ public class Solver : BaseSolver<List<Equation>>
         var sum = 0L;
         foreach (var equation in ParsedInput)
         {
-            if (Calc(equation.Numbers[0], equation.Numbers.GetRange(1, equation.Numbers.Count - 1), equation.TestValue))
+            if (CalcPartOne(equation.Numbers[0], equation.Numbers.GetRange(1, equation.Numbers.Count - 1), equation.TestValue))
             {
                 sum += equation.TestValue;
             }
@@ -34,15 +34,37 @@ public class Solver : BaseSolver<List<Equation>>
 
     public override object SolvePartTwo()
     {
-        return 0;
+        var sum = 0L;
+        foreach (var equation in ParsedInput)
+        {
+            if (CalcPartTwo(equation.Numbers[0], equation.Numbers.GetRange(1, equation.Numbers.Count - 1), equation.TestValue))
+            {
+                sum += equation.TestValue;
+            }
+        }
+        return sum;
     }
 
-    private bool Calc(long result, List<long> numbers, long testValue)
+    private bool CalcPartOne(long result, List<long> numbers, long testValue)
     {
         if (numbers.Count == 0)
         {
             return result == testValue;
         }
-        return Calc(result + numbers[0], numbers.GetRange(1, numbers.Count - 1), testValue) || Calc(result * numbers[0], numbers.GetRange(1, numbers.Count - 1), testValue);
+        return 
+            CalcPartOne(result + numbers[0], numbers.GetRange(1, numbers.Count - 1), testValue) ||
+            CalcPartOne(result * numbers[0], numbers.GetRange(1, numbers.Count - 1), testValue);
+    }
+
+    private bool CalcPartTwo(long result, List<long> numbers, long testValue)
+    {
+        if (numbers.Count == 0)
+        {
+            return result == testValue;
+        }
+        return 
+            CalcPartTwo(result + numbers[0], numbers.GetRange(1, numbers.Count - 1), testValue) || 
+            CalcPartTwo(result * numbers[0], numbers.GetRange(1, numbers.Count - 1), testValue) ||
+            CalcPartTwo(long.Parse(result.ToString() + numbers[0].ToString()), numbers.GetRange(1, numbers.Count - 1), testValue);
     }
 }
