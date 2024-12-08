@@ -24,7 +24,7 @@ public abstract class BaseSolver<TOutputType> : IBaseSolver
     }
 
     private TOutputType? _parsedInput;
-    protected TOutputType ParsedInput
+    public TOutputType ParsedInput
     {
         get
         {
@@ -39,7 +39,13 @@ public abstract class BaseSolver<TOutputType> : IBaseSolver
     public BaseSolver()
     {
         _inputFileName = "Year" + Year + @"\Day" + string.Format("{0:00}", Day) + @"\Input.txt";
+        ResetInput();
+    }
+
+    public void ResetInput()
+    {
         _input = File.ReadAllText(_inputFileName);
+        _parsedInput = default;
     }
 
     public abstract object SolvePartOne();
