@@ -26,6 +26,21 @@ public readonly struct Point2D
             pointA.Y != pointB.Y;
     }
 
+    public static Point2D operator +(Point2D point, Vector2D vector)
+    {
+        return new Point2D(point.X + vector.X, point.Y + vector.Y);
+    }
+
+    public static Point2D operator +(Vector2D vector, Point2D point)
+    {
+        return point + vector;
+    }
+
+    public static Vector2D operator -(Point2D pointA, Point2D pointB)
+    {
+        return new Vector2D(pointA.X - pointB.X, pointA.Y - pointB.Y);
+    }
+
     public override int GetHashCode()
     {
         return X.GetHashCode() ^ Y.GetHashCode();
