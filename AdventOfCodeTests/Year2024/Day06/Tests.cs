@@ -2,11 +2,11 @@
 using AdventOfCodeTests.Year2024.Day06.Fixtures;
 
 namespace AdventOfCodeTests.Year2024.Day06;
-public class SolverTests : IClassFixture<SolverFixture>
+public class Tests : IClassFixture<SolverFixture>
 {
     private readonly SolverFixture _solverFixture;
 
-    public SolverTests(SolverFixture solverFixture)
+    public Tests(SolverFixture solverFixture)
     {
         _solverFixture = solverFixture;
     }
@@ -26,8 +26,6 @@ public class SolverTests : IClassFixture<SolverFixture>
             new Point2D(7, 9)
         };
 
-        solver.SolvePartTwo();
-
         solver.NewObstructions.Should().Contain(expectedObstructions);
     }
 
@@ -43,7 +41,6 @@ public class SolverTests : IClassFixture<SolverFixture>
     public void NewObstructionsShouldNotContainOldObstructions()
     {
         var solver = _solverFixture.Solver;
-        solver.SolvePartTwo();
         solver.NewObstructions.Should().NotContain(solver.OldObstructions);
     }
 
@@ -55,7 +52,6 @@ public class SolverTests : IClassFixture<SolverFixture>
         var xRightBound = 130;
         var yUpBound = -1;
         var yDownBound = 130;
-        solver.SolvePartTwo();
         var obstructionsOutsideGrid = solver.NewObstructions.Where(x => x.X <= xLeftBound || x.X >= xRightBound || x.Y <= yUpBound || x.Y >= yDownBound);
         obstructionsOutsideGrid.Should().BeEmpty();
     }

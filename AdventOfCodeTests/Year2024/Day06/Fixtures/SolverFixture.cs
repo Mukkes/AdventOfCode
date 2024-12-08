@@ -11,6 +11,8 @@ public class SolverFixture : IDisposable
     {
         var solverRegister = new SolverRegister(["AdventOfCode.dll"]);
         Solver = (Solver)solverRegister.Solvers.Single(solver => solver.Year == 2024 && solver.Day == 6);
+        Solver.SolvePartOne();
+        Solver.SolvePartTwo();
 
         solverRegister = new SolverRegister(["AdventOfCode.dll"]);
         SolverWhitExampleInput = (Solver)solverRegister.Solvers.Single(solver => solver.Year == 2024 && solver.Day == 6);
@@ -25,6 +27,8 @@ public class SolverFixture : IDisposable
 ........#.
 #.........
 ......#...";
+        SolverWhitExampleInput.SolvePartOne();
+        SolverWhitExampleInput.SolvePartTwo();
     }
 
     public void Dispose()
