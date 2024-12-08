@@ -9,4 +9,9 @@ public readonly struct Vector2D
         X = x;
         Y = y;
     }
+
+    public override string ToString()
+    {
+        return X + "," + Y;
+    }
 }

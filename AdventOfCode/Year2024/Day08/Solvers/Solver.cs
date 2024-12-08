@@ -12,26 +12,34 @@ public class Solver : BaseSolver<Grid<char>>
 
     public override int Day => 8;
 
-    //public override object? AnswerPartOne => ;
+    public override object? AnswerPartOne => 354;
 
-    //public override object? AnswerPartTwo => ;
+    public override object? AnswerPartTwo => 1263;
 
     protected override IInputParser<Grid<char>> InputParser => new GridParser();
 
     private Dictionary<char, List<Point2D>> _antennas = new Dictionary<char, List<Point2D>>();
+    private HashSet<Point2D> _antinodesPartOne = new HashSet<Point2D>();
+    private HashSet<Point2D> _antinodesPartTwo = new HashSet<Point2D>();
 
     public override object SolvePartOne()
     {
         if (_antennas.Count == 0)
         {
             FindAntennas();
+            FindAntinodes();
         }
-        return GetAntinodes().Count;
+        return _antinodesPartOne.Count;
     }
 
     public override object SolvePartTwo()
     {
-        return 0;
+        if (_antennas.Count == 0)
+        {
+            FindAntennas();
+            FindAntinodes();
+        }
+        return _antinodesPartTwo.Count;
     }
 
     private void FindAntennas()
@@ -50,9 +58,8 @@ public class Solver : BaseSolver<Grid<char>>
         }
     }
 
-    private HashSet<Point2D> GetAntinodes()
+    private void FindAntinodes()
     {
-        var antinodes = new HashSet<Point2D>();
         foreach (var pair in _antennas)
         {
             for (var i = 0; i < pair.Value.Count; i++)
@@ -67,18 +74,16 @@ public class Solver : BaseSolver<Grid<char>>
                     var antinode = pair.Value[i] + vector;
                     if (ParsedInput.IsInsideGrid(antinode))
                     {
-                        antinodes.Add(antinode);
+                        _antinodesPartOne.Add(antinode);
+                    }
+                    _antinodesPartTwo.Add(pair.Value[i]);
+                    _antinodesPartTwo.Add(pair.Value[j]);
+                    while (ParsedInput.IsInsideGrid(antinode))
+                    {
+                        _antinodesPartTwo.Add(antinode);
+                        antinode += vector;
                     }
                 }
-            }
-        }
-        return antinodes;
-
-        for (var y = 0; y <= ParsedInput.YUpperBound; y++ )
-        {
-            for (var x = 0; x <= ParsedInput.XUpperBound; x++)
-            {
-
             }
         }
     }

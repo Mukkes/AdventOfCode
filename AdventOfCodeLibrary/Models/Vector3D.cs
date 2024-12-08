@@ -11,4 +11,9 @@ public readonly struct Vector3D
         Y = y;
         Z = z;
     }
+
+    public override string ToString()
+    {
+        return X + "," + Y + "," + Z;
+    }
 }
