@@ -5,7 +5,7 @@ var solverRegister = new SolverRegister(["AdventOfCode.dll"]);
 var solver = solverRegister.Solvers.Single(solver => solver.Year == 2024 && solver.Day == 9);
 
 var exampleInput = @"2333133121414131402";
-solver.Input = exampleInput;
+//solver.Input = exampleInput;
 
 var stopwatch = new Stopwatch();
 stopwatch.Start();

@@ -14,7 +14,7 @@ public class Solver : BaseSolver<string>
 
     public override object? AnswerPartOne => 6323641412437;
 
-    //public override object? AnswerPartTwo => ;
+    public override object? AnswerPartTwo => 6351801932670;
 
     protected override IInputParser<string> InputParser => new VoidParser();
 
@@ -84,7 +84,7 @@ public class Solver : BaseSolver<string>
         {
             if (disk[(int)i] == _freeSpace)
             {
-                break;
+                continue;
             }
             checksum += disk[(int)i] * i;
         }
@@ -95,32 +95,22 @@ public class Solver : BaseSolver<string>
     {
         var newDisk = new List<long>();
         var highestId = disk.FindLast(x => x != _freeSpace);
-        for (var i = 0; i < highestId; i++)
+        for (var id = highestId; id >= 0; id--)
         {
-            var indexLastFileBlock = disk.FindLastIndex(x => x != _freeSpace);
-            var lastId = disk[indexLastFileBlock];
-            var indexFile = disk.FindIndex(x => x == lastId);
-            var fileSize = disk.Where(x => x == lastId).Count();
-            var indexFirstFreeSpace = disk.FindIndex(x => x == _freeSpace);
-            //if (indexFirstFreeSpace > indexLastFileBlock)
-            //{
-            //    break;
-            //}
+            var indexFile = disk.FindIndex(x => x == id);
+            var fileSize = disk.Where(x => x == id).Count();
             if (FindFreeBlock(disk, fileSize, out int indexFreeSpace))
             {
-                if (indexFreeSpace > indexLastFileBlock)
+                if (indexFreeSpace > indexFile)
                 {
                     continue;
                 }
                 for (var j = 0; j < fileSize; j++)
                 {
-                    disk[indexFreeSpace + j] = lastId;
+                    disk[indexFreeSpace + j] = id;
                     disk[indexFile + j] = _freeSpace;
                 }
             }
-            
-            //disk[indexFirstFreeSpace] = disk[indexLastFileBlock];
-            //disk[indexLastFileBlock] = _freeSpace;
         }
     }
 
