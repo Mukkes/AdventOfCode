@@ -45,6 +45,7 @@
     <None Remove="Year2023\Day12\Input.txt" />
     <None Remove="Year2023\Day13\Input.txt" />
     <None Remove="Year2023\Day14\Input.txt" />
+    <None Remove="Year2024\Day09\Input.txt" />
     <None Remove="Year2024\Day08\Input.txt" />
     <None Remove="Year2024\Day04\Input.txt" />
     <None Remove="Year2024\Day02\Input.txt" />
@@ -160,6 +161,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Year2023\Day14\Input.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Year2024\Day09\Input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Year2024\Day08\Input.txt">
