@@ -1,7 +1,6 @@
 ﻿using AdventOfCodeLibrary.Attributes;
 using AdventOfCodeLibrary.Parsers;
 using AdventOfCodeLibrary.Solvers;
-using System.Drawing;
 
 namespace AdventOfCode.Year2024.Day09.Solvers;
 
@@ -30,7 +29,7 @@ public class Solver : BaseSolver<string>
     public override object SolvePartTwo()
     {
         var disk = CreateDisk();
-        MoveWholeFile(disk);
+        MoveWholeFiles(disk);
         return CalculateChecksum(disk);
     }
 
@@ -91,9 +90,8 @@ public class Solver : BaseSolver<string>
         return checksum;
     }
 
-    private void MoveWholeFile(List<long> disk)
+    private void MoveWholeFiles(List<long> disk)
     {
-        var newDisk = new List<long>();
         var highestId = disk.FindLast(x => x != _freeSpace);
         for (var id = highestId; id >= 0; id--)
         {
