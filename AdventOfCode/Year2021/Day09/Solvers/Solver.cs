@@ -43,7 +43,7 @@ public class Solver : BaseSolver<string[]>
             {
                 if (IsLowest(x, y))
                 {
-                    basinSizes.Add(BasinSize(new List<Point2DOld>(), x, y));
+                    basinSizes.Add(BasinSize(new List<Point2D>(), x, y));
                 }
             }
         }
@@ -81,13 +81,13 @@ public class Solver : BaseSolver<string[]>
         return true;
     }
 
-    private int BasinSize(List<Point2DOld> Points, int x, int y)
+    private int BasinSize(List<Point2D> Points, int x, int y)
     {
-        if (Points.Contains(new Point2DOld(x, y)))
+        if (Points.Contains(new Point2D(x, y)))
         {
             return 0;
         }
-        Points.Add(new Point2DOld(x, y));
+        Points.Add(new Point2D(x, y));
         int size = 1;
         // Up
         if (x - 1 >= 0 && int.Parse(ParsedInput[x - 1][y].ToString()) < 9)
