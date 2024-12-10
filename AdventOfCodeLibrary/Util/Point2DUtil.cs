@@ -26,4 +26,30 @@ public static class Point2DUtil
         }
         throw new Exception("Unknown direction!");
     }
+
+    public static List<Point2D> GetNeighbors(this Point2D point)
+    {
+        return new List<Point2D>()
+        {
+            new Point2D(point.X, point.Y - 1),
+            new Point2D(point.X, point.Y + 1),
+            new Point2D(point.X + 1, point.Y),
+            new Point2D(point.X - 1, point.Y)
+        };
+    }
+
+    public static List<Point2D> GetAdjacents(this Point2D point)
+    {
+        return new List<Point2D>()
+        {
+            new Point2D(point.X, point.Y - 1),
+            new Point2D(point.X, point.Y + 1),
+            new Point2D(point.X + 1, point.Y),
+            new Point2D(point.X - 1, point.Y),
+            new Point2D(point.X + 1, point.Y - 1),
+            new Point2D(point.X + 1, point.Y + 1),
+            new Point2D(point.X - 1, point.Y + 1),
+            new Point2D(point.X - 1, point.Y - 1)
+        };
+    }
 }

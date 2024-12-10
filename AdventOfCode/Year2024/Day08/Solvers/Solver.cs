@@ -16,7 +16,7 @@ public class Solver : BaseSolver<Grid<char>>
 
     public override object? AnswerPartTwo => 1263;
 
-    protected override IInputParser<Grid<char>> InputParser => new GridParser();
+    protected override IInputParser<Grid<char>> InputParser => new CharGridParser();
 
     private Dictionary<char, List<Point2D>> _antennas = new Dictionary<char, List<Point2D>>();
     private HashSet<Point2D> _antinodesPartOne = new HashSet<Point2D>();

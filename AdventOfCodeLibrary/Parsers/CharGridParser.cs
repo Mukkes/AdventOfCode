@@ -1,7 +1,7 @@
 ﻿using AdventOfCodeLibrary.Models;
 
 namespace AdventOfCodeLibrary.Parsers;
-public class GridParser : StringArrayParser, IInputParser<Grid<char>>
+public class CharGridParser : StringArrayParser, IInputParser<Grid<char>>
 {
     public new Grid<char> Parse(string input)
     {
