@@ -2,7 +2,7 @@
 using AdventOfCodeLibrary.Models;
 using AdventOfCodeLibrary.Parsers;
 using AdventOfCodeLibrary.Solvers;
-using System.Collections.Generic;
+using AdventOfCodeLibrary.Util;
 
 namespace AdventOfCode.Year2023.Day11.Solvers;
 
@@ -53,40 +53,40 @@ public class Solver : BaseSolver<string[]>
         return sum;
     }
 
-    private List<Point2DOld> GetGalaxies()
+    private List<Point2D> GetGalaxies()
     {
-        var galaxies = new List<Point2DOld>();
+        var galaxies = new List<Point2D>();
         for (var x = 0; x < ParsedInput.Length; x++)
         {
             for (var y = 0; y < ParsedInput[x].Length; y++)
             {
                 if (ParsedInput[x][y] == '#')
                 {
-                    galaxies.Add(new Point2DOld(x, y));
+                    galaxies.Add(new Point2D(x, y));
                 }
             }
         }
         return galaxies;
     }
 
-    private void Expand(List<Point2DOld> galaxies, long expandingDistance)
+    private void Expand(List<Point2D> galaxies, long expandingDistance)
     {
         ExpandX(galaxies, expandingDistance);
         ExpandY(galaxies, expandingDistance);
     }
 
-    private void ExpandX(List<Point2DOld> galaxies, long expandingDistance)
+    private void ExpandX(List<Point2D> galaxies, long expandingDistance)
     {
         var totalExpandingDistance = 0L;
         for (var x = 0; x < ParsedInput.Length; x++)
         {
             if (!ParsedInput[x].Contains('#'))
             {
-                foreach (var galaxy in galaxies)
+                for (var galaxyIndex = 0; galaxyIndex < galaxies.Count; galaxyIndex++)
                 {
-                    if (galaxy.X > (x + totalExpandingDistance))
+                    if (galaxies[galaxyIndex].X > (x + totalExpandingDistance))
                     {
-                        galaxy.X += expandingDistance;
+                        galaxies[galaxyIndex] = new Point2D(galaxies[galaxyIndex].X + (int)expandingDistance, galaxies[galaxyIndex].Y);
                     }
                 }
                 totalExpandingDistance += expandingDistance;
@@ -94,7 +94,7 @@ public class Solver : BaseSolver<string[]>
         }
     }
 
-    private void ExpandY(List<Point2DOld> galaxies, long expandingDistance)
+    private void ExpandY(List<Point2D> galaxies, long expandingDistance)
     {
         var totalExpandingDistance = 0L;
         for (var y = 0; y < ParsedInput[0].Length; y++)
@@ -111,11 +111,11 @@ public class Solver : BaseSolver<string[]>
             {
                 continue;
             }
-            foreach (var galaxy in galaxies)
+            for (var galaxyIndex = 0; galaxyIndex < galaxies.Count; galaxyIndex++)
             {
-                if (galaxy.Y > (y + totalExpandingDistance))
+                if (galaxies[galaxyIndex].Y > (y + totalExpandingDistance))
                 {
-                    galaxy.Y += expandingDistance;
+                    galaxies[galaxyIndex] = new Point2D(galaxies[galaxyIndex].X, galaxies[galaxyIndex].Y + (int)expandingDistance);
                 }
             }
             totalExpandingDistance += expandingDistance;
