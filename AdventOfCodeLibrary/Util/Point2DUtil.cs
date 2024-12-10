@@ -52,4 +52,11 @@ public static class Point2DUtil
             new Point2D(point.X - 1, point.Y - 1)
         };
     }
+
+    public static int GetDistance(this Point2D pointA, Point2D pointB)
+    {
+        var distanceX = Math.Abs(pointA.X - pointB.X);
+        var distanceY = Math.Abs(pointA.Y - pointB.Y);
+        return distanceX + distanceY;
+    }
 }

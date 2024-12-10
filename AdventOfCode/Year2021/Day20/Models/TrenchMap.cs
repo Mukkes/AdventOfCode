@@ -7,11 +7,11 @@ public class TrenchMap
     private const char _lightPixel = '#';
 
     private string _algorithm;
-    private Dictionary<Point2DOld, char> _pixels;
-    private long _minX;
-    private long _minY;
-    private long _maxX;
-    private long _maxY;
+    private Dictionary<Point2D, char> _pixels;
+    private int _minX;
+    private int _minY;
+    private int _maxX;
+    private int _maxY;
     private char _fillPixel;
 
     public TrenchMap(string algorithm) : this(algorithm, _darkPixel) { }
@@ -19,7 +19,7 @@ public class TrenchMap
     public TrenchMap(string algorithm, char fillPixel)
     {
         _algorithm = algorithm;
-        _pixels = new Dictionary<Point2DOld, char>();
+        _pixels = new Dictionary<Point2D, char>();
         _minX = int.MaxValue;
         _minY = int.MaxValue;
         _maxX = int.MinValue;
@@ -35,29 +35,29 @@ public class TrenchMap
             for (var y = _minY - 1; y <= _maxY + 1; y++)
             {
                 var pixels = string.Empty;
-                pixels += GetPixel(new Point2DOld(x - 1, y - 1));
-                pixels += GetPixel(new Point2DOld(x - 1, y));
-                pixels += GetPixel(new Point2DOld(x - 1, y + 1));
+                pixels += GetPixel(new Point2D(x - 1, y - 1));
+                pixels += GetPixel(new Point2D(x - 1, y));
+                pixels += GetPixel(new Point2D(x - 1, y + 1));
 
-                pixels += GetPixel(new Point2DOld(x, y - 1));
-                pixels += GetPixel(new Point2DOld(x, y));
-                pixels += GetPixel(new Point2DOld(x, y + 1));
+                pixels += GetPixel(new Point2D(x, y - 1));
+                pixels += GetPixel(new Point2D(x, y));
+                pixels += GetPixel(new Point2D(x, y + 1));
 
-                pixels += GetPixel(new Point2DOld(x + 1, y - 1));
-                pixels += GetPixel(new Point2DOld(x + 1, y));
-                pixels += GetPixel(new Point2DOld(x + 1, y + 1));
+                pixels += GetPixel(new Point2D(x + 1, y - 1));
+                pixels += GetPixel(new Point2D(x + 1, y));
+                pixels += GetPixel(new Point2D(x + 1, y + 1));
 
                 var binary = ConvertPixelsToBinary(pixels);
                 var index = ConvertBinaryToInt(binary);
                 var pixel = GetPixelFromAlgorithm(index);
-                var point = new Point2DOld(x, y);
+                var point = new Point2D(x, y);
                 trenchMap.AddPixel(point, pixel);
             }
         }
         return trenchMap;
     }
 
-    public void AddPixel(Point2DOld point, char pixel)
+    public void AddPixel(Point2D point, char pixel)
     {
         if (point.X < _minX)
         {
@@ -78,7 +78,7 @@ public class TrenchMap
         _pixels.Add(point, pixel);
     }
 
-    public char GetPixel(Point2DOld point)
+    public char GetPixel(Point2D point)
     {
         if (_pixels.ContainsKey(point))
         {
@@ -140,7 +140,7 @@ public class TrenchMap
             Console.Write(": ");
             for (var y = _minY; y <= _maxY; y++)
             {
-                Console.Write(GetPixel(new Point2DOld(x, y)));
+                Console.Write(GetPixel(new Point2D(x, y)));
             }
             Console.WriteLine();
         }
