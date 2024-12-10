@@ -1,7 +1,6 @@
-﻿namespace AdventOfCodeLibrary.Util;
-public static class ListUtil
+﻿namespace AdventOfCodeLibrary.ExtensionClasses;
+public static class ListExtensions
 {
-    [Obsolete("To ListExtension class.")]
     public static T GetNextOrFirst<T>(this List<T> list, T item)
     {
         var index = list.IndexOf(item);

@@ -1,4 +1,5 @@
 ﻿using AdventOfCodeLibrary.Attributes;
+using AdventOfCodeLibrary.ExtensionClasses;
 using AdventOfCodeLibrary.Models;
 using AdventOfCodeLibrary.Parsers;
 using AdventOfCodeLibrary.Solvers;
