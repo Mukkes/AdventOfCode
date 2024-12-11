@@ -38,7 +38,7 @@ public class Solver : BaseSolver<List<long>>
         var sum = 0L;
         foreach (var stone in new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9})
         {
-            ApplyRules2(stone, 39);
+            StoreBasicStones(stone, 39);
         }
         foreach (var stone in ParsedInput)
         {
@@ -47,7 +47,7 @@ public class Solver : BaseSolver<List<long>>
         return sum;
     }
 
-    private long ApplyRules2(long beginStone, int blinks)
+    private long StoreBasicStones(long beginStone, int blinks)
     {
         var stones = new List<long>() { beginStone };
         for (var i = 0; i < blinks; i++)
