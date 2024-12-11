@@ -4,8 +4,9 @@ using System.Diagnostics;
 var solverRegister = new SolverRegister(["AdventOfCode.dll"]);
 var solver = solverRegister.Solvers.Single(solver => solver.Year == 2024 && solver.Day == 11);
 
-var exampleInput = @"";
-solver.Input = exampleInput;
+//var exampleInput = @"0";
+var exampleInput = @"125 17";
+//solver.Input = exampleInput;
 
 var stopwatch = new Stopwatch();
 stopwatch.Start();
