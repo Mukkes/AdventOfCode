@@ -72,13 +72,13 @@ public class Solver : BaseSolver<Grid<char>>
                     }
                     var vector = pair.Value[i] - pair.Value[j];
                     var antinode = pair.Value[i] + vector;
-                    if (ParsedInput.IsInsideGrid(antinode))
+                    if (ParsedInput.ContainsKey(antinode))
                     {
                         _antinodesPartOne.Add(antinode);
                     }
                     _antinodesPartTwo.Add(pair.Value[i]);
                     _antinodesPartTwo.Add(pair.Value[j]);
-                    while (ParsedInput.IsInsideGrid(antinode))
+                    while (ParsedInput.ContainsKey(antinode))
                     {
                         _antinodesPartTwo.Add(antinode);
                         antinode += vector;

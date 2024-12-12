@@ -33,7 +33,7 @@ public static class GridUtil
         var neighbors = new List<KeyValuePair<Point2D, T?>>();
         foreach (var neighborPoint in neighborPoints)
         {
-            if (grid.IsInsideGrid(neighborPoint))
+            if (grid.ContainsKey(neighborPoint))
             {
                 neighbors.Add(new KeyValuePair<Point2D, T?>(neighborPoint, grid[neighborPoint]));
             }
@@ -47,7 +47,7 @@ public static class GridUtil
         var neighbors = new List<KeyValuePair<Point2D, T?>>();
         foreach (var neighborPoint in neighborPoints)
         {
-            if (grid.IsInsideGrid(neighborPoint))
+            if (grid.ContainsKey(neighborPoint))
             {
                 neighbors.Add(new KeyValuePair<Point2D, T?>(neighborPoint, grid[neighborPoint]));
             }
