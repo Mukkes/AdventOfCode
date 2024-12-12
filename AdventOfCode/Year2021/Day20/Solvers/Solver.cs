@@ -9,10 +9,6 @@ namespace AdventOfCode.Year2021.Day20.Solvers;
 [Solver]
 public class Solver : BaseSolver<TrenchMap>
 {
-    public override int Year => 2021;
-
-    public override int Day => 20;
-
     public override object? AnswerPartOne => 5097;
 
     public override object? AnswerPartTwo => 17987;

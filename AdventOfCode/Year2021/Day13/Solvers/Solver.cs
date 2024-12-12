@@ -10,10 +10,6 @@ namespace AdventOfCode.Year2021.Day13.Solvers;
 [Solver]
 public class Solver : BaseSolver<TransparentPaper>
 {
-    public override int Year => 2021;
-
-    public override int Day => 13;
-
     public override object? AnswerPartOne => 684;
 
     //public override object? AnswerPartTwo => "JRZBLGKH";
