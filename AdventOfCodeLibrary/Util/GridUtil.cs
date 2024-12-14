@@ -27,6 +27,17 @@ public static class GridUtil
         return new KeyValuePair<Point2D, T?>(adjacentPoint, grid.GetValueOrDefault(adjacentPoint));
     }
 
+    public static List<KeyValuePair<Point2D, T?>> GetNeighbors<T>(this Grid<T> grid, Point2D point)
+    {
+        var neighborPoints = point.GetNeighbors();
+        var neighbors = new List<KeyValuePair<Point2D, T?>>();
+        foreach (var neighborPoint in neighborPoints)
+        {
+            neighbors.Add(new KeyValuePair<Point2D, T?>(neighborPoint, grid.GetValueOrDefault(neighborPoint)));
+        }
+        return neighbors;
+    }
+
     public static List<KeyValuePair<Point2D, T?>> GetValidNeighbors<T>(this Grid<T> grid, Point2D point)
     {
         var neighborPoints = point.GetNeighbors();

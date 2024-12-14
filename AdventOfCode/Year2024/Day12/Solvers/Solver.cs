@@ -39,14 +39,19 @@ public class Solver : BaseSolver<Grid<char>>
         var sum = 0;
         foreach (var region in Regions.Values.Distinct())
         {
-            sum += region.Areas.Count() * region.Perimeter;
+            sum += region.Areas.Count() * region.Perimeters.Count();
         }
         return sum;
     }
 
     public override object SolvePartTwo()
     {
-        return 0;
+        var sum = 0;
+        foreach (var region in Regions.Values.Distinct())
+        {
+            sum += region.Areas.Count() * region.PerimeterSides();
+        }
+        return sum;
     }
 
     [MemberNotNull(nameof(_regions))]
@@ -57,7 +62,7 @@ public class Solver : BaseSolver<Grid<char>>
         {
             if (!Regions.ContainsKey(keyValuePair.Key))
             {
-                AddRegion(new Region(), keyValuePair.Key, keyValuePair.Value);
+                AddRegion(new Region(keyValuePair.Value), keyValuePair.Key, keyValuePair.Value);
             }
         }
     }
@@ -70,11 +75,17 @@ public class Solver : BaseSolver<Grid<char>>
         }
         region.Areas.Add(point);
         Regions.Add(point, region);
-        var neighbors = ParsedInput.GetValidNeighbors(point).Where(neighbor => neighbor.Value == plant);
-        region.Perimeter += 4 - neighbors.Count();
+        var neighbors = ParsedInput.GetNeighbors(point);
         foreach (var keyValuePair in neighbors)
         {
-            AddRegion(region, keyValuePair.Key, plant);
+            if (keyValuePair.Value == plant)
+            {
+                AddRegion(region, keyValuePair.Key, plant);
+            }
+            else
+            {
+                region.Perimeters.Add(keyValuePair.Key);
+            }
         }
     }
 }
