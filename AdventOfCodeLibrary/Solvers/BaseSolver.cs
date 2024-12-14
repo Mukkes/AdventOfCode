@@ -1,4 +1,6 @@
 ﻿using AdventOfCodeLibrary.Parsers;
+using System.Diagnostics.CodeAnalysis;
+using System.Text.RegularExpressions;
 
 namespace AdventOfCodeLibrary.Solvers;
 
@@ -6,11 +8,45 @@ public abstract class BaseSolver<TOutputType> : IBaseSolver
 {
     private readonly string _inputFileName;
 
-    public abstract int Year { get; }
-    public abstract int Day { get; }
     public virtual object? AnswerPartOne => null;
     public virtual object? AnswerPartTwo => null;
     protected abstract IInputParser<TOutputType> InputParser { get; }
+
+    private int _year;
+    public int Year
+    {
+        get
+        {
+            if (_year == default)
+            {
+                var year = Regex.Match(GetType().Namespace!, @"Year(?<year>\d{4})");
+                if (!year.Success)
+                {
+                    throw new Exception("Namespace should contain \"Year****\"!");
+                }
+                _year = int.Parse(year.Groups["year"].Value);
+            }
+            return _year;
+        }
+    }
+
+    private int _day;
+    public int Day
+    {
+        get
+        {
+            if (_day == default)
+            {
+                var day = Regex.Match(GetType().Namespace!, @"Day(?<day>\d{2})");
+                if (!day.Success)
+                {
+                    throw new Exception("Namespace should contain \"Day**\"!");
+                }
+                _day = int.Parse(day.Groups["day"].Value);
+            }
+            return _day;
+        }
+    }
 
     private string _input;
     public string Input
@@ -42,6 +78,7 @@ public abstract class BaseSolver<TOutputType> : IBaseSolver
         ResetInput();
     }
 
+    [MemberNotNull(nameof(_input))]
     public void ResetInput()
     {
         _input = File.ReadAllText(_inputFileName);

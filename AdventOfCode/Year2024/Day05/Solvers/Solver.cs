@@ -10,10 +10,6 @@ namespace AdventOfCode.Year2024.Day05.Solvers;
 [Solver]
 public class Solver : BaseSolver<Manual>
 {
-    public override int Year => 2024;
-
-    public override int Day => 5;
-
     public override object? AnswerPartOne => 5248;
 
     public override object? AnswerPartTwo => 4507;

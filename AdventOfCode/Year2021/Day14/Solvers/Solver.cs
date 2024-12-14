@@ -9,10 +9,6 @@ namespace AdventOfCode.Year2021.Day14.Solvers;
 [Solver]
 public class Solver : BaseSolver<PolymerFormula>
 {
-    public override int Year => 2021;
-
-    public override int Day => 14;
-
     public override object? AnswerPartOne => 3408;
 
     public override object? AnswerPartTwo => 3724343376942;

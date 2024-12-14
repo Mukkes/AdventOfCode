@@ -9,10 +9,6 @@ public class Solver : BaseSolver<string>
 {
     private readonly StringArrayParser _parser = new StringArrayParser();
 
-    public override int Year => 2023;
-
-    public override int Day => 1;
-
     public override object? AnswerPartOne => 54304;
 
     public override object? AnswerPartTwo => 54418;

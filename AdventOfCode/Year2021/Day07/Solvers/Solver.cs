@@ -7,10 +7,6 @@ namespace AdventOfCode.Year2021.Day07.Solvers;
 [Solver]
 public class Solver : BaseSolver<List<int>>
 {
-    public override int Year => 2021;
-
-    public override int Day => 7;
-
     public override object? AnswerPartOne => 336131;
 
     public override object? AnswerPartTwo => 92676646;

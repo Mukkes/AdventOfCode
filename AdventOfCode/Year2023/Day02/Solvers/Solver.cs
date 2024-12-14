@@ -5,10 +5,6 @@ namespace AdventOfCode.Year2023.Day02.Solvers;
 [Solver]
 public class Solver : CubeConundrumSolver
 {
-    public override int Year => 2023;
-
-    public override int Day => 2;
-
     public override object? AnswerPartOne => 2006;
 
     public override object? AnswerPartTwo => 84911;
