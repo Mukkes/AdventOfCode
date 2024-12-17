@@ -2,11 +2,14 @@
 using System.Diagnostics;
 
 var solverRegister = new SolverRegister(["AdventOfCode.dll"]);
-var solver = solverRegister.Solvers.Single(solver => solver.Year == 2024 && solver.Day == 11);
+var solver = solverRegister.Solvers.Single(solver => solver.Year == 2024 && solver.Day == 17);
 
-//var exampleInput = @"0";
-var exampleInput = @"125 17";
-//solver.Input = exampleInput;
+var exampleInput = @"Register A: 729
+Register B: 0
+Register C: 0
+
+Program: 0,1,5,4,3,0";
+solver.Input = exampleInput;
 
 var stopwatch = new Stopwatch();
 stopwatch.Start();
