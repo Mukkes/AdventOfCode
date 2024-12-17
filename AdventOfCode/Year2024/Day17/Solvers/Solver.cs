@@ -9,7 +9,7 @@ namespace AdventOfCode.Year2024.Day17.Solvers;
 [Solver]
 public class Solver : BaseSolver<ChronospatialComputer>
 {
-    //public override object? AnswerPartOne => ;
+    public override object? AnswerPartOne => "1,2,3,1,3,2,5,3,1";
 
     //public override object? AnswerPartTwo => ;
 
@@ -17,8 +17,9 @@ public class Solver : BaseSolver<ChronospatialComputer>
 
     public override object SolvePartOne()
     {
-        var x = ParsedInput;
-        return 0;
+        var computer = ParsedInput;
+        computer.Run();
+        return computer.GetOutputAsString();
     }
 
     public override object SolvePartTwo()
