@@ -24,6 +24,24 @@ public class Solver : BaseSolver<ChronospatialComputer>
 
     public override object SolvePartTwo()
     {
-        return 0;
+        var computer = default(ChronospatialComputer);
+        var a = -1;
+        var program = string.Join(",", ParsedInput.ProgramArray);
+        do
+        {
+            a++;
+            computer = new ChronospatialComputer(ParsedInput);
+            computer.RegisterA = a;
+            computer.RunPartTwo();
+            if (a % 1000000 == 0)
+            {
+                Console.WriteLine(a);
+            }
+            if (a == int.MaxValue)
+            {
+                return -1;
+            }
+        } while (computer.GetOutputAsString() != program);
+        return a;
     }
 }
