@@ -2,22 +2,22 @@
 using AdventOfCodeLibrary.Parsers;
 using AdventOfCodeLibrary.Solvers;
 
-namespace AdventOfCode.Year2024.Day11.Solvers;
+namespace AdventOfCode.Year2024.Day11;
 
 [Solver]
 public class Solver : BaseSolver<List<long>>
 {
-    public override object? AnswerPartOne => 222461;
+    public override object? AnswerPartOne => 222461L;
 
-    public override object? AnswerPartTwo => 264350935776416;
+    public override object? AnswerPartTwo => 264350935776416L;
 
     protected override IInputParser<List<long>> InputParser => new LongListParser(" ");
 
-    private Dictionary<(long stone, int blinks), long> _stonesDictionary = new Dictionary<(long stone, int blinks), long> ();
+    private Dictionary<(long stone, int blinks), long> _stonesDictionary = new Dictionary<(long stone, int blinks), long>();
 
     public override object SolvePartOne()
     {
-        return 
+        return
             ParsedInput
             .Select(stone => GetSumStone(stone, 25))
             .Sum();
@@ -49,7 +49,7 @@ public class Solver : BaseSolver<List<long>>
         }
         else if (stoneString.Count() % 2 == 0)
         {
-            result = 
+            result =
                 GetSumStone(long.Parse(stoneString[0..(stoneString.Count() / 2)]), blinks - 1) +
                 GetSumStone(long.Parse(stoneString[(stoneString.Count() / 2)..]), blinks - 1);
         }
