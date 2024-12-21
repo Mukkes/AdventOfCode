@@ -14,7 +14,7 @@ VVIIICJJEE
 MIIIIIJJEE
 MIIISIJEEE
 MMMISSJEEE";
-solver.Input = exampleInput;
+//solver.Input = exampleInput;
 
 var stopwatch = new Stopwatch();
 stopwatch.Start();

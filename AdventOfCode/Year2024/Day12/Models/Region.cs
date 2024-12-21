@@ -1,12 +1,12 @@
 ﻿using AdventOfCodeLibrary.Models;
-using System.Reflection.Metadata;
+using AdventOfCodeLibrary.Util;
 
 namespace AdventOfCode.Year2024.Day12.Models;
 public class Region
 {
     public char Plant { get; }
     public HashSet<Point2D> Areas { get; } = new HashSet<Point2D>();
-    public List<Point2D> Perimeters { get; set; } = new List<Point2D>();
+    public HashSet<(Point2D point, Direction direction)> Perimeters { get; set; } = new HashSet<(Point2D, Direction)>();
 
     public Region(char plant)
     {
@@ -20,39 +20,26 @@ public class Region
 
     public int PerimeterSides()
     {
-        OrderPerimeters();
         var sides = 0;
-        var previous = new Point2D(int.MaxValue, int.MaxValue);
-        foreach (var perimeter in Perimeters)
+        var perimeters = new HashSet<(Point2D, Direction)>(Perimeters);
+        while (perimeters.Count > 0)
         {
-            if (!IsSameSide(perimeter, previous))
-            {
-                sides++;
-            }
-            previous = perimeter;
-        }
-        if (IsSameSide(Perimeters.First(), Perimeters.Last()))
-        {
-            sides--;
+            var perimeter = perimeters.First();
+            FindAndRemoveSides(perimeters, perimeter);
+            sides++;
         }
         return sides;
     }
 
-    private bool IsSameSide(Point2D pointA, Point2D pointB)
+    private void FindAndRemoveSides(HashSet<(Point2D point, Direction direction)> perimeters, (Point2D point, Direction direction) perimeter)
     {
-        return pointA.X == pointB.X || pointA.Y == pointB.Y;
-    }
-
-    private void OrderPerimeters()
-    {
-        var newPerimeters = new List<Point2D>();
-        var previous = Perimeters.First();
-        while (Perimeters.Count > 0)
+        perimeters.Remove(perimeter);
+        foreach (var neighbor in perimeter.point.GetNeighbors())
         {
-            newPerimeters.Add(previous);
-            previous = Perimeters.First(perimeter => (perimeter.X == previous.X || Math.Abs(perimeter.X - previous.X) == 1) && (perimeter.Y == previous.Y || Math.Abs(perimeter.Y - previous.Y) == 1));
-            Perimeters.Remove(newPerimeters.Last());
+            if (perimeters.TryGetValue((neighbor, perimeter.direction), out (Point2D point, Direction direction) neighborPerimeter))
+            {
+                FindAndRemoveSides(perimeters, neighborPerimeter);
+            }
         }
-        Perimeters = newPerimeters;
     }
 }
