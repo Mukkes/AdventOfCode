@@ -1,12 +1,12 @@
 ﻿namespace AdventOfCodeLibrary.Models;
 public readonly struct Point2D
 {
-    public int X { get; init; }
-    public int Y { get; init; }
+    public long X { get; init; }
+    public long Y { get; init; }
 
     public Point2D() : this(0, 0) { }
 
-    public Point2D(int x, int y)
+    public Point2D(long x, long y)
     {
         X = x;
         Y = y;

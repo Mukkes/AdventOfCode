@@ -1,10 +1,10 @@
 ﻿namespace AdventOfCodeLibrary.Models;
 public readonly struct Vector2D
 {
-    public int X { get; init; }
-    public int Y { get; init; }
+    public long X { get; init; }
+    public long Y { get; init; }
 
-    public Vector2D(int x, int y)
+    public Vector2D(long x, long y)
     {
         X = x;
         Y = y;

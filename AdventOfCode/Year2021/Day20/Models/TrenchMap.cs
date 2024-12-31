@@ -8,10 +8,10 @@ public class TrenchMap
 
     private string _algorithm;
     private Dictionary<Point2D, char> _pixels;
-    private int _minX;
-    private int _minY;
-    private int _maxX;
-    private int _maxY;
+    private long _minX;
+    private long _minY;
+    private long _maxX;
+    private long _maxY;
     private char _fillPixel;
 
     public TrenchMap(string algorithm) : this(algorithm, _darkPixel) { }
