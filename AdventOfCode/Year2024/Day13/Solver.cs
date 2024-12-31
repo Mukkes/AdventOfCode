@@ -7,7 +7,7 @@ namespace AdventOfCode.Year2024.Day13;
 [Solver]
 public class Solver : BaseSolver<List<ClawMachine>>
 {
-    public override object? AnswerPartOne => 35997;
+    public override object? AnswerPartOne => 35997L;
 
     //public override object? AnswerPartTwo => ;
 
