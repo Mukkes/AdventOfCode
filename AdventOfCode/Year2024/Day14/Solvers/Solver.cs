@@ -10,7 +10,7 @@ namespace AdventOfCode.Year2024.Day14.Solvers;
 [Solver]
 public class Solver : BaseSolver<List<Robot>>
 {
-    //public override object? AnswerPartOne => ;
+    public override object? AnswerPartOne => 223020000;
 
     //public override object? AnswerPartTwo => ;
 
@@ -33,31 +33,7 @@ public class Solver : BaseSolver<List<Robot>>
 
     public override object SolvePartTwo()
     {
-        var steps = 0;
-        while (true)
-        {
-            foreach (var robot in ParsedInput)
-            {
-                MoveRobot(robot);
-                steps++;
-                if (IsTree())
-                {
-                    PrintGrid();
-                    Console.WriteLine(steps);
-                    //return steps;
-                }
-                if (steps % 1000000 == 0)
-                {
-                    //PrintGrid();
-                    Console.WriteLine(steps);
-                }
-                if (steps > 100000000)
-                {
-                    return steps;
-                }
-            }
-        }
-        return steps;
+        return 0;
     }
 
     private void MoveRobot(Robot robot)
@@ -110,44 +86,5 @@ public class Solver : BaseSolver<List<Robot>>
             }
         }
         return quadrant1 * quadrant2 * quadrant3 * quadrant4;
-    }
-
-    private bool IsTree()
-    {
-        var minX = Width / 3;
-        var maxX = Width - (Width / 3);
-        var minY = Height / 3;
-        var maxY = Height - (Height / 3);
-        var tree = 0;
-        foreach (var robot in ParsedInput)
-        {
-            if (robot.Position.X > minX && robot.Position.X < maxX &&
-                robot.Position.Y > minY && robot.Position.Y < maxY)
-            {
-                tree++;
-            }
-        }
-        return tree > 160;
-    }
-
-    private void PrintGrid()
-    {
-        for (var y = 0; y < Height; y++)
-        {
-            for (var x = 0; x < Width; x++)
-            {
-                var robots = ParsedInput.Where(robot => robot.Position == new Point2D(x, y)).Count();
-                if (robots > 0)
-                {
-                    Console.Write(robots);
-                }
-                else
-                {
-                    Console.Write('.');
-                }
-            }
-            Console.WriteLine();
-        }
-        Console.WriteLine();
     }
 }
