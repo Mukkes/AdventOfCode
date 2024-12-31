@@ -7,10 +7,8 @@ public class ClawMachine
     public Vector2D ButtonB { get; set; }
     public Point2D Prize { get; set; }
 
-    //public ClawMachine(Vector2D buttonA, Vector2D buttonB, Point2D prize)
-    //{
-    //    ButtonA = buttonA;
-    //    ButtonB = buttonB;
-    //    Prize = prize;
-    //}
+    public override string ToString()
+    {
+        return Prize.ToString();
+    }
 }
