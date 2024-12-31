@@ -165,7 +165,7 @@ public class Solver : BaseSolver<string[]>
     {
         try
         {
-            return ParsedInput[point.Y][point.X];
+            return ParsedInput[(int)point.Y][(int)point.X];
         }
         catch { }
         return '.';

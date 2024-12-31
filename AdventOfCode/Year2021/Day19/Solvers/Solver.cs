@@ -12,7 +12,7 @@ public class Solver : BaseSolver<List<Scanner>>
 {
     public override object? AnswerPartOne => 408;
 
-    public override object? AnswerPartTwo => 13348;
+    public override object? AnswerPartTwo => 13348L;
 
     protected override IInputParser<List<Scanner>> InputParser => new BeaconScannerParser();
 
@@ -171,7 +171,7 @@ public class Solver : BaseSolver<List<Scanner>>
         {
             FindAllPositionsScannersAndBeacons();
         }
-        var maxDistance = int.MinValue;
+        var maxDistance = long.MinValue;
         foreach (var scanner1 in ScannerPositions)
         {
             foreach (var scanner2 in ScannerPositions)
@@ -189,9 +189,9 @@ public class Solver : BaseSolver<List<Scanner>>
         return maxDistance;
     }
 
-    private int ScannerDistance(Point3D pointA, Point3D pointB)
+    private long ScannerDistance(Point3D pointA, Point3D pointB)
     {
         var difference = pointA - pointB;
-        return int.Abs(difference.X) + int.Abs(difference.Y) + int.Abs(difference.Z);
+        return long.Abs(difference.X) + long.Abs(difference.Y) + long.Abs(difference.Z);
     }
 }

@@ -1,13 +1,13 @@
 ﻿namespace AdventOfCodeLibrary.Models;
 public readonly struct Point3D
 {
-    public int X { get; init; }
-    public int Y { get; init; }
-    public int Z { get; init; }
+    public long X { get; init; }
+    public long Y { get; init; }
+    public long Z { get; init; }
 
     public Point3D() : this(0, 0, 0) { }
 
-    public Point3D(int x, int y, int z)
+    public Point3D(long x, long y, long z)
     {
         X = x;
         Y = y;
